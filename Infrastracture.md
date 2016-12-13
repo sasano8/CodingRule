@@ -12,6 +12,7 @@ add-middle    middle_name   '管理するミドルを追加する
 add-security_policy         'セキュリティポリシーを追加する
 ping          host_name     'ピングを実行する
 expot-data      path          '設計したデータを書き出す Jsonかな
+ch                          'カレントホストを変更する
 
 コマンドラインモードで実行したコマンドを履歴にとることによって
 それ自体が手順になる。
