@@ -11,5 +11,15 @@ add-storage   storage_name  'ストレージを追加する
 add-middle    middle_name   '管理するミドルを追加する
 add-security_policy         'セキュリティポリシーを追加する
 ping          host_name     'ピングを実行する
-out-data      path          '設計したデータを書き出す
+expot-data      path          '設計したデータを書き出す Jsonかな
 
+仮想的なインフラ空間を構築し、仮想的な構築を行うことができる。
+
+仮想的なネットワークの疎通テストが可能
+仮想的なクラスタの構築
+仮想的な負荷テスト
+
+Iassの相性を絞る
+Azure
+Micorosoftに売り込みたい
+export-xxxでAzureを構築できるようなコマンドを吐
