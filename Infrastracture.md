@@ -2,8 +2,12 @@
 仮想Iaasの構築
 
 コマンドを実行すると仮想Iaasのコマンドラインモードになる。
+infra-init      '仮想Iaasの作成
+infra-builder   '仮想Iaasの構築モード(CUI)
+infra-export_azure
+infra-export_aws
 
-add-router_template   template_name   '
+add-router_template   template_name   '
 add-machine_template   template_name    '
 add-router    host_name     'ルータを追加する
 add-machine   host_name     'サーバを追加する
