@@ -17,12 +17,14 @@ add-machine   host_name     'サーバを追加する
 add-storage   storage_name  'ストレージを追加する
 add-middle    middle_name   '管理するミドルを追加する
 add-security_policy         'セキュリティポリシーを追加する
-ping          host_name     'ピングを実行する
+ping          host_name     'カレントホストよりピングを実行する
 expot-data      path          '設計したデータを書き出す Jsonかな
 ch                          'カレントホストを変更する
 
 コマンドラインモードで実行したコマンドを履歴にとることによって
 それ自体が手順になる。
+エクスポートにより、よりクリーンな手順を出力可能。
+
 
 仮想的なインフラ空間を構築し、仮想的な構築を行うことができる。
 
@@ -31,6 +33,11 @@ ch                          'カレントホストを変更する
 仮想的な負荷テスト
 
 Iassの相性を絞る
-Azure
-Micorosoftに売り込みたい
+Azure Aws
+MicorosoftかAmazonに売り込みたい
 export-xxxでAzureを構築できるようなコマンドを吐
+
+# TODO
+Azure Awsの機能のインフラ思想の理解
+
+
