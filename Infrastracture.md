@@ -3,7 +3,10 @@
 
 コマンドを実行すると仮想Iaasのコマンドラインモードになる。
 infra-init      '仮想Iaasの作成
+  Sqliteのデータベースを作成
+
 infra-builder   '仮想Iaasの構築モード(CUI)
+infra-deploy_web    'Webコンソールを提供するウェブ環境を構築
 infra-export_azure
 infra-export_aws
 
