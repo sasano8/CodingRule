@@ -189,3 +189,29 @@ Call SubA((lVal))   '値渡しになる
 
 # 設計
 モジュール・クラスにまとめる関数の設計は以下を参考とすること。
+
+# エラーハンドリング
+VBAにおいて、例外処理はプロシージャ内にエラー処理用のサブルーチンを書く必要がある。
+サブルーチンからメインルーチンへ戻るには、Resumeステートメントを利用する。
+
+## ループ中のエラーハンドリング
+以下の通りに例外処理を行うこと。
+
+```
+'正しい例（本当か？）
+On Error Goto err_handler
+for i = 0 to 100 
+  '処理
+next_loop:
+next
+
+resume next_loop
+
+'誤った例（例外発生後は例外を検知できない。）
+On Error Goto err_handler
+for i = 0 to 100 
+  '処理
+err_handler:
+next
+
+```
