@@ -236,4 +236,25 @@ OnComplete
 exit function
 ```
 
+## 繰り返し中のエラーハンドリング例
+```
+処理
+
+	On Error Goto err_handler
+	
+	for each r in Selection
+
+		Call Function01()
+		Call Function02()
+		Call Function03()
+next_loop:
+	next
+	
+	On Error Goto 0
+
+'エラーが発生したら、next_loopへ復帰する
+err_handler:
+	resume next_loop
+
+```
 
