@@ -238,7 +238,7 @@ exit function
 
 ## 繰り返し中のエラーハンドリング例
 ```
-処理
+Function ErrHandlingSample()
 
 	On Error Goto err_handler
 	
@@ -252,9 +252,13 @@ next_loop:
 	
 	On Error Goto 0
 
+	'無限ループ回避(resumeが無限に走ってしまう。)
+	Exit Function
+
 'エラーが発生したら、next_loopへ復帰する
 err_handler:
 	resume next_loop
 
+End Function
 ```
 
