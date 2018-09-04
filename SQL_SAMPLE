@@ -1,0 +1,11 @@
+-- SQL Serverで階層構造のルートノードを辿る方法
+-- CTE(Common Table Expression:共通テーブル SQL99規格 With句）により、再帰的に階層を辿っていく
+
+WITH LOOP_TABLE AS (
+    SELECT * FROM NODES WHERE CODE = 'MYCODE'
+    UNION ALL
+    SELECT NODES.* FROM LOOP_TABLE, NODES WHERE LOOP_TABLE.PARENT_NODE_CODE = NODES.CODE -- 親の定義を階層定義から取得　取得分が次のループとなる
+)
+
+SELECT * FROM LOOP_TABLE
+
