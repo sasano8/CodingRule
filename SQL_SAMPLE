@@ -1,5 +1,12 @@
+/*
+----------------------------
+WITH句 について
+----------------------------
+SQLSERVERなどで利用可能な構文。
+CTE(Common Table Expression:共通テーブル SQL99規格）と呼ばれ、再帰などに利用する。
+*/
+
 -- SQL Serverで階層構造のルートノードを辿る方法
--- CTE(Common Table Expression:共通テーブル SQL99規格 With句）により、再帰的に階層を辿っていく
 
 WITH LOOP_TABLE AS (
     SELECT * FROM NODES WHERE CODE = 'MYCODE'
@@ -9,3 +16,20 @@ WITH LOOP_TABLE AS (
 
 SELECT * FROM LOOP_TABLE
 
+
+/*
+----------------------------
+UNION について
+----------------------------
+union は足し算と考えればよい
+*/
+
+-- 重複を許す
+select 1,'test1' union all
+select 1,'test1' union all
+select 3,'test3'
+
+-- 重複を許さない　重複チェックがある分、速度が遅い
+select 1,'test1' union
+select 1,'test1' union
+select 3,'test3'
