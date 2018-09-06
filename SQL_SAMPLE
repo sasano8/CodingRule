@@ -74,4 +74,10 @@ union all	select 'C02' as Center, '12' as Period, 1 as Val;
 select Center, SUM(Val) OVER(Partition by Center order by Period) FROM @T1;
 
 
+/*
+----------------------------
+課題
+----------------------------
+累積を単月に戻したい
+*/
 
