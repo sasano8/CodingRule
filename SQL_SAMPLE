@@ -71,13 +71,16 @@ union all	select 'C02' as Center, '11' as Period, 1 as Val
 union all	select 'C02' as Center, '12' as Period, 1 as Val;
 
 -- Center毎の毎月の計上値を累計表示にする
+INSERT INTO @T2
 select Center, SUM(Val) OVER(Partition by Center order by Period) FROM @T1;
 
+select * FROM @T2;
 
 /*
 ----------------------------
-課題
+累積値を単月値に戻す
 ----------------------------
-累積を単月に戻したい
+LAG（対象列、何行前を取得するか、Nullの場合の値）を利用して、累積値を単月値に戻す。
 */
+Select Center, Period, Val - LAG(Val,1,0) OVER(Partition by Center order by Period ASC) FROM @T2;
 
