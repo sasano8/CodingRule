@@ -33,3 +33,45 @@ select 3,'test3'
 select 1,'test1' union
 select 1,'test1' union
 select 3,'test3'
+
+
+/*
+----------------------------
+OVER句 について
+----------------------------
+集約関数をOVER句とともに利用することで、
+移動平均、累積集計、集計途中経過などを算出することができる。
+*/
+DECLARE @T1 TABLE(Center VARCHAR(10), Period VARCHAR(2),Val int);
+
+INSERT INTO @T1
+			select 'C01' as Center, '01' as Period, 1 as Val
+union all	select 'C01' as Center, '02' as Period, 1 as Val
+union all	select 'C01' as Center, '03' as Period, 1 as Val
+union all	select 'C01' as Center, '04' as Period, 1 as Val
+union all	select 'C01' as Center, '05' as Period, 1 as Val
+union all	select 'C01' as Center, '06' as Period, 1 as Val
+union all	select 'C01' as Center, '07' as Period, 1 as Val
+union all	select 'C01' as Center, '08' as Period, 1 as Val
+union all	select 'C01' as Center, '09' as Period, 1 as Val
+union all	select 'C01' as Center, '10' as Period, 1 as Val
+union all	select 'C01' as Center, '11' as Period, 1 as Val
+union all	select 'C01' as Center, '12' as Period, 1 as Val
+union all	select 'C02' as Center, '01' as Period, 1 as Val
+union all	select 'C02' as Center, '02' as Period, 1 as Val
+union all	select 'C02' as Center, '03' as Period, 1 as Val
+union all	select 'C02' as Center, '04' as Period, 1 as Val
+union all	select 'C02' as Center, '05' as Period, 1 as Val
+union all	select 'C02' as Center, '06' as Period, 1 as Val
+union all	select 'C02' as Center, '07' as Period, 1 as Val
+union all	select 'C02' as Center, '08' as Period, 1 as Val
+union all	select 'C02' as Center, '09' as Period, 1 as Val
+union all	select 'C02' as Center, '10' as Period, 1 as Val
+union all	select 'C02' as Center, '11' as Period, 1 as Val
+union all	select 'C02' as Center, '12' as Period, 1 as Val;
+
+-- Center毎の毎月の計上値を累計表示にする
+select Center, SUM(Val) OVER(Partition by Center order by Period) FROM @T1;
+
+
+
