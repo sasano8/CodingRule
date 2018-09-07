@@ -56,21 +56,21 @@ http://localhost:8080/
 # JDBCドライバ
 %JBOSS_HOME%\standalone\deployments
 
-# jboss-cliへログイン
+# jboss-cliへログイン（wildflyサーバーが起動していること）
 cd $env:JBOSS_HOME\bin
 
 .\jboss-cli.bat --connect
 
 # jboss-cliでコンフィグ操作
 
-### 接続テスト
-/subsystem=datasources/data-source=ExampleDS:test-connection-in-pool
-
 ### コネクション情報取得
 /subsystem=datasources/data-source=ExampleDS:read-resource
 
-### コネクション情報変更
+### コネクション情報変更（コンフィグはすぐ変更されるが、サーバー再起動後に挙動を確認すること）
 /subsystem=datasources/data-source=ExampleDS:write-attribute(name=connection-url, value=jdbc:postgresql:\/\/localhost:5432\/testdb)
+
+### 接続テスト
+/subsystem=datasources/data-source=ExampleDS:test-connection-in-pool
 
 ### コネクション一覧取得
 ls /subsystem=datasources/data-source
