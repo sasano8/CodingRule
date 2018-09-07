@@ -84,3 +84,37 @@ LAG（対象列、何行前を取得するか、Nullの場合の値）を利用�
 */
 Select Center, Period, Val - LAG(Val,1,0) OVER(Partition by Center order by Period ASC) FROM @T2;
 
+
+/*
+----------------------------
+Pivotについて
+----------------------------
+行を列に変換する。
+*/
+
+DECLARE @T4 TABLE(ID int, Country VARCHAR(10), Product VARCHAR(10),AMOUNT int);
+
+INSERT INTO @T4
+          select 1 as ID, 'Japan'   as Country, 'TV'    as Product, 100 as AMOUNT
+union all select 2 as ID, 'Japan'   as Country, 'Phone' as Product, 200 as AMOUNT
+union all select 3 as ID, 'America' as Country, 'TV'    as Product, 300 as AMOUNT
+union all select 4 as ID, 'America' as Country, 'Phone' as Product, 400 as AMOUNT
+union all select 5 as ID, 'Jamaica' as Country, 'TV'    as Product, 500 as AMOUNT
+;
+
+SELECT * FROM @T4;
+
+select * FROM @T4
+PIVOT(
+SUM(AMOUNT) FOR Product IN(TV,Phone)
+) AS PV;
+
+
+/*
+----------------------------
+UnPivotについて
+----------------------------
+列を行に変換する。
+*/
+
+
