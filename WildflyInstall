@@ -74,3 +74,15 @@ cd $env:JBOSS_HOME\bin
 
 ### コネクション一覧取得
 ls /subsystem=datasources/data-source
+
+### サーバーのリロード
+:reload
+
+### データソースの追加（未検証）
+batch
+xa-data-source add \
+      --name=JBatchXADS \
+      --driver-name=postgresql \
+      --jndi-name=java:jboss/jdbc/JBatchXADS \
+      --user-name=postgres \
+      --password=***
