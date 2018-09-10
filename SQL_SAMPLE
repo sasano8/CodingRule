@@ -153,5 +153,23 @@ UnPivotについて
 ----------------------------
 列を行に変換する。
 */
+DECLARE @T5 TABLE(TV VARCHAR(10), Phone VARCHAR(10));
+
+
+INSERT INTO @T5
+          select 100, 200 as Amount
+union all select 200, 300 as Amount
+union all select 400, 500 as Amount
+union all select null, 300 as Amount
+union all select 200, null as Amount
+union all select null, null as Amount
+;
+
+SELECT * FROM @T5;
+
+SELECT Product,Amount FROM @T5
+UNPIVOT(
+Amount FOR Product IN (TV,Phone)
+) AS UP;
 
 
