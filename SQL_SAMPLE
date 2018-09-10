@@ -1,20 +1,57 @@
+
+/*
+SQL TRANING.
+*/
+
+
 /*
 ----------------------------
 WITH句 について
 ----------------------------
 SQLSERVERなどで利用可能な構文。
 CTE(Common Table Expression:共通テーブル SQL99規格）と呼ばれ、再帰などに利用する。
+ノードを辿るのに用いられる
 */
 
--- SQL Serverで階層構造のルートノードを辿る方法
+
+-- DECLARE @NODES TABLE(Id int, Location VARCHAR(10), Parent VARCHAR(10));
+
+-- prefixを#とすると、一時テーブルとなる。##でグローバル一時テーブルになる
+-- テーブルはセッション終了時に削除される。
+
+DROP TABLE IF EXISTS #NODES; 
+CREATE TABLE #NODES(
+     Id int,
+	 Location VARCHAR(10),
+	 Parent VARCHAR(10)
+);
+
+INSERT INTO #NODES
+		select 1 as Id, 'Universe' as Location, '' as Parent
+union all	select 2 as Id, 'Mars' as Location, 'Universe' as Parent
+union all	select 3 as Id, 'Earth' as Location, 'Universe' as Parent
+union all	select 4 as Id, 'America' as Location, 'Earth' as Parent
+union all	select 5 as Id, 'Japan' as Location, 'Earth' as Parent
+union all	select 6 as Id, 'Tokyo' as Location, 'Japan' as Parent
+union all	select 7 as Id, 'Osaka' as Location, 'Japan' as Parent
+;
+
+SELECT * FROM #NODES;
+
+DECLARE @Tagert Varchar(10);
+SET @Tagert = 'Japan';
 
 WITH LOOP_TABLE AS (
-    SELECT * FROM NODES WHERE CODE = 'MYCODE'
+
+    SELECT * FROM #NODES WHERE #NODES.Location = @Tagert
     UNION ALL
-    SELECT NODES.* FROM LOOP_TABLE, NODES WHERE LOOP_TABLE.PARENT_NODE_CODE = NODES.CODE -- 親の定義を階層定義から取得　取得分が次のループとなる
+    SELECT #NODES.* FROM LOOP_TABLE, #NODES
+	WHERE LOOP_TABLE.Parent = #NODES.Location -- 親の定義を階層定義から取得　取得分が次のループとなる
+	
 )
 
-SELECT * FROM LOOP_TABLE
+SELECT * FROM LOOP_TABLE;
+
 
 
 /*
