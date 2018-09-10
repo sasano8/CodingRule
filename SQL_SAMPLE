@@ -173,3 +173,8 @@ Amount FOR Product IN (TV,Phone)
 ) AS UP;
 
 
+-- カタログビューとは？
+-- Pivot,Unpivotは値が変わると動的に取得することができない。
+-- そのため、工夫が必要。https://www.casleyconsulting.co.jp/blog/engineer/162/
+
+
