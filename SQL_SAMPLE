@@ -178,3 +178,11 @@ Amount FOR Product IN (TV,Phone)
 -- そのため、工夫が必要。https://www.casleyconsulting.co.jp/blog/engineer/162/
 
 
+
+/*
+----------------------------
+動的SQL
+----------------------------
+*/
+exec sp_executesql "select 1";
+-- exec sp_executesql 'select 1'; -- 実行不可
