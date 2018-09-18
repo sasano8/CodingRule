@@ -247,8 +247,6 @@ BEGIN
 
 END
 
-
-
 -- カーソルクローズ
 CLOSE CUR_TABLES;
 
@@ -258,15 +256,3 @@ DEALLOCATE CUR_TABLES;
 -- 結果の確認
 SELECT * FROM @CUR_T;
 
-
-
-
-
--- カーソルクローズ
-CLOSE CUR_TABLES;
-
--- メモリを解放する
-DEALLOCATE CUR_TABLES;
-
--- 結果の確認
-SELECT * FROM @CUR_T;
