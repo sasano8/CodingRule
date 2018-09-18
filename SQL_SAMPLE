@@ -186,3 +186,87 @@ Amount FOR Product IN (TV,Phone)
 */
 exec sp_executesql "select 1";
 -- exec sp_executesql 'select 1'; -- 実行不可
+
+
+
+/*
+----------------------------
+カーソル操作
+----------------------------
+*/
+
+
+-- カーソル定義
+DECLARE CUR_TABLES CURSOR FOR
+  SELECT sys.tables.object_id,sys.tables.name
+  FROM sys.tables
+  INNER JOIN sys.objects
+  ON sys.tables.object_id = sys.objects.object_id
+;
+
+
+DECLARE @CUR_T TABLE(object_id VARCHAR(100),table_name VARCHAR(100),ODD VARCHAR(100));
+
+DECLARE @object_id VARCHAR(100);
+DECLARE @table_name VARCHAR(100);
+
+
+-- カーソルオープン
+OPEN  CUR_TABLES;
+
+
+-- データを格納
+FETCH NEXT FROM CUR_TABLES
+INTO @object_id,@table_name
+;
+
+ -- カーソルのデータが終わるまで繰り返す（この実装はややださい。WHILE 1 = 1 で無限ループさせ、FETCH_STATUSを中で確認し、FETCH文を一か所にしか登場させない実装もある。）
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	-- IFの構文はBEGIN - ENDを定義するが、省略可能
+	IF (@object_id % 15) = 0
+		-- BEGIN
+			INSERT INTO @CUR_T VALUES(@object_id,@table_name,'fizzbuzz')
+		-- END
+	ELSE IF (@object_id % 3) = 0
+		-- BEGIN
+			INSERT INTO @CUR_T VALUES(@object_id,@table_name,'fizz')
+		-- END
+	ELSE IF (@object_id % 5) = 0
+		-- BEGIN
+			INSERT INTO @CUR_T VALUES(@object_id,@table_name,'buzz')
+		-- END
+	ELSE
+		-- BEGIN
+			INSERT INTO @CUR_T VALUES(@object_id,@table_name,'')
+		-- END
+
+	FETCH NEXT FROM CUR_TABLES
+	INTO @object_id,@table_name
+
+END
+
+
+
+-- カーソルクローズ
+CLOSE CUR_TABLES;
+
+-- メモリを解放する
+DEALLOCATE CUR_TABLES;
+
+-- 結果の確認
+SELECT * FROM @CUR_T;
+
+
+
+
+
+-- カーソルクローズ
+CLOSE CUR_TABLES;
+
+-- メモリを解放する
+DEALLOCATE CUR_TABLES;
+
+-- 結果の確認
+SELECT * FROM @CUR_T;
