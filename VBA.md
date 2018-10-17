@@ -288,3 +288,26 @@ err_handler:
 End Function
 ```
 
+# Empty値について
+Emptyとは何も値が設定されていない状態であり、
+Variant型でのみ有効？である。
+
+Emptyを厳密に区別するためには以下のようなコードで理解を深めるとよい
+
+```
+Dim a as Variant
+Dim b as Variant
+
+b = 0
+
+'何も値を設定していない状態はIsEmptyでTrueが返る
+if a = 0 then debug.print "Not Empty"
+if a = Empty then debug.print "Not Empty"
+if IsEmpty(a) then debug.print "Empty"
+
+'何か値を設定していればIsEmptyでFalseが返る
+if b = 0 then debug.print "Not Empty"
+if b = Empty then debug.print "Not Empty"
+if IsEmpty(b) then debug.print "Empty"
+
+```
