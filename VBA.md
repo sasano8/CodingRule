@@ -334,3 +334,31 @@ TestFailed:
 
 End Sub
 ```
+
+# 文字列データの比較モードの指定
+比較モードにより、文字列の比較結果が変わる。
+既定はBinaryとなる。
+
+```
+Option Compare Binary
+
+Sub Sample()
+	Debug.Print "A" < "a"	'Trueが返ります。
+	Debug.Print "A" < "a"	'Falseが返ります。
+End Sub
+```
+
+```
+Option Compare Text
+
+Sub Sample()
+	Debug.Print "A" < "a"	'Falseが返ります。
+	Debug.Print "A" < "a"	'Trueが返ります。
+End Sub
+```
+
+```
+'Accessのみで利用可能
+Option Compare Database
+
+```
