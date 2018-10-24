@@ -311,3 +311,26 @@ if b = Empty then debug.print "Not Empty"
 if IsEmpty(b) then debug.print "Empty"
 
 ```
+
+# 行番号
+VBA（正式にはVisual Basic?）では、行に番号を付与することができる。
+以下のコードは、その機能を利用したテストの例である。
+
+```
+Sub Test()
+
+On Error Goto TestFailed
+
+1 If Sheet1.Range("A1").Value <> "" then Err.Raise -1
+2 If Sheet1.Range("B1").Value <> "" then Err.Raise -1
+
+On Error Goto 0
+
+Exit Sub
+
+TestFailed:
+	Debug.Print "ERR NO : " & VBA.Erl
+	Resume Next
+
+End Sub
+```
