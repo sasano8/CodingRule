@@ -375,3 +375,13 @@ ActiveXは経験上壊れやすかった。
 しかし、ActiveXを利用すると、コードでコンポーネントを管理できた気がする。
 （検証要）
 
+# エラーメッセージ管理（考察中）
+ユーザ独自のエラー番号を定義する場合、
+エラー番号0～512はシステムで予約されている為、それ以降を利用すること。
+
+```
+Public Const MSG_SUCCESS = 0
+Public Const MSG_FATAL = 513
+Public Const MSG_NOTFOUND = 514
+
+```
