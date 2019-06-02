@@ -13,12 +13,14 @@ function構文の場合は、宣言時のオブジェクトのthisを参照す�
 this.data = "test"
 
 var f1 = {
+    data: 'this1',
     do: function() {
         console.log(this.data)
     }
 }
 
 var f2 = {
+    data: 'this2',
     do: () => {
         console.log(this.data)
     }
