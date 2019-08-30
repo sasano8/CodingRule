@@ -1,3 +1,87 @@
+# Integration Suite
+
+# Python
+Pythonを中心に統一したい場合のシステム
+- [参考](https://ja.wikipedia.org/wiki/Python%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E8%A3%BD%E5%93%81%E3%81%82%E3%82%8B%E3%81%84%E3%81%AF%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E4%B8%80%E8%A6%A7)
+
+## Development TOol
+- Visual Studio Code
+- Anaconda
+- Pycharm
+
+
+## ETL
+- Airflow
+
+## Business Process Management
+- Viewflow
+- SpiffWorkflow
+
+## Web Framework
+- Django
+- flask
+
+## Documentation
+- Sphinx
+- reStructuredText
+- MkDocs(おすすめ)
+- AsciiDoc
+- summary-to-pptx(powerpointを作成)
+- CDK(Twitter製。AsciiDocをHTMLスライドに変換)
+- SlideShare To PDF
+- Pyagram（状態遷移図出力ツール）
+- NoTex.ch(オンライネディタ）
+- PryNotes
+- Booktype(オンライン電子書籍作成ツール)
+
+## Scraping
+- scrapy
+- PasteHunter(キーワードを設定しモニタする)
+
+## Infrastracture as a code
+- Ansible
+
+## Test Tool
+- Dogtail(GUI TEST TOOL デスクトップなど操作できるから色々悪さできる？）
+
+## Colabolation
+- MoinMoin(Wiki Engine)
+- Plone(Headless CMS)
+- Wagtail(CMS)
+- imgpush(画像共有サーバー)
+- Photonix(機械学習画像管理)
+- zulip(slack風チャット)
+- Reminiscence(ブックマークサーバ)
+- Waliki(wiki)
+- Allura(プロジェクト管理)
+- Mezzanine
+Askbot」(QAシステム）
+- yummy（Deliciousクローン）
+
+
+## Data Analysis
+- Pandas
+- scikit-learn(機械学習)
+- Matplotlib(グラフ生成ライブラリ)
+- NumPy(巨大な多次元配列や行列を扱うライブラリ)
+- Maltego(ExtensionがPythonに対応)
+
+## Other
+- Jinja(Template Engine)
+- Python Shell(Google Chromeで動作するPython）
+- ERP5(ERP)
+- graph-cli(CSVを画像化）
+- xltrail(VBA差分出力ツール)
+- xlwings(ExcelのAPIをPythonで利用する)
+
+# 外部システム
+
+## OCR
+- Tegaki
+- AIよみとーる
+
+
+
 やりたいこと
 仮想Iaasの構築
 
