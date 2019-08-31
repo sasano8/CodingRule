@@ -73,6 +73,7 @@ Askbot」(QAシステム）
 - graph-cli(CSVを画像化）
 - xltrail(VBA差分出力ツール)
 - xlwings(ExcelのAPIをPythonで利用する)
+- SQLAlchemy(ORM)
 
 # 外部システム
 
