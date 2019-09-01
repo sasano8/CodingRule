@@ -65,6 +65,7 @@ Askbot」(QAシステム）
 - Matplotlib(グラフ生成ライブラリ)
 - NumPy(巨大な多次元配列や行列を扱うライブラリ)
 - Maltego(ExtensionがPythonに対応)
+- Apache Superset(Caravel Airbnb製)
 
 ## Other
 - Jinja(Template Engine)
