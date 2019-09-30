@@ -66,6 +66,10 @@ Askbot」(QAシステム）
 - NumPy(巨大な多次元配列や行列を扱うライブラリ)
 - Maltego(ExtensionがPythonに対応)
 - Apache Superset(Caravel Airbnb製)
+- brat(annotation)
+- prodigy(annotation)
+- doccano(annotation)
+
 
 ## Other
 - Jinja(Template Engine)
