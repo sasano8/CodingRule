@@ -23,6 +23,7 @@ Pythonを中心に統一したい場合のシステム
 
 ## Documentation
 - Sphinx
+- readthedocs
 - reStructuredText
 - MkDocs(おすすめ)
 - AsciiDoc
@@ -34,9 +35,15 @@ Pythonを中心に統一したい場合のシステム
 - PryNotes
 - Booktype(オンライン電子書籍作成ツール)
 
-## Scraping
-- scrapy
+## Scraping/crawler/Enterprise Application Integration
+- scrapy(web crawler)
+- fscrawler(file system crawler)
+- Apache ManifoldCF(file system crawler)
+- oneWEX(有償 IBM製 file system crawler）
 - PasteHunter(キーワードを設定しモニタする)
+- Talend
+- DataSpider(有償）
+
 
 ## Infrastracture as a code
 - Ansible
@@ -55,7 +62,7 @@ Pythonを中心に統一したい場合のシステム
 - Waliki(wiki)
 - Allura(プロジェクト管理)
 - Mezzanine
-Askbot」(QAシステム）
+- Askbot(QAシステム）
 - yummy（Deliciousクローン）
 
 
@@ -69,6 +76,7 @@ Askbot」(QAシステム）
 - brat(annotation)
 - prodigy(annotation)
 - doccano(annotation)
+- apache tika(コンテンツの検出と分析)
 
 
 ## Other
