@@ -10,8 +10,9 @@ Pythonを中心に統一したい場合のシステム
 - Pycharm
 
 
-## ETL
+## ETL/Job
 - Airflow
+- Luigi
 
 ## Business Process Management
 - Viewflow
