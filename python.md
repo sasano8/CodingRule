@@ -144,5 +144,5 @@ try:
   raise Exception("e1") from Exception("e2")
 
 except Exception as e:
-  print(e.__cause__)
+  print(e.__cause__) # e2
 ```
