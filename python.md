@@ -45,7 +45,9 @@ callable(func) # True
 
 # デコレータ
 関数やcallableなオブジェクトはデコレータとして呼び出すことができる。
-デコレータの実装方法は難しいので、以下を参考として欲しい。
+
+## デコレータの種類
+デコレータが呼び出されるシチュエーションはいくつか考えられ、完全なデコレータを実装するにはそれぞれシチュエーションに応じた実装が必要。
 
 ``` python
 
@@ -79,53 +81,68 @@ def args_logger(func):
 あまり知られていないpythonの仕様を紹介する。
 紹介する仕様は、バージョンによっては利用できない。（主に、Python3.4以降の仕様を紹介）
 
-```
-# 複素数
+
+## 複素数
+``` python
 c1 = 1 + 1j
 c2 = 1 - 2j
 c1 + c2 # -> 2 - j
+```
 
-# ステップフィルター
+## ステップフィルター
+``` python
 arr = list(range(20))
 arr[::2] # -> [0, 2, 4, ...]
+```
 
-# Ellipsis(省略)
+## Ellipsis
+dummy用のオブジェクトを作成する
+``` python
 ... # -> Ellipsis
+bool(...)
+```
 
-bool(...) # dummyオブジェクトのように扱える
-
-# キーワード限定引数(関数の引数定義において、*を宣言すると、、それ以降の引数は必ずキーワード引数として呼び出さなければならない。)
+## キーワード限定引数
+関数の引数定義において、*を宣言すると、それ以降の引数は必ずキーワード引数として呼び出さなければならない。
+``` python
 def func(a, *, b):
   pass
+```
 
-
-# global(どのスコープからでもグローバル変数を定義、参照することができる)
+## global
+どのスコープからでもグローバル変数を定義、参照することができる
+``` python
 def func():
   global a
   a = 1
+```
 
-# nonlocal(ひとつ外側のスコープに属する変数へアクセスができる)
+## nonlocal
+ひとつ外側のスコープに属する変数へアクセスができる
+``` python
 def func():
   count = 0
   
   def func_inner():
     nonlocal count
+```
 
-# yield from(他のイテレータから値を返すジェネレータを作成する)
+## yield from
+他のイテレータから値を返すジェネレータを作成する
+``` python
 def func():
   yield from range(5)
 
 def func():
   yield from () # 空のイテレータ
+```
 
-
-# raise from(例外を連鎖させる際に、送出元の例外を保持する)
+## raise from
+例外を連鎖させる際に、送出元の例外を保持する
+``` python
 try:
   raise Exception("e1") from Exception("e2")
 
 except Exception as e:
   print(e.__cause__)
-
-
-
 ```
