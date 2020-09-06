@@ -40,6 +40,13 @@ objbase = SampleBase()
 callable(objbase) # False
 callable(obj) # True
 callable(func) # True
+
+# asyncチェック
+def func_async():
+  pass
+
+asyncio.iscoroutinefunction(func) # False
+asyncio.iscoroutinefunction(func_async) # True
 ```
 
 
