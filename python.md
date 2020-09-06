@@ -27,12 +27,13 @@ issublass(Sample, SampleBase) # True
 issublass(Sample, type) # False
 
 
-# クラスとはtypeのインスタンスである
+# クラスはtypeのインスタンスである
 isinstance(SampleBase, type) # True
 isinstance(Sample, type) # True
 
-# インスタンスは、objectである
+# インスタンスはobjectである
 isinstance(obj, object) # True
+isinstance(Sample, object) # True
 isinstance(obj, type) # False
 
 # callableチェック
