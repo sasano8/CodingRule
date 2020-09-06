@@ -62,27 +62,81 @@ asyncio.iscoroutinefunction(func_async) # True
 # 1. 引数なしデコレータ
 @deco
 def myfunc():
+  pass
 
 # 2. 引数なしラッパー関数経由デコレータ
 @deco()
 def myfunc():
-
+  pass
+  
 # 3. 引数ありラッパー関数経由デコレータ
-@deco(name="")
+@deco(name="test")
 def myfunc():
+  pass
+
+# 4. 1〜3全対応
+全対応に対応すると、引数に意図しない対象がセットされてしまう恐れがあり、また、その意図の判定は困難なため、
+引数あり、引数なしを限定させた方がよい。
 
 ```
 
-## 実装
+## 実装例
 ``` python
-# 1. 引数なしデコレータ
-def args_logger(func):
-    def wrapper(*args, **kwargs):
-        func(*args, **kwargs)
-    return wrapper
+
+# デコレータをクラスで実装
+class function_decorator():
+  def __call__(self, *args, **kwargs):
+    is_func_only = (len(args) == 1) and callable(args[0])
+
+    # 引数付きデコレータ処理
+    if not is_func_only:
+      self.args = args
+      self.kwargs = kwargs
+
+      def wrapped(*args, **kwargs):
+        return self.__call__(*args, **kwargs)
+
+      return wrapped
+
+    # 括弧省略時 or 引数付きデコレータ処理後（最終処理）
+    else:
+      if not hasattr(self, "args"):
+        self.args = ()
+
+      if not hasattr(self, "kwargs"):
+        self.kwargs = {}
+
+      func = args[0]
+      self.valid_args(*self.args, **self.kwargs)
+      self.on_wrapped(func)
+      result = self.return_object(func)
+      return result
+      
+  def valid_args(self, *args, **kwargs):
+    pass
+
+  def on_wrapped(self, func):
+    print("initializing...")
+    print(self.args)
+    print(self.kwargs)
+    print("initialized.")
+
+  def return_object(self, func):
+    return wraps(func)(partial(self.wrapper, func))
+
+  def wrapper(self, func, *args, **kwargs):
+    print(args)
+    print(kwargs)
+    return func(*args, **kwargs)
 
 
+deco = function_decorator()
 
+@deco(tag="test")
+def message(msg):
+  print(msg)
+
+message("hello")
 ```
 
 # その他
