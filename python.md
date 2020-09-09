@@ -139,9 +139,21 @@ def message(msg):
 message("hello")
 ```
 
+# データ構造
+
+## リスト、タプル、ディクショナリ、セット
+``` python
+arr = [1, 2, 3] # インデックスによるアクセスが可能
+tup = (1, 2, 3) # インデックスによるアクセスが可能　インスタンス作成後の値変更は許可されない
+set = {1, 1, 2, 3} # インデックスによるアクセスが可能　重複は排除される
+dic = {"name": "test", "age": 20} # キーによるアクセスが可能
+```
+
+
 # その他
 あまり知られていないpythonの仕様を紹介する。
 紹介する仕様は、バージョンによっては利用できない。（主に、Python3.4以降の仕様を紹介）
+
 
 
 ## 複素数
@@ -207,4 +219,35 @@ try:
 
 except Exception as e:
   print(e.__cause__) # e2
+```
+
+
+## unpack argument
+関数に引数を渡すとき、リストや辞書を引数に当てはめて呼び出したいときがある。
+そのようなケースで、配列や辞書を位置限定引数として（*）、または、キーワード引数として（\**）展開することができる。
+
+''' python
+def print_profile(name, age):
+  print(f"{name} {age}")
+
+arr = ["test", 20]
+
+dic = {
+  "name": "test",
+  "age": 20
+}
+
+print_profile(*arr)
+print_profile(**data)
+
+```
+
+## position only argument / keyword only argument
+引数は、位置引数とキーワード引数に都合よく解釈されるが、位置限定引数(/の前)、キーワード限定引数(*の後)として解釈を限定することができる。
+位置限定引数は、python3.8から利用可能。
+
+位置限定引数はあまり使い道がないが、キーワード限定引数はコーディングを明示的にするため積極的に活用すべき。
+```
+def example(pos_only, /, standard, *, kwd_only):
+  print(pos_only, standard, kwd_only)
 ```
