@@ -139,6 +139,10 @@ def message(msg):
 message("hello")
 ```
 
+# Linq
+[python-linq-samples](https://github.com/rogerwcpt/python-linq-samples)
+
+
 # データ構造
 
 ## リスト、タプル、ディクショナリ、セット
