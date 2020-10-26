@@ -1,3 +1,22 @@
+# 日付の扱い方
+日付関連の機能はdatetimeモジュールから利用することができる。
+タイムゾーンを操作するには、標準ライブラリだけでは大変で、python-dateutil,pytzなどの外部ライブラリを用いるのがスタンダード。
+python3.9からは、zoneinfoが標準ライブラリに加わり、タイムゾーンを扱いやすくなった。
+
+
+## 日付関連型
+```
+import datetime
+import time
+
+dt = datetime.datetime.now() # datetime型　日付＋時間
+da = datetime.date.today()  # date型　日付のみ date型はdatetime型と互換性がある
+td = datetime.timedelta(days=1)  # timedelta型　日数、秒数、マイクロ秒数情報を持ち、差分表現に用いられる
+
+ut = time.time()  # float型 UNIX時間（エポック秒）
+```
+
+
 # 型チェック
 
 ``` python
