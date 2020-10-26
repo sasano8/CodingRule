@@ -1,3 +1,31 @@
+# クラス
+python3.7未満は、クラスコンストラクタの定義が冗長的。
+python3.7以降は、dataclassデコレータでメンバ変数およびに__init__や__str__を自動生成してくれる。
+pydanticはdataclassのような機能に加え、様々なオプションを設定でき高機能。
+ライブラリ作成時は、依存関係を減らすためdataclassを使いたい。
+
+```
+class MyClass:
+  def __init__(self, name):
+    self.name = name
+
+
+# python3.7以降
+from dataclasses import dataclass
+
+@dataclass
+class MyClass:
+  name: str
+
+
+# 外部ライブラリ
+from pydantic import BaseModel
+
+class MyClass(BaseModel):
+  name: str
+```
+
+
 # 日付の扱い方
 日付関連の機能はdatetimeモジュールから利用することができる。
 タイムゾーンを操作するには、標準ライブラリだけでは大変で、python-dateutil,pytzなどの外部ライブラリを用いるのがスタンダード。
