@@ -16,9 +16,11 @@ update_dic = {"name": "bob", "age": 20}
 update_dic.update(dic2)
 # または
 update_dic |= dic2
-# または
-dict(update_dic, **dic2)  # 元ソースを上書きするのか？？
 # => {"name": "mary", "age": 20}  右辺の値で上書きされる。また、元データを変更するので、できればあまり使わないほうがよい。
+
+dict(update_dic, **dic2)
+# 元のソース自体は更新されない
+# => {"name": "mary", "age": 20}
 
 # マージ演算子
 new_dic = dict_1 | dict_2
