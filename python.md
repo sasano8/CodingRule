@@ -109,6 +109,17 @@ dt.isoformat()
 
 # python3.9からはこう書けるようになる？？
 dt = datetime.datetime.now(tz="utc")
+
+
+# いけないコード。Asia/Tokyoで19分ずれる
+datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=pytz.timezone('Asia/Tokyo'))
+# => datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=<DstTzInfo 'Asia/Tokyo' LMT+9:19:00 STD>)
+
+# 好ましいコード。
+tz = pytz.timezone('Asia/Tokyo')
+tz.localize(datetime(1970, 1, 1, 0, 0, 0, 0))
+# => datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=<DstTzInfo 'Asia/Tokyo' LMT+9:00:00 STD>)
+
 ```
 
 
