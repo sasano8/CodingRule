@@ -69,6 +69,13 @@ class MyClass(BaseModel):
 タイムゾーンを操作するには、標準ライブラリだけでは大変で、python-dateutil,pytzなどの外部ライブラリを用いるのがスタンダード。
 python3.9からは、zoneinfoが標準ライブラリに加わり、タイムゾーンを扱いやすくなった。
 
+日付はawareな日付とnativeな日付が存在する。
+awareな日付は、timezone（現地時間）情報を持つため、地域が異なる日付同士で比較することができる。
+nativeな日付は、timezoneを持たないため、暗黙的に同一の地域とみなせる狭いスコープでのみ利用される。
+常に、awareな日付を作成することで、nativeを考慮しない方が明瞭に課題を解決できる。
+
+とにかく、datetimeオブジェクトを作成時は,utcを指定しておくのがよい。
+現地時間を重視する場合は、timezoneを指定しておき、表示の際にどの地域を軸に表示するか指定する。
 
 ## 日付関連型
 ```
@@ -80,6 +87,28 @@ da = datetime.date.today()  # date型　日付のみ date型はdatetime型と互
 td = datetime.timedelta(days=1)  # timedelta型　日数、秒数、マイクロ秒数情報を持ち、差分表現に用いられる
 
 ut = time.time()  # float型 UNIX時間（エポック秒）
+
+
+# 単純に日付を作成しただけではawareな日付にならない
+dt = datetime.datetime.now()
+dt.tzinfo
+# =>> None
+
+dt = datetime.datetime.utcnow()
+dt.tzinfo
+# =>> None
+
+# 面倒だが常にタイムゾーンを意識する
+dt = datetime.datetime.now(tz=datetime.timezone.utc)
+dt.tzinfo
+# =>> datetime.timezone.utc
+
+# OSの現在日時が2020年11月17日23時の場合の結果は以下のようになる
+dt.isoformat()
+# =>> '2020-11-17T14:01:54.567154+00:00'
+
+# python3.9からはこう書けるようになる？？
+dt = datetime.datetime.now(tz="utc")
 ```
 
 
