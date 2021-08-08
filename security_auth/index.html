@@ -16,7 +16,7 @@
     
     
       
-        <title>awasome api - sasano8</title>
+        <title>セキュリティ - 権限 - sasano8</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api" class="md-skip">
+        <a href="#windows" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              awasome api
+              セキュリティ - 権限
             
           </span>
         </div>
@@ -207,11 +207,78 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../security_auth/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          セキュリティ - 権限
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         セキュリティ - 権限
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    サービスアカウント
+  </a>
+  
+    <nav class="md-nav" aria-label="サービスアカウント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-system" class="md-nav__link">
+    Local System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-service" class="md-nav__link">
+    Network Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#administrator" class="md-nav__link">
+    Administrator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -372,21 +439,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../awasome_api/" class="md-nav__link">
         awasome api
       </a>
-      
     </li>
   
 
@@ -410,6 +467,48 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    サービスアカウント
+  </a>
+  
+    <nav class="md-nav" aria-label="サービスアカウント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-system" class="md-nav__link">
+    Local System
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-service" class="md-nav__link">
+    Network Service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#administrator" class="md-nav__link">
+    Administrator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -421,16 +520,21 @@
               
                 
                 
-                <h1 id="api">APIアグリゲーター</h1>
-<ul>
-<li><a href="https://www.apibank.jp/ApiBank/main">apibank</a></li>
-<li><a href="https://api.rakuten.co.jp/ja/">rakuten.co.jp</a></li>
-<li><a href="https://iot.kddi.com/services/iot-cloud-apimarket/">kddi-iot-cloud</a></li>
+                <ul>
+<li><a href="https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html">フレームワーク</a></li>
+<li>[参考]8https://qiita.com/osada/items/c75c34ce716ee4ffba8f)</li>
 </ul>
-<h1 id="_1">データ</h1>
-<ul>
-<li>https://www.j-platpat.inpit.go.jp/</li>
-</ul>
+<h1 id="windows">Windows</h1>
+<h2 id="_1">サービスアカウント</h2>
+<p>サービスを作成する場合、以下の例に注意し起動アカウントを選択すること。</p>
+<h3 id="local-system">Local System</h3>
+<p>システム領域を扱う場合に利用する。
+ローカルコンピュータでのみ有効な権限なため、ネットワーク間の操作は不可。</p>
+<h3 id="network-service">Network Service</h3>
+<p>ネットワークに強い？</p>
+<h3 id="administrator">Administrator</h3>
+<p>汎用的だが・・・
+セキュリティにベストは何だろう。</p>
                 
               
               
@@ -450,7 +554,7 @@
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../requirement_definition/" class="md-footer__link md-footer__link--prev" aria-label="前: 要件定義" rel="prev">
+        <a href="../standard_spec/" class="md-footer__link md-footer__link--prev" aria-label="前: 標準使用" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -459,11 +563,26 @@
               <span class="md-footer__direction">
                 前
               </span>
-              要件定義
+              標準使用
             </div>
           </div>
         </a>
       
+      
+        
+        <a href="../security_osint/" class="md-footer__link md-footer__link--next" aria-label="次: セキュリティ - オシント" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              セキュリティ - オシント
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

@@ -16,7 +16,7 @@
     
     
       
-        <title>セキュリティ - sasano8</title>
+        <title>セキュリティ - オシント - sasano8</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#windows" class="md-skip">
+        <a href="#osint" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              セキュリティ
+              セキュリティ - オシント
             
           </span>
         </div>
@@ -207,6 +207,21 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../security_auth/" class="md-nav__link">
+        セキュリティ - 権限
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -218,66 +233,9 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          セキュリティ
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
-        セキュリティ
+        セキュリティ - オシント
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="目次">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    サービスアカウント
-  </a>
-  
-    <nav class="md-nav" aria-label="サービスアカウント">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#local-system" class="md-nav__link">
-    Local System
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#network-service" class="md-nav__link">
-    Network Service
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#administrator" class="md-nav__link">
-    Administrator
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -452,48 +410,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目次
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    サービスアカウント
-  </a>
-  
-    <nav class="md-nav" aria-label="サービスアカウント">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#local-system" class="md-nav__link">
-    Local System
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#network-service" class="md-nav__link">
-    Network Service
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#administrator" class="md-nav__link">
-    Administrator
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -505,21 +421,90 @@
               
                 
                 
-                <ul>
-<li><a href="https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html">フレームワーク</a></li>
-<li>[参考]8https://qiita.com/osada/items/c75c34ce716ee4ffba8f)</li>
+                <h1 id="osint">osint</h1>
+<p>公開情報を利用した情報収集についての知見をまとめる。</p>
+<h1 id="security-exploit">security exploit</h1>
+<h2 id="httpswwwexploit-dbcomgoogle-hacking-database">https://www.exploit-db.com/google-hacking-database</h2>
+<p>ハックに有益なgoogleクエリのデータベース</p>
+<h1 id="tools">tools</h1>
+<ul>
+<li><a href="https://github.com/m8r0wn/CrossLinked">linkedIn</a></li>
+<li><a href="https://kurozumi.github.io/tweepy/">twitter</a></li>
 </ul>
-<h1 id="windows">Windows</h1>
-<h2 id="_1">サービスアカウント</h2>
-<p>サービスを作成する場合、以下の例に注意し起動アカウントを選択すること。</p>
-<h3 id="local-system">Local System</h3>
-<p>システム領域を扱う場合に利用する。
-ローカルコンピュータでのみ有効な権限なため、ネットワーク間の操作は不可。</p>
-<h3 id="network-service">Network Service</h3>
-<p>ネットワークに強い？</p>
-<h3 id="administrator">Administrator</h3>
-<p>汎用的だが・・・
-セキュリティにベストは何だろう。</p>
+<h1 id="pagefile">pagefileから調査の手がかりを得る</h1>
+<div class="highlight"><pre><span></span><code># pagefile.sysの解析
+
+# 参考
+https://soji256.hatenablog.jp/entry/2019/06/25/065200
+
+# ファイルパス
+strings pagefile.sys | grep -i &quot;^[a-z]:\\\\&quot; | sort | uniq &gt; list_file.txt
+
+
+# URL
+strings pagefile.sys | egrep &quot;^https?://&quot; | sort | uniq &gt; list_url.txt
+
+# メールアドレス
+strings pagefile.sys | egrep &#39;([[:alnum:]_.-]{1,64}+@[[:alnum:]_.-]{2,255}+?\.[[:alpha:].]{2,4})&#39; &gt; list_mail.txt
+
+
+# 環境変数
+strings pagefile.sys | grep -i &quot;^[a-zA-Z09_]*=.*&quot; | sort -u | uniq &gt; list_envirnoment.txt
+</code></pre></div>
+
+<h1 id="outlookexcel">OutlookのメールをExcelに出力</h1>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;</span><span class="s">UTF8だと動かない場合があるため、その場合はSJISで実行してみてください</span>
+
+<span class="s1">&#39;</span><span class="s"> ここをトリプルクリックでスクリプト全体を選択できます。</span>
+<span class="nv">Const</span> <span class="nv">IMPORT_FOLDER</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">C:\Users\UserName\Documents</span><span class="s2">&quot;</span> <span class="s1">&#39;</span><span class="s"> EML ファイルがあるフォルダーを指定</span>
+
+<span class="s1">&#39;</span><span class="s">実行の前提として、受信フォルダ配下にインポートフォルダを作成してください</span>
+<span class="nv">Const</span> <span class="nv">TARGET_IMBOX</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">インポート</span><span class="s2">&quot;</span>
+
+
+<span class="nv">Const</span> <span class="nv">olFolderInbox</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="nv">Dim</span> <span class="nv">olkApp</span>
+<span class="nv">Dim</span> <span class="nv">fldImport</span>
+<span class="nv">Dim</span> <span class="nv">wshShell</span>
+<span class="nv">Dim</span> <span class="nv">objFSO</span>
+<span class="nv">Dim</span> <span class="nv">objFolder</span>
+<span class="nv">Dim</span> <span class="nv">objFile</span>
+<span class="nv">Set</span> <span class="nv">olkApp</span> <span class="o">=</span> <span class="nv">CreateObject</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">Outlook.Application</span><span class="s2">&quot;</span><span class="ss">)</span>
+<span class="nv">Set</span> <span class="nv">fldImport</span> <span class="o">=</span> <span class="nv">olkApp</span>.<span class="nv">Session</span>.<span class="nv">GetDefaultFolder</span><span class="ss">(</span><span class="nv">olFolderInbox</span><span class="ss">)</span>
+<span class="nv">Set</span> <span class="nv">fldImport</span> <span class="o">=</span> <span class="nv">fldImport</span>.<span class="nv">Folders</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">インポート</span><span class="s2">&quot;</span><span class="ss">)</span>
+<span class="nv">fldImport</span>.<span class="nv">Display</span>
+<span class="nv">Set</span> <span class="nv">wshShell</span> <span class="o">=</span> <span class="nv">CreateObject</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">WScript.Shell</span><span class="s2">&quot;</span><span class="ss">)</span>
+<span class="nv">Set</span> <span class="nv">objFSO</span> <span class="o">=</span> <span class="nv">CreateObject</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">Scripting.FileSystemObject</span><span class="s2">&quot;</span><span class="ss">)</span>
+<span class="nv">Set</span> <span class="nv">objFolder</span> <span class="o">=</span> <span class="nv">objFSO</span>.<span class="nv">GetFolder</span><span class="ss">(</span><span class="nv">IMPORT_FOLDER</span><span class="ss">)</span>
+<span class="s1">&#39;</span><span class="s"> IMPORT_FOLDER で指定されたフォルダーのファイルを取得</span>
+<span class="k">For</span> <span class="nv">Each</span> <span class="nv">objFile</span> <span class="nv">In</span> <span class="nv">objFolder</span>.<span class="nv">Files</span>
+    <span class="k">If</span> <span class="nv">LCase</span><span class="ss">(</span><span class="nv">Right</span><span class="ss">(</span><span class="nv">objFile</span>.<span class="nv">Name</span>,<span class="mi">4</span><span class="ss">))</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">.eml</span><span class="s2">&quot;</span> <span class="k">Then</span>
+        <span class="s1">&#39;</span><span class="s"> 拡張子が .eml ならインポート処理</span>
+        <span class="nv">OpenEml</span> <span class="nv">objFile</span>.<span class="nv">Name</span>
+    <span class="k">End</span> <span class="k">If</span>
+<span class="k">Next</span>
+<span class="nv">olkApp</span>.<span class="nv">ActiveExplorer</span>.<span class="nv">Close</span>
+<span class="nv">MsgBox</span> <span class="s2">&quot;</span><span class="s">インポートは終了しました。</span><span class="s2">&quot;</span>, <span class="nv">vbOKOnly</span>, <span class="s2">&quot;</span><span class="s">EML ファイル インポート</span><span class="s2">&quot;</span>
+<span class="s1">&#39;</span><span class="s"> eml ファイルを開いてインポートするルーチン</span>
+<span class="nv">Sub</span> <span class="nv">OpenEml</span><span class="ss">(</span> <span class="nv">strFileName</span> <span class="ss">)</span>
+    <span class="nv">On</span> <span class="nv">Error</span> <span class="nv">Resume</span> <span class="k">Next</span>
+    <span class="nv">Dim</span> <span class="nv">objCopied</span>
+    <span class="s1">&#39;</span><span class="s"> メールが開いていたら閉じる</span>
+    <span class="k">While</span> <span class="nv">Not</span> <span class="nv">olkApp</span>.<span class="nv">ActiveInspector</span> <span class="nv">Is</span> <span class="nv">Nothing</span>
+        <span class="nv">olkApp</span>.<span class="nv">ActiveInspector</span>.<span class="nv">Close</span>
+        <span class="nv">WScript</span>.<span class="nv">Sleep</span> <span class="mi">1000</span>
+    <span class="nv">Wend</span>
+    <span class="s1">&#39;</span><span class="s"> eml ファイルを Outlook で開くコマンドを実行</span>
+    <span class="nv">wshShell</span>.<span class="nv">Run</span> <span class="s2">&quot;</span><span class="s">outlook /eml </span><span class="s2">&quot;&quot;&quot;</span> <span class="o">&amp;</span> <span class="nv">IMPORT_FOLDER</span> <span class="o">&amp;</span> <span class="s2">&quot;</span><span class="s">\</span><span class="s2">&quot;</span> <span class="o">&amp;</span> <span class="nv">strFileName</span> <span class="o">&amp;</span> <span class="s2">&quot;&quot;&quot;&quot;</span>
+    <span class="s1">&#39;</span><span class="s"> 上記のコマンドで Outlook が起動するのを待つ</span>
+    <span class="k">While</span> <span class="nv">olkApp</span>.<span class="nv">ActiveInspector</span> <span class="nv">Is</span> <span class="nv">Nothing</span>
+        <span class="nv">WScript</span>.<span class="nv">Sleep</span> <span class="mi">1000</span>
+    <span class="nv">Wend</span>
+    <span class="s1">&#39;</span><span class="s"> 開いたファイルを受信トレイに移動</span>
+    <span class="nv">olkApp</span>.<span class="nv">ActiveInspector</span>.<span class="nv">CurrentItem</span>.<span class="nv">Move</span> <span class="nv">fldImport</span>
+    <span class="nv">olkApp</span>.<span class="nv">ActiveInspector</span>.<span class="nv">Close</span>
+<span class="k">End</span> <span class="nv">Sub</span>
+</code></pre></div>
                 
               
               
@@ -539,7 +524,7 @@
     <nav class="md-footer__inner md-grid" aria-label="フッター">
       
         
-        <a href="../standard_spec/" class="md-footer__link md-footer__link--prev" aria-label="前: 標準使用" rel="prev">
+        <a href="../security_auth/" class="md-footer__link md-footer__link--prev" aria-label="前: セキュリティ - 権限" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -548,7 +533,7 @@
               <span class="md-footer__direction">
                 前
               </span>
-              標準使用
+              セキュリティ - 権限
             </div>
           </div>
         </a>
