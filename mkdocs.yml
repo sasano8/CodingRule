@@ -12,19 +12,27 @@ theme:
 
 nav:
   - はじめに: "index.md"
-  - 標準使用: "standard_spec.md"
-  - セキュリティ - 権限: "security_auth.md"
-  - セキュリティ - オシント: "security_osint.md"
+  - 標準仕様: "standard_spec.md"
+  - セキュリティ:
+    - 権限: "security/auth.md"
+    - オシント: "security/osint.md"
   - アーキテクチャ: "architecture.md"
   - データベース: "database.md"
   - ビジュアライズ: "visualization.md"
   - テスト: "test.md"
-  - プログラム言語 - VBA: "program_vba.md"
-  - プログラム言語 - Python: "program_python.md"
-  - プログラム言語 - Javascript: "program_javascript.md"
-  - プログラム言語 - SQL: "program_sql.md"
-  - 要件定義: "requirement_definition.md"
+  - プログラム言語:
+    - VBA: "program/vba.md"
+    - Python: "program/python.md"
+    - JavaScript: "program/javascript.md"
+    - SQL: "program/sql.md"
+  - 要件定義:
+    - マネジメント: "requirements/management.md"
+    - 機能要件: "requirements/functional.md"
+    - 非機能要件: "requirements/non_functional.md"
+    - 設計: "requirements/design.md"
   - awasome api: "awasome_api.md"
+
+
 
 markdown_extensions:
   - admonition
