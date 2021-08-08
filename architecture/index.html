@@ -1,0 +1,626 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="sasano8's portfolio">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>アーキテクチャ - sasano8</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#integration-suite" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="sasano8" class="md-header__button md-logo" aria-label="sasano8" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            sasano8
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              アーキテクチャ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="sasano8" class="md-nav__button md-logo" aria-label="sasano8" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    sasano8
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../standard_spec/" class="md-nav__link">
+        標準使用
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        セキュリティ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        アーキテクチャ
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        データベース
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualization/" class="md-nav__link">
+        ビジュアライズ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        テスト
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_vba/" class="md-nav__link">
+        プログラム言語 - VBA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_python/" class="md-nav__link">
+        プログラム言語 - Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_javascript/" class="md-nav__link">
+        プログラム言語 - Javascript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_sql/" class="md-nav__link">
+        プログラム言語 - SQL
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirement_definition/" class="md-nav__link">
+        要件定義
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awasome_api/" class="md-nav__link">
+        awasome api
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="integration-suite">Integration Suite</h1>
+<h1 id="python">Python</h1>
+<p>Pythonを中心に統一したい場合のシステム
+- <a href="https://ja.wikipedia.org/wiki/Python%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E8%A3%BD%E5%93%81%E3%81%82%E3%82%8B%E3%81%84%E3%81%AF%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E4%B8%80%E8%A6%A7">参考</a></p>
+<h2 id="development-tool">Development TOol</h2>
+<ul>
+<li>Visual Studio Code</li>
+<li>Anaconda</li>
+<li>Pycharm</li>
+</ul>
+<h2 id="etljob">ETL/Job</h2>
+<ul>
+<li>Airflow</li>
+<li>Luigi</li>
+</ul>
+<h2 id="business-process-management">Business Process Management</h2>
+<ul>
+<li>Viewflow</li>
+<li>SpiffWorkflow</li>
+</ul>
+<h2 id="web-framework">Web Framework</h2>
+<ul>
+<li>Django</li>
+<li>flask</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>Sphinx</li>
+<li>readthedocs</li>
+<li>reStructuredText</li>
+<li>MkDocs(おすすめ)</li>
+<li>AsciiDoc</li>
+<li>summary-to-pptx(powerpointを作成)</li>
+<li>CDK(Twitter製。AsciiDocをHTMLスライドに変換)</li>
+<li>SlideShare To PDF</li>
+<li>Pyagram（状態遷移図出力ツール）</li>
+<li>NoTex.ch(オンライネディタ）</li>
+<li>PryNotes</li>
+<li>Booktype(オンライン電子書籍作成ツール)</li>
+</ul>
+<h2 id="scrapingcrawlerenterprise-application-integration">Scraping/crawler/Enterprise Application Integration</h2>
+<ul>
+<li>scrapy(web crawler)</li>
+<li>fscrawler(file system crawler)</li>
+<li>Apache ManifoldCF(file system crawler)</li>
+<li>oneWEX(有償 IBM製 file system crawler）</li>
+<li>PasteHunter(キーワードを設定しモニタする)</li>
+<li>Talend</li>
+<li>DataSpider(有償）</li>
+</ul>
+<h2 id="infrastracture-as-a-code">Infrastracture as a code</h2>
+<ul>
+<li>Ansible</li>
+</ul>
+<h2 id="test-tool">Test Tool</h2>
+<ul>
+<li>Dogtail(GUI TEST TOOL デスクトップなど操作できるから色々悪さできる？）</li>
+</ul>
+<h2 id="colabolation">Colabolation</h2>
+<ul>
+<li>MoinMoin(Wiki Engine)</li>
+<li>Plone(Headless CMS)</li>
+<li>Wagtail(CMS)</li>
+<li>imgpush(画像共有サーバー)</li>
+<li>Photonix(機械学習画像管理)</li>
+<li>zulip(slack風チャット)</li>
+<li>Reminiscence(ブックマークサーバ)</li>
+<li>Waliki(wiki)</li>
+<li>Allura(プロジェクト管理)</li>
+<li>Mezzanine</li>
+<li>Askbot(QAシステム）</li>
+<li>yummy（Deliciousクローン）</li>
+</ul>
+<h2 id="data-analysis">Data Analysis</h2>
+<ul>
+<li>Pandas</li>
+<li>scikit-learn(機械学習)</li>
+<li>Matplotlib(グラフ生成ライブラリ)</li>
+<li>NumPy(巨大な多次元配列や行列を扱うライブラリ)</li>
+<li>Maltego(ExtensionがPythonに対応)</li>
+<li>Apache Superset(Caravel Airbnb製)</li>
+<li>brat(annotation)</li>
+<li>prodigy(annotation)</li>
+<li>doccano(annotation)</li>
+<li>apache tika(コンテンツの検出と分析)</li>
+</ul>
+<h2 id="other">Other</h2>
+<ul>
+<li>Jinja(Template Engine)</li>
+<li>Python Shell(Google Chromeで動作するPython）</li>
+<li>ERP5(ERP)</li>
+<li>graph-cli(CSVを画像化）</li>
+<li>xltrail(VBA差分出力ツール)</li>
+<li>xlwings(ExcelのAPIをPythonで利用する)</li>
+<li>SQLAlchemy(ORM)</li>
+</ul>
+<h1 id="_1">外部システム</h1>
+<h2 id="ocr">OCR</h2>
+<ul>
+<li>Tegaki</li>
+<li>AIよみとーる</li>
+</ul>
+<h1 id="frontend">Frontend</h1>
+<h2 id="grid">grid</h2>
+<ul>
+<li><a href="https://www.ag-grid.com/example.php#/">ag-grid</a></li>
+<li>handsontable</li>
+</ul>
+<p>やりたいこと
+仮想Iaasの構築</p>
+<p>コマンドを実行すると仮想Iaasのコマンドラインモードになる。
+infra-init      '仮想Iaasの作成
+  Sqliteのデータベースを作成</p>
+<p>infra-builder   '仮想Iaasの構築モード(CUI)
+infra-deploy_web    'Webコンソールを提供するウェブ環境を構築
+infra-export_azure
+infra-export_aws</p>
+<p>add-router_template   template_name   '
+add-machine_template   template_name    '
+add-router    host_name     'ルータを追加する
+add-machine   host_name     'サーバを追加する
+add-storage   storage_name  'ストレージを追加する
+add-middle    middle_name   '管理するミドルを追加する
+add-security_policy         'セキュリティポリシーを追加する
+ping          host_name     'カレントホストよりピングを実行する
+expot-data      path          '設計したデータを書き出す Jsonかな
+ch                          'カレントホストを変更する</p>
+<p>コマンドラインモードで実行したコマンドを履歴にとることによって
+それ自体が手順になる。
+エクスポートにより、よりクリーンな手順を出力可能。</p>
+<p>仮想的なインフラ空間を構築し、仮想的な構築を行うことができる。</p>
+<p>仮想的なネットワークの疎通テストが可能
+仮想的なクラスタの構築
+仮想的な負荷テスト</p>
+<p>Iassの相性を絞る
+Azure Aws
+MicorosoftかAmazonに売り込みたい
+export-xxxでAzureを構築できるようなコマンドを吐</p>
+<h1 id="todo">TODO</h1>
+<p>Azure Awsの機能のインフラ思想の理解</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        
+        <a href="../security/" class="md-footer__link md-footer__link--prev" aria-label="前: セキュリティ" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              セキュリティ
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../database/" class="md-footer__link md-footer__link--next" aria-label="次: データベース" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              データベース
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>

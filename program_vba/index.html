@@ -1,0 +1,876 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="sasano8's portfolio">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>プログラム言語 - VBA - sasano8</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="sasano8" class="md-header__button md-logo" aria-label="sasano8" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            sasano8
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              プログラム言語 - VBA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="sasano8" class="md-nav__button md-logo" aria-label="sasano8" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    sasano8
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../standard_spec/" class="md-nav__link">
+        標準使用
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        セキュリティ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        アーキテクチャ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        データベース
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualization/" class="md-nav__link">
+        ビジュアライズ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        テスト
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          プログラム言語 - VBA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        プログラム言語 - VBA
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ソースヘッダ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ファンクションヘッダ
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_python/" class="md-nav__link">
+        プログラム言語 - Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_javascript/" class="md-nav__link">
+        プログラム言語 - Javascript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_sql/" class="md-nav__link">
+        プログラム言語 - SQL
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirement_definition/" class="md-nav__link">
+        要件定義
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awasome_api/" class="md-nav__link">
+        awasome api
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ソースヘッダ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ファンクションヘッダ
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">ヘッダ</h1>
+<p>各ソースファイルの先頭とプロシージャ・ファンクションの上部にヘッダを用意すること。</p>
+<h2 id="_2">ソースヘッダ</h2>
+<div class="highlight"><pre><span></span><code>&#39;ソース名       ：
+&#39;機能説明       ：
+&#39;備考     ：
+&#39;作成者        ：2016/12/11
+&#39;作成日        ：2016/12/11
+</code></pre></div>
+
+<h2 id="_3">ファンクションヘッダ</h2>
+<div class="highlight"><pre><span></span><code>&#39;機能名        ：
+&#39;引数     ：   
+&#39;戻り値        ：Arg1
+&#39;           ：Arg2&#39;
+機能説明        ：
+&#39;備考     ：
+&#39;作成者        ：2016/12/11
+&#39;作成日        ：2016/12/11
+</code></pre></div>
+
+<h1 id="_4">型宣言の強制</h1>
+<p>下記の宣言を行い型の宣言を強制すること。</p>
+<div class="highlight"><pre><span></span><code>Option Explicit
+</code></pre></div>
+
+<p>この宣言は以下の設定で自動挿入を行う。</p>
+<ol>
+<li>【ツール】→【オプション】</li>
+<li>【編集】のタブを選択</li>
+<li>【変数の宣言を強制する】をチェックする。</li>
+</ol>
+<h2 id="_5">理由</h2>
+<p>変数名のミスがあった場合、コンパイル時にミスを検知することができるため。</p>
+<h1 id="_6">変数の一括宣言</h1>
+<p>一行で複数の変数宣言を行う場合、それぞれに型を明示すること。</p>
+<div class="highlight"><pre><span></span><code>Dim valA as String, valB as Long
+</code></pre></div>
+
+<h2 id="_7">理由</h2>
+<p>型宣言を行わないと、暗黙の型（Variant）が適用されるため。</p>
+<div class="highlight"><pre><span></span><code>Dim UserMin, UserMax As Integer   &#39;userMinはVariant型になる。
+</code></pre></div>
+
+<h1 id="_8">マクロのスコープ</h1>
+<p>以下の宣言を利用し、プロシージャ・ファンクションの不要なアクセスレベルを付与しないこと。</p>
+<div class="highlight"><pre><span></span><code>Option Private Module
+</code></pre></div>
+
+<h1 id="_9">変数のスコープ</h1>
+<h1 id="_10">オブジェクトの初期化</h1>
+<p>以下の正しい例に従い、オブジェクトの初期化を行うこと。</p>
+<div class="highlight"><pre><span></span><code>&#39;正しい例
+Dim obj As MyClass
+Set obj = New MyClass
+
+&#39;誤った例
+Dim obj As New MyClass 
+</code></pre></div>
+
+<h2 id="_11">理由</h2>
+<p>オブジェクトの変数宣言と同時に初期化を行うと、コンストラクタの起動タイミングが制御できないため。</p>
+<h1 id="_12">オブジェクトの破棄</h1>
+<p>使用が終わったオブジェクトは参照を解放すること。
+クローズメソッドを持っているオブジェクトはクローズを実施すること。</p>
+<div class="highlight"><pre><span></span><code>Call obj.Close
+Set obj = Nothing
+</code></pre></div>
+
+<p>また、クラスモジュールを作成時にデストラクタを定義すること。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Sub</span> <span class="nv">Class_Terminate</span><span class="ss">()</span>
+  <span class="s1">&#39;</span><span class="s">処理</span>
+<span class="k">End</span> <span class="nv">Sub</span>
+</code></pre></div>
+
+<h2 id="_13">理由</h2>
+<p>オブジェクトは参照カウンタを持っており、参照が0になるとオブジェクトが破棄されるため。
+オブジェクトはスコープを抜けると破棄されるが（確認）、
+リソース未解放のリスクを軽減するため、明示的に破棄を行うこと。</p>
+<h1 id="_14">環境依存</h1>
+<p>参照設定とCreateObjectは動作環境により正常に動作しない可能性があるため、
+動作させる可能性がある環境で検証を行うこと。</p>
+<h1 id="_15">命名規則</h1>
+<p>意味を略さずに略さずに命名すること。</p>
+<h2 id="_16">クラス名・標準モジュール名</h2>
+<p>Pascal Case(Upper Camel Case)を利用すること。</p>
+<div class="highlight"><pre><span></span><code>MyClass
+</code></pre></div>
+
+<h2 id="_17">定数</h2>
+<p>Upper Case を利用すること。
+定数名に型や利用用途について情報を含めること。</p>
+<div class="highlight"><pre><span></span><code>Const RNG_INPUT_USERNAME    &#39;ユーザー名の入力セル
+</code></pre></div>
+
+<h2 id="_18">変数</h2>
+<p>Snake Case を利用すること。</p>
+<div class="highlight"><pre><span></span><code>Dim ws_test as WorkSheet
+</code></pre></div>
+
+<h2 id="_19">理由</h2>
+<p>VBAは構造化が複雑であり、きちんと分類分けすることが難しい。
+様々な観点が入り乱れる為、_で意味を理解できるように努める。</p>
+<h2 id="_20">備考</h2>
+<p>カウンタなどスコープの狭い変数は「i」「j」などを利用してもよい。
+ただし、ネストが3階層以上になるときは、名前に意味を持たせること。</p>
+<h2 id="_21">日本語名について</h2>
+<p>業務用件に従った日本語を利用してもよい。
+ただし、利用・開発拠点が日本国外である場合は、使用しないこと。</p>
+<h3 id="_22">理由</h3>
+<p>用語の乱立を防ぐことができる。
+日本国外においては、外国人技術者や動作に支障をきたす可能性がある。</p>
+<h2 id="_23">コントロール名</h2>
+<p>コンポーネントの種類に応じて、プレフィックスを用いること。</p>
+<h2 id="_24">コールバック</h2>
+<p>VABでコールバックを利用する場合はCallByNameを利用し、
+コールバック対象のオブジェクトは「OnCompleted」を実装すること。
+同一クラス・フォームで２つ以上のコールバック関数が必要な場合は、
+「OnCompleted + 処理名」とすること。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Sub</span> <span class="nv">Procedure</span><span class="ss">(</span><span class="nv">callback</span> <span class="nv">as</span> <span class="nv">Object</span><span class="ss">)</span>
+  <span class="nv">CallByName</span> <span class="nv">callback</span>, <span class="s2">&quot;</span><span class="s">OnCompleted</span><span class="s2">&quot;</span>, <span class="nv">VbMethod</span>, <span class="s2">&quot;</span><span class="s">おはよー</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">おはよー</span><span class="s2">&quot;</span>
+<span class="k">End</span> <span class="nv">Sub</span>
+</code></pre></div>
+
+<h1 id="_25">コメント</h1>
+<h1 id="_26">配列</h1>
+<h1 id="_27">ショートサーキット</h1>
+<p>VBAにおいて、ショートサッキット（短絡評価）は行われないということを認識すること。</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;</span><span class="s">IsAの判定がfalseでもIsBが実行される。</span>
+<span class="k">if</span> <span class="nv">IsA</span><span class="ss">()</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">A</span><span class="s2">&quot;</span> <span class="nv">And</span> <span class="nv">IsB</span><span class="ss">()</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="s">B</span><span class="s2">&quot;</span> <span class="k">then</span>
+<span class="k">end</span> <span class="k">if</span>
+</code></pre></div>
+
+<h1 id="3">3項演算子</h1>
+<p>VBAの構文に、三項演算子は存在しないが、IIF関数を利用することができる。
+ただし、true falseどちらの評価も行われるため、
+イミュータブルな値を利用すること。</p>
+<div class="highlight"><pre><span></span><code>&#39;正しい例
+result = IIF(IsTrue(),True,False)
+
+&#39;誤った例
+Call IIF(IsTrue(),DoIfTrue(),DoIfFalse()) &#39;どちらも実行されてしまう。
+</code></pre></div>
+
+<h1 id="_28">日付リテラル</h1>
+<p>地域により動作が異なるため、日付リテラルを利用すること。</p>
+<div class="highlight"><pre><span></span><code>Dim birthday as Data
+&#39;正しい例
+birthday = #12/1/1 12:0:0#
+Debug.Print birthday      &#39;日本　2012/1/1 12:00　米国　2001/1/12 12:00
+
+&#39;誤った例
+birthday = &quot;12/1/1 12:0:0&quot;
+Debug.Print birthday      &#39;
+</code></pre></div>
+
+<h2 id="_29">理由</h2>
+<p>日付リテラルを利用することで、日付の解釈を固定できるため。</p>
+<h1 id="_30">型宣言文字</h1>
+<p>変数や値の末尾にキーワードを付与することで、型を指定することができる。
+基本は、変数で型を定義すること。</p>
+<div class="highlight"><pre><span></span><code>Dim a$ &#39;文字列型
+Dim b&amp; &#39;長整数型
+Dim c% &#39;整数型
+Dim d@ &#39;通貨型
+Dim e# &#39;倍精度浮動小数点数型
+Dim f! &#39;単精度浮動小数点数型
+
+&#39;または以下のように利用する。
+a = 0
+a = a$
+b = 0&amp;
+c = 0%
+d = 0@
+e = 0#
+f = 0!
+</code></pre></div>
+
+<h1 id="_31">引数のキーワードの明示化</h1>
+<p>参照渡しか値渡しか明示すること。</p>
+<h2 id="_32">理由</h2>
+<p>関数の呼び出し方により、値渡し、参照渡しが決定されるため。</p>
+<div class="highlight"><pre><span></span><code>Dim lVal as long
+SubA lVal           &#39;参照渡しになる
+SubA(lVal)          &#39;値渡しになる
+Call SubA(lVal)     &#39;参照渡しになる
+Call SubA((lVal))   &#39;値渡しになる
+</code></pre></div>
+
+<h1 id="_33">設計</h1>
+<p>モジュール・クラスにまとめる関数の設計は以下を参考とすること。</p>
+<h1 id="_34">エラーハンドリング</h1>
+<p>VBAにおいて、例外処理はプロシージャ内にエラー処理用のサブルーチンを書く必要がある。
+処理によって、適切なエラーハンドリングを行うこと。</p>
+<h2 id="_35">ループ中のエラーハンドリング例</h2>
+<p>サブルーチンからメインルーチンへ戻るには、Resumeステートメントを利用する。</p>
+<div class="highlight"><pre><span></span><code><span class="s1">&#39;</span><span class="s">正しい例（本当か？）</span>
+<span class="nv">On</span> <span class="nv">Error</span> <span class="k">Goto</span> <span class="nl">err_handler</span>
+<span class="k">for</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="nv">to</span> <span class="mi">100</span> 
+  <span class="s1">&#39;</span><span class="s">処理</span>
+<span class="nv">next_loop</span>:
+<span class="k">next</span>
+
+<span class="nv">resume</span> <span class="nv">next_loop</span>
+
+<span class="s1">&#39;</span><span class="s">誤った例（例外発生後は例外を検知できない。）</span>
+<span class="nv">On</span> <span class="nv">Error</span> <span class="k">Goto</span> <span class="nl">err_handler</span>
+<span class="k">for</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">0</span> <span class="nv">to</span> <span class="mi">100</span> 
+  <span class="s1">&#39;</span><span class="s">処理</span>
+<span class="nv">err_handler</span>:
+<span class="k">next</span>
+</code></pre></div>
+
+<h2 id="_36">長いメインルーチンでのエラーハンドリング例</h2>
+<div class="highlight"><pre><span></span><code>処理
+
+<span class="nv">OnSccess</span>
+    <span class="s1">&#39;</span><span class="s">成功処理</span>
+    <span class="k">goto</span> <span class="nl">OnComplete</span>
+
+<span class="nv">OnError</span>
+    <span class="s1">&#39;</span><span class="s">失敗処理</span>
+    <span class="k">goto</span> <span class="nl">OnComplete</span>
+
+<span class="nv">OnComplete</span>
+    <span class="s1">&#39;</span><span class="s">クローズ処理</span>
+<span class="k">exit</span> <span class="nv">function</span>
+</code></pre></div>
+
+<h2 id="_37">繰り返し中のエラーハンドリング例</h2>
+<div class="highlight"><pre><span></span><code><span class="nv">Function</span> <span class="nv">ErrHandlingSample</span><span class="ss">()</span>
+
+    <span class="nv">On</span> <span class="nv">Error</span> <span class="k">Goto</span> <span class="nl">err_handler</span>
+
+    <span class="k">for</span> <span class="nv">each</span> <span class="nv">r</span> <span class="nv">in</span> <span class="nv">Selection</span>
+
+        <span class="k">Call</span> <span class="nl">Function01</span><span class="ss">()</span>
+        <span class="k">Call</span> <span class="nl">Function02</span><span class="ss">()</span>
+        <span class="k">Call</span> <span class="nl">Function03</span><span class="ss">()</span>
+<span class="nv">next_loop</span>:
+    <span class="k">next</span>
+
+    <span class="nv">On</span> <span class="nv">Error</span> <span class="k">Goto</span> <span class="nl">0</span>
+
+    <span class="s1">&#39;</span><span class="s">無限ループ回避(resumeが無限に走ってしまう。)</span>
+    <span class="k">Exit</span> <span class="nv">Function</span>
+
+<span class="s1">&#39;</span><span class="s">エラーが発生したら、next_loopへ復帰する</span>
+<span class="nv">err_handler</span>:
+    <span class="nv">resume</span> <span class="nv">next_loop</span>
+
+<span class="k">End</span> <span class="nv">Function</span>
+</code></pre></div>
+
+<h1 id="empty">Empty値について</h1>
+<p>Emptyとは何も値が設定されていない状態であり、
+Variant型でのみ有効？である。</p>
+<p>Emptyを厳密に区別するためには以下のようなコードで理解を深めるとよい</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Dim</span> <span class="nv">a</span> <span class="nv">as</span> <span class="nv">Variant</span>
+<span class="nv">Dim</span> <span class="nv">b</span> <span class="nv">as</span> <span class="nv">Variant</span>
+
+<span class="nv">b</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="s1">&#39;</span><span class="s">何も値を設定していない状態はIsEmptyでTrueが返る</span>
+<span class="k">if</span> <span class="nv">a</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">then</span> <span class="nv">debug</span>.<span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Not Empty</span><span class="s2">&quot;</span>
+<span class="k">if</span> <span class="nv">a</span> <span class="o">=</span> <span class="nv">Empty</span> <span class="k">then</span> <span class="nv">debug</span>.<span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Not Empty</span><span class="s2">&quot;</span>
+<span class="k">if</span> <span class="nv">IsEmpty</span><span class="ss">(</span><span class="nv">a</span><span class="ss">)</span> <span class="k">then</span> <span class="nv">debug</span>.<span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Empty</span><span class="s2">&quot;</span>
+
+<span class="s1">&#39;</span><span class="s">何か値を設定していればIsEmptyでFalseが返る</span>
+<span class="k">if</span> <span class="nv">b</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">then</span> <span class="nv">debug</span>.<span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Not Empty</span><span class="s2">&quot;</span>
+<span class="k">if</span> <span class="nv">b</span> <span class="o">=</span> <span class="nv">Empty</span> <span class="k">then</span> <span class="nv">debug</span>.<span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Not Empty</span><span class="s2">&quot;</span>
+<span class="k">if</span> <span class="nv">IsEmpty</span><span class="ss">(</span><span class="nv">b</span><span class="ss">)</span> <span class="k">then</span> <span class="nv">debug</span>.<span class="nv">print</span> <span class="s2">&quot;</span><span class="s">Empty</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<h1 id="_38">行番号</h1>
+<p>VBA（正式にはVisual Basic?）では、行に番号を付与することができる。
+以下のコードは、その機能を利用したテストの例である。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Sub</span> <span class="nv">Test</span><span class="ss">()</span>
+
+<span class="nv">On</span> <span class="nv">Error</span> <span class="k">Goto</span> <span class="nl">TestFailed</span>
+
+<span class="mi">1</span> <span class="k">If</span> <span class="nv">Sheet1</span>.<span class="nv">Range</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">A1</span><span class="s2">&quot;</span><span class="ss">)</span>.<span class="nv">Value</span> <span class="o">&lt;&gt;</span> <span class="s2">&quot;&quot;</span> <span class="k">then</span> <span class="nv">Err</span>.<span class="nv">Raise</span> <span class="o">-</span><span class="mi">1</span>
+<span class="mi">2</span> <span class="k">If</span> <span class="nv">Sheet1</span>.<span class="nv">Range</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">B1</span><span class="s2">&quot;</span><span class="ss">)</span>.<span class="nv">Value</span> <span class="o">&lt;&gt;</span> <span class="s2">&quot;&quot;</span> <span class="k">then</span> <span class="nv">Err</span>.<span class="nv">Raise</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="nv">On</span> <span class="nv">Error</span> <span class="k">Goto</span> <span class="nl">0</span>
+
+<span class="k">Exit</span> <span class="nv">Sub</span>
+
+<span class="nv">TestFailed</span>:
+    <span class="nv">Debug</span>.<span class="nv">Print</span> <span class="s2">&quot;</span><span class="s">ERR NO : </span><span class="s2">&quot;</span> <span class="o">&amp;</span> <span class="nv">VBA</span>.<span class="nv">Erl</span>
+    <span class="nv">Resume</span> <span class="k">Next</span>
+
+<span class="k">End</span> <span class="nv">Sub</span>
+</code></pre></div>
+
+<h1 id="_39">文字列データの比較モードの指定</h1>
+<p>比較モードにより、文字列の比較結果が変わる。
+既定はBinaryとなる。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">Option</span> <span class="nv">Compare</span> <span class="nv">Binary</span>
+
+<span class="nv">Sub</span> <span class="nv">Sample</span><span class="ss">()</span>
+    <span class="nv">Debug</span>.<span class="nv">Print</span> <span class="s2">&quot;</span><span class="s">A</span><span class="s2">&quot;</span> <span class="o">&lt;</span> <span class="s2">&quot;</span><span class="s">a</span><span class="s2">&quot;</span>   <span class="s1">&#39;</span><span class="s">Trueが返ります。</span>
+    <span class="nv">Debug</span>.<span class="nv">Print</span> <span class="s2">&quot;</span><span class="s">A</span><span class="s2">&quot;</span> <span class="o">&lt;</span> <span class="s2">&quot;</span><span class="s">a</span><span class="s2">&quot;</span>   <span class="s1">&#39;</span><span class="s">Falseが返ります。</span>
+<span class="k">End</span> <span class="nv">Sub</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="nv">Option</span> <span class="nv">Compare</span> <span class="nv">Text</span>
+
+<span class="nv">Sub</span> <span class="nv">Sample</span><span class="ss">()</span>
+    <span class="nv">Debug</span>.<span class="nv">Print</span> <span class="s2">&quot;</span><span class="s">A</span><span class="s2">&quot;</span> <span class="o">&lt;</span> <span class="s2">&quot;</span><span class="s">a</span><span class="s2">&quot;</span>   <span class="s1">&#39;</span><span class="s">Falseが返ります。</span>
+    <span class="nv">Debug</span>.<span class="nv">Print</span> <span class="s2">&quot;</span><span class="s">A</span><span class="s2">&quot;</span> <span class="o">&lt;</span> <span class="s2">&quot;</span><span class="s">a</span><span class="s2">&quot;</span>   <span class="s1">&#39;</span><span class="s">Trueが返ります。</span>
+<span class="k">End</span> <span class="nv">Sub</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>&#39;Accessのみで利用可能
+Option Compare Database
+</code></pre></div>
+
+<h1 id="activex">ActiveXとフォーム</h1>
+<p>ワークシート上に配置するボタンなどのコントロールは、ActiveXとフォームの２種類が存在している。
+おすすめはフォーム。
+ActiveXは経験上壊れやすかった。
+しかし、ActiveXを利用すると、コードでコンポーネントを管理できた気がする。
+（検証要）</p>
+<h1 id="_40">エラーメッセージ管理（考察中）</h1>
+<p>ユーザ独自のエラー番号を定義する場合、
+エラー番号0～512はシステムで予約されている為、それ以降を利用すること。</p>
+<div class="highlight"><pre><span></span><code>Public Const MSG_SUCCESS = 0
+Public Const MSG_FATAL = 513
+Public Const MSG_NOTFOUND = 514
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        
+        <a href="../test/" class="md-footer__link md-footer__link--prev" aria-label="前: テスト" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              テスト
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../program_python/" class="md-footer__link md-footer__link--next" aria-label="次: プログラム言語 - Python" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              プログラム言語 - Python
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>

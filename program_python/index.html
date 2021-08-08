@@ -1,0 +1,821 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="sasano8's portfolio">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>プログラム言語 - Python - sasano8</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href=".." title="sasano8" class="md-header__button md-logo" aria-label="sasano8" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            sasano8
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              プログラム言語 - Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="クリア" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="sasano8" class="md-nav__button md-logo" aria-label="sasano8" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    sasano8
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        はじめに
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../standard_spec/" class="md-nav__link">
+        標準使用
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        セキュリティ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        アーキテクチャ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        データベース
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualization/" class="md-nav__link">
+        ビジュアライズ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../test/" class="md-nav__link">
+        テスト
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_vba/" class="md-nav__link">
+        プログラム言語 - VBA
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        プログラム言語 - Python
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_javascript/" class="md-nav__link">
+        プログラム言語 - Javascript
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../program_sql/" class="md-nav__link">
+        プログラム言語 - SQL
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirement_definition/" class="md-nav__link">
+        要件定義
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awasome_api/" class="md-nav__link">
+        awasome api
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1">辞書の合成</h1>
+<p>２つの辞書を合成した場合、重複したキーはどうなるか検証した。
+dict(*<em>dic1, *</em>dic2)、func(*<em>dic1, *</em>dic2)は重複したキーが投入された時、エラーとなるので積極的に使ってよい。
+{*<em>dic1, *</em>dic2}は、後勝ちで上書きされるので危険。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">dic1</span> <span class="o">=</span> {<span class="s2">&quot;</span><span class="s">name</span><span class="s2">&quot;</span>: <span class="s2">&quot;</span><span class="s">bob</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">age</span><span class="s2">&quot;</span>: <span class="mi">20</span>}
+<span class="nv">dic2</span> <span class="o">=</span> {<span class="s2">&quot;</span><span class="s">name</span><span class="s2">&quot;</span>: <span class="s2">&quot;</span><span class="s">mary</span><span class="s2">&quot;</span>}
+
+# 辞書作成時
+{<span class="o">**</span><span class="nv">dic1</span>, <span class="o">**</span><span class="nv">dic2</span>}  # <span class="o">=&gt;</span> {<span class="s2">&quot;</span><span class="s">name</span><span class="s2">&quot;</span>: <span class="s2">&quot;</span><span class="s">mary</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">age</span><span class="s2">&quot;</span>: <span class="mi">20</span>}  右辺の値で上書き
+<span class="nv">dict</span><span class="ss">(</span><span class="o">**</span><span class="nv">dic1</span>, <span class="o">**</span><span class="nv">dic2</span><span class="ss">)</span>  # <span class="o">=&gt;</span> <span class="nv">TypeError</span>: <span class="nv">func</span><span class="ss">()</span> <span class="nv">got</span> <span class="nv">multiple</span> <span class="nv">values</span> <span class="k">for</span> <span class="nv">keyword</span> <span class="nv">argument</span> <span class="s1">&#39;</span><span class="s">name</span><span class="s1">&#39;</span>
+
+# <span class="nv">update</span> <span class="o">/</span> 代入演算子
+<span class="nv">update_dic</span> <span class="o">=</span> {<span class="s2">&quot;</span><span class="s">name</span><span class="s2">&quot;</span>: <span class="s2">&quot;</span><span class="s">bob</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">age</span><span class="s2">&quot;</span>: <span class="mi">20</span>}
+<span class="nv">update_dic</span>.<span class="nv">update</span><span class="ss">(</span><span class="nv">dic2</span><span class="ss">)</span>
+# または
+<span class="nv">update_dic</span> <span class="o">|=</span> <span class="nv">dic2</span>
+# <span class="o">=&gt;</span> {<span class="s2">&quot;</span><span class="s">name</span><span class="s2">&quot;</span>: <span class="s2">&quot;</span><span class="s">mary</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">age</span><span class="s2">&quot;</span>: <span class="mi">20</span>}  右辺の値で上書きされる。また、元データを変更するので、できればあまり使わないほうがよい。
+
+<span class="nv">dict</span><span class="ss">(</span><span class="nv">update_dic</span>, <span class="o">**</span><span class="nv">dic2</span><span class="ss">)</span>
+# 元のソース自体は更新されない
+# <span class="o">=&gt;</span> {<span class="s2">&quot;</span><span class="s">name</span><span class="s2">&quot;</span>: <span class="s2">&quot;</span><span class="s">mary</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">age</span><span class="s2">&quot;</span>: <span class="mi">20</span>}
+
+# マージ演算子
+<span class="nv">new_dic</span> <span class="o">=</span> <span class="nv">dict_1</span> <span class="o">|</span> <span class="nv">dict_2</span>
+# <span class="o">=&gt;</span> {<span class="s2">&quot;</span><span class="s">name</span><span class="s2">&quot;</span>: <span class="s2">&quot;</span><span class="s">mary</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">age</span><span class="s2">&quot;</span>: <span class="mi">20</span>}  右辺の値で上書きされる
+
+
+# キーワード引数として渡す際に合成
+<span class="nv">def</span> <span class="nv">func</span><span class="ss">(</span><span class="o">**</span><span class="nv">kwargs</span><span class="ss">)</span>:
+    <span class="nv">print</span><span class="ss">(</span><span class="nv">kwargs</span><span class="ss">)</span>
+
+<span class="nv">func</span><span class="ss">(</span><span class="o">**</span><span class="nv">dic1</span>, <span class="o">**</span><span class="nv">dic2</span><span class="ss">)</span>
+# <span class="o">=&gt;</span> <span class="nv">TypeError</span>: <span class="nv">func</span><span class="ss">()</span> <span class="nv">got</span> <span class="nv">multiple</span> <span class="nv">values</span> <span class="k">for</span> <span class="nv">keyword</span> <span class="nv">argument</span> <span class="s1">&#39;</span><span class="s">name</span><span class="s1">&#39;</span>
+</code></pre></div>
+
+<h1 id="_2">クラス</h1>
+<p>python3.7未満は、クラスコンストラクタの定義が冗長的。
+python3.7以降は、dataclassデコレータでメンバ変数およびに__init__や__str__を自動生成してくれる。
+pydanticはdataclassのような機能に加え、様々なオプションを設定でき高機能。
+ライブラリ作成時は、依存関係を減らすためdataclassを使いたい。</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+
+<span class="c1"># python3.7以降</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="c1"># 外部ライブラリ</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+  <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div>
+
+<h1 id="_3">日付の扱い方</h1>
+<p>日付関連の機能はdatetimeモジュールから利用することができる。
+タイムゾーンを操作するには、標準ライブラリだけでは大変で、python-dateutil,pytzなどの外部ライブラリを用いるのがスタンダード。
+python3.9からは、zoneinfoが標準ライブラリに加わり、タイムゾーンを扱いやすくなった。</p>
+<p>日付はawareな日付とnativeな日付が存在する。
+awareな日付は、timezone（現地時間）情報を持つため、地域が異なる日付同士で比較することができる。
+nativeな日付は、timezoneを持たないため、暗黙的に同一の地域とみなせる狭いスコープでのみ利用される。
+常に、awareな日付を作成することで、nativeを考慮しない方が明瞭に課題を解決できる。</p>
+<p>とにかく、datetimeオブジェクトを作成時は,utcを指定しておくのがよい。
+現地時間を重視する場合は、timezoneを指定しておき、表示の際にどの地域を軸に表示するか指定する。</p>
+<h2 id="_4">日付関連型</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="c1"># datetime型　日付＋時間</span>
+<span class="n">da</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>  <span class="c1"># date型　日付のみ date型はdatetime型と互換性がある</span>
+<span class="n">td</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># timedelta型　日数、秒数、マイクロ秒数情報を持ち、差分表現に用いられる</span>
+
+<span class="n">ut</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>  <span class="c1"># float型 UNIX時間（エポック秒）</span>
+
+
+<span class="c1"># 単純に日付を作成しただけではawareな日付にならない</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">dt</span><span class="o">.</span><span class="n">tzinfo</span>
+<span class="c1"># =&gt;&gt; None</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+<span class="n">dt</span><span class="o">.</span><span class="n">tzinfo</span>
+<span class="c1"># =&gt;&gt; None</span>
+
+<span class="c1"># 面倒だが常にタイムゾーンを意識する</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+<span class="n">dt</span><span class="o">.</span><span class="n">tzinfo</span>
+<span class="c1"># =&gt;&gt; datetime.timezone.utc</span>
+
+<span class="c1"># OSの現在日時が2020年11月17日23時の場合の結果は以下のようになる</span>
+<span class="n">dt</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
+<span class="c1"># =&gt;&gt; &#39;2020-11-17T14:01:54.567154+00:00&#39;</span>
+
+<span class="c1"># python3.9からはこう書けるようになる？？</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="s2">&quot;utc&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># いけないコード。Asia/Tokyoで19分ずれる</span>
+<span class="n">datetime</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s1">&#39;Asia/Tokyo&#39;</span><span class="p">))</span>
+<span class="c1"># =&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=&lt;DstTzInfo &#39;Asia/Tokyo&#39; LMT+9:19:00 STD&gt;)</span>
+
+<span class="c1"># 好ましいコード。</span>
+<span class="n">tz</span> <span class="o">=</span> <span class="n">pytz</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="s1">&#39;Asia/Tokyo&#39;</span><span class="p">)</span>
+<span class="n">tz</span><span class="o">.</span><span class="n">localize</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># =&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=&lt;DstTzInfo &#39;Asia/Tokyo&#39; LMT+9:00:00 STD&gt;)</span>
+</code></pre></div>
+
+<h1 id="_5">型チェック</h1>
+<div class="highlight"><pre><span></span><code><span class="c1"># typeは、完全一致での型チェックを行う場合に利用する。</span>
+<span class="c1"># isinstanceは、親オブジェクトを含んだ型チェックを行う場合に利用する。</span>
+<span class="c1"># クラスはタイプのインスタンス</span>
+
+<span class="k">class</span> <span class="nc">SampleBase</span><span class="p">():</span>
+  <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Sample</span><span class="p">(</span><span class="n">SampleBase</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+  <span class="k">pass</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">()</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Sample</span> <span class="c1"># True</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">is</span> <span class="n">SampleBase</span> <span class="c1"># False</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Sample</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SampleBase</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">Sample</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="n">issublass</span><span class="p">(</span><span class="n">Sample</span><span class="p">,</span> <span class="n">SampleBase</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="n">issublass</span><span class="p">(</span><span class="n">Sample</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="c1"># False</span>
+
+
+<span class="c1"># クラスはtypeのインスタンスである</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">SampleBase</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">Sample</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="c1"># True</span>
+
+<span class="c1"># インスタンスはobjectである</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">object</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">Sample</span><span class="p">,</span> <span class="nb">object</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span> <span class="c1"># False</span>
+
+<span class="c1"># callableチェック</span>
+<span class="n">objbase</span> <span class="o">=</span> <span class="n">SampleBase</span><span class="p">()</span>
+<span class="n">callable</span><span class="p">(</span><span class="n">objbase</span><span class="p">)</span> <span class="c1"># False</span>
+<span class="n">callable</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="c1"># True</span>
+<span class="n">callable</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="c1"># True</span>
+
+<span class="c1"># asyncチェック</span>
+<span class="k">def</span> <span class="nf">func_async</span><span class="p">():</span>
+  <span class="k">pass</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="c1"># False</span>
+<span class="n">asyncio</span><span class="o">.</span><span class="n">iscoroutinefunction</span><span class="p">(</span><span class="n">func_async</span><span class="p">)</span> <span class="c1"># True</span>
+</code></pre></div>
+
+<h1 id="_6">デコレータ</h1>
+<p>関数やcallableなオブジェクトはデコレータとして呼び出すことができる。</p>
+<h2 id="_7">デコレータの種類</h2>
+<p>デコレータが呼び出されるシチュエーションはいくつか考えられ、完全なデコレータを実装するにはそれぞれシチュエーションに応じた実装が必要。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. 引数なしデコレータ</span>
+<span class="nd">@deco</span>
+<span class="k">def</span> <span class="nf">myfunc</span><span class="p">():</span>
+  <span class="k">pass</span>
+
+<span class="c1"># 2. 引数なしラッパー関数経由デコレータ</span>
+<span class="nd">@deco</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">myfunc</span><span class="p">():</span>
+  <span class="k">pass</span>
+
+<span class="c1"># 3. 引数ありラッパー関数経由デコレータ</span>
+<span class="nd">@deco</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">myfunc</span><span class="p">():</span>
+  <span class="k">pass</span>
+
+<span class="c1"># 4. 1〜3全対応</span>
+<span class="n">全対応に対応すると</span><span class="err">、</span><span class="n">引数に意図しない対象がセットされてしまう恐れがあり</span><span class="err">、</span><span class="n">また</span><span class="err">、</span><span class="n">その意図の判定は困難なため</span><span class="err">、</span>
+<span class="n">引数あり</span><span class="err">、</span><span class="n">引数なしを限定させた方がよい</span><span class="err">。</span>
+</code></pre></div>
+
+<h2 id="_8">実装例</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># デコレータをクラスで実装</span>
+<span class="k">class</span> <span class="nc">function_decorator</span><span class="p">():</span>
+  <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">is_func_only</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">callable</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># 引数付きデコレータ処理</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_func_only</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+      <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+      <span class="k">return</span> <span class="n">wrapped</span>
+
+    <span class="c1"># 括弧省略時 or 引数付きデコレータ処理後（最終処理）</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="p">()</span>
+
+      <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;kwargs&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+
+      <span class="n">func</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">valid_args</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">on_wrapped</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_object</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">result</span>
+
+  <span class="k">def</span> <span class="nf">valid_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+  <span class="k">def</span> <span class="nf">on_wrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;initializing...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;initialized.&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">return_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)(</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">func</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="n">deco</span> <span class="o">=</span> <span class="n">function_decorator</span><span class="p">()</span>
+
+<span class="nd">@deco</span><span class="p">(</span><span class="n">tag</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">message</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="n">message</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h1 id="linq">Linq</h1>
+<p><a href="https://github.com/rogerwcpt/python-linq-samples">python-linq-samples</a></p>
+<h1 id="_9">データ構造</h1>
+<h2 id="_10">リスト、タプル、ディクショナリ、セット</h2>
+<div class="highlight"><pre><span></span><code><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># インデックスによるアクセスが可能</span>
+<span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># インデックスによるアクセスが可能　インスタンス作成後の値変更は許可されない</span>
+<span class="nb">set</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span> <span class="c1"># インデックスによるアクセスが可能　重複は排除される</span>
+<span class="n">dic</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span> <span class="c1"># キーによるアクセスが可能</span>
+</code></pre></div>
+
+<h1 id="_11">その他</h1>
+<p>あまり知られていないpythonの仕様を紹介する。
+紹介する仕様は、バージョンによっては利用できない。（主に、Python3.4以降の仕様を紹介）</p>
+<h2 id="_12">複素数</h2>
+<div class="highlight"><pre><span></span><code><span class="n">c1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="n">j</span>
+<span class="n">c1</span> <span class="o">+</span> <span class="n">c2</span> <span class="c1"># -&gt; 2 - j</span>
+</code></pre></div>
+
+<h2 id="_13">ステップフィルター</h2>
+<div class="highlight"><pre><span></span><code><span class="n">arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">arr</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># -&gt; [0, 2, 4, ...]</span>
+</code></pre></div>
+
+<h2 id="ellipsis">Ellipsis</h2>
+<p>dummy用のオブジェクトを作成する</p>
+<div class="highlight"><pre><span></span><code><span class="o">...</span> <span class="c1"># -&gt; Ellipsis</span>
+<span class="nb">bool</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="unpack-argument">unpack argument</h2>
+<p>関数に引数を渡すとき、リストや辞書を引数に当てはめて呼び出したいときがある。
+そのようなケースで、配列や辞書を位置限定引数として（*）、または、キーワード引数として（**）展開することができる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">print_profile</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+
+<span class="n">dic</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;age&quot;</span><span class="p">:</span> <span class="mi">20</span>
+<span class="p">}</span>
+
+<span class="n">print_profile</span><span class="p">(</span><span class="o">*</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">print_profile</span><span class="p">(</span><span class="o">**</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="_14">位置限定引数 / キーワード限定引数</h2>
+<p>引数は、位置引数とキーワード引数に都合よく解釈されるが、位置限定引数(/の前)、キーワード限定引数(*の後)として解釈を限定することができる。
+位置限定引数は、python3.8から利用可能。</p>
+<p>位置限定引数はあまり使い道がないが、キーワード限定引数はコーディングを明示的にするため積極的に活用すべき。</p>
+<div class="highlight"><pre><span></span><code>def example(pos_only, /, standard, *, kwd_only):
+  print(pos_only, standard, kwd_only)
+</code></pre></div>
+
+<h2 id="global">global</h2>
+<p>どのスコープからでもグローバル変数を定義、参照することができる</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+  <span class="k">global</span> <span class="n">a</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</code></pre></div>
+
+<h2 id="nonlocal">nonlocal</h2>
+<p>ひとつ外側のスコープに属する変数へアクセスができる</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">def</span> <span class="nf">func_inner</span><span class="p">():</span>
+    <span class="k">nonlocal</span> <span class="n">count</span>
+</code></pre></div>
+
+<h2 id="yield-from">yield from</h2>
+<p>他のイテレータから値を返すジェネレータを作成する</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+  <span class="k">yield from</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+  <span class="k">yield from</span> <span class="p">()</span> <span class="c1"># 空のイテレータ</span>
+</code></pre></div>
+
+<h2 id="raise-from">raise from</h2>
+<p>例外を連鎖させる際に、送出元の例外を保持する</p>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+  <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;e1&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">Exception</span><span class="p">(</span><span class="s2">&quot;e2&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">__cause__</span><span class="p">)</span> <span class="c1"># e2</span>
+</code></pre></div>
+
+<h2 id="async-await">async await</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="フッター">
+      
+        
+        <a href="../program_vba/" class="md-footer__link md-footer__link--prev" aria-label="前: プログラム言語 - VBA" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                前
+              </span>
+              プログラム言語 - VBA
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../program_javascript/" class="md-footer__link md-footer__link--next" aria-label="次: プログラム言語 - Javascript" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                次
+              </span>
+              プログラム言語 - Javascript
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+    
+  </body>
+</html>
