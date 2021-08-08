@@ -13,7 +13,8 @@ theme:
 nav:
   - はじめに: "index.md"
   - 標準使用: "standard_spec.md"
-  - セキュリティ: "security.md"
+  - セキュリティ - 権限: "security_auth.md"
+  - セキュリティ - オシント: "security_osint.md"
   - アーキテクチャ: "architecture.md"
   - データベース: "database.md"
   - ビジュアライズ: "visualization.md"
