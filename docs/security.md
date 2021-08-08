@@ -1,3 +1,8 @@
+
+- [フレームワーク](https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html)
+- [参考]8https://qiita.com/osada/items/c75c34ce716ee4ffba8f)
+
+
 #Windows
 
 ##サービスアカウント

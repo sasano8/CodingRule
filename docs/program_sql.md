@@ -1,4 +1,5 @@
 
+``` sql
 /*
 SQL TRANING.
 */
@@ -19,7 +20,7 @@ CTE(Common Table Expression:共通テーブル SQL99規格）と呼ばれ、再�
 -- prefixを#とすると、一時テーブルとなる。##でグローバル一時テーブルになる
 -- テーブルはセッション終了時に削除される。
 
-DROP TABLE IF EXISTS #NODES; 
+DROP TABLE IF EXISTS #NODES;
 CREATE TABLE #NODES(
      Id int,
 	 Location VARCHAR(10),
@@ -47,7 +48,7 @@ WITH LOOP_TABLE AS (
     UNION ALL
     SELECT #NODES.* FROM LOOP_TABLE, #NODES
 	WHERE LOOP_TABLE.Parent = #NODES.Location -- 親の定義を階層定義から取得　取得分が次のループとなる
-	
+
 )
 
 SELECT * FROM LOOP_TABLE;
@@ -255,4 +256,4 @@ DEALLOCATE CUR_TABLES;
 
 -- 結果の確認
 SELECT * FROM @CUR_T;
-
+```

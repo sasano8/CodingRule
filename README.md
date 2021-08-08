@@ -1,29 +1,27 @@
-# CodingRule
+# Getting Started
 
-# TIME
-RFC3339
-ISO8601
-W3C-DTF(ISO8601 subset)
+``` python
+poetry install
+```
 
-# UTC(Coordinated Universal Time)
-協定世界時とは、国際原子時 (TAI) に由来する原子時系の時刻で、UT1 世界時に同調するべく調整された基準時刻を指す。
+``` shell
+make doc-serve
+```
 
-# UT1
-早い話が地球上のどこでも同じ時刻であることを意味する。
+# ドキュメント
 
+- [mkdocs](https://squidfunk.github.io/mkdocs-material/reference/abbreviations/)
 
-# 場所
+# アイコンリスト
 
-## iso_3166_1
-ISOによって発行された規格の一部であり、国の名前、扶養地域、および地理的に関心のある特別な分野のコードを定義する。
+次のリンクからアイコンを検索できます。
 
-## iso_3166_2:JP
-ISOの3166-2規格の内、JPで始まるものの一覧であり、日本の都道府県のコードである。
+- https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#emoji
 
+material
+fontawesome
+octicons
 
-# Syslog format
-RFC5424
-RFC3164
+# ロゴ
 
-# Currency
-ISO 4217
+https://www.brandcrowd.com/で作成した。
