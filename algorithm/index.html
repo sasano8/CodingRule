@@ -16,7 +16,7 @@
     
     
       
-        <title>標準仕様 - sasano8</title>
+        <title>algorithm - sasano8</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#codingrule" class="md-skip">
+        <a href="#algorithm" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              標準仕様
+              algorithm
             
           </span>
         </div>
@@ -192,21 +192,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../standard_spec/" class="md-nav__link">
         標準仕様
       </a>
-      
     </li>
   
 
@@ -515,6 +505,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    計算量
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    検索
+  </a>
+  
+    <nav class="md-nav" aria-label="検索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    線形探索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2分探索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    深さ優先探索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    幅優先検索
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ソート
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -526,28 +579,520 @@
               
                 
                 
-                <h1 id="codingrule">CodingRule</h1>
-<h1 id="time">TIME</h1>
-<p>RFC3339
-ISO8601
-W3C-DTF(ISO8601 subset)</p>
-<h1 id="utccoordinated-universal-time">UTC(Coordinated Universal Time)</h1>
-<p>協定世界時とは、国際原子時 (TAI) に由来する原子時系の時刻で、UT1 世界時に同調するべく調整された基準時刻を指す。</p>
-<h1 id="ut1">UT1</h1>
-<p>早い話が地球上のどこでも同じ時刻であることを意味する。</p>
-<h1 id="_1">場所</h1>
-<h2 id="iso_3166_1">iso_3166_1</h2>
-<p>ISOによって発行された規格の一部であり、国の名前、扶養地域、および地理的に関心のある特別な分野のコードを定義する。</p>
-<h2 id="iso_3166_2jp">iso_3166_2:JP</h2>
-<p>ISOの3166-2規格の内、JPで始まるものの一覧であり、日本の都道府県のコードである。</p>
-<h1 id="syslog-format">Syslog format</h1>
-<p>RFC5424
-RFC3164</p>
-<h1 id="currency">Currency</h1>
-<p>ISO 4217</p>
+                <h1 id="algorithm">algorithm</h1>
+<h2 id="_1">計算量</h2>
+<div class="highlight"><pre><span></span><code>次の計算量はO(N)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code>次の計算量はO(N^2)
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="o">...</span>
+</code></pre></div>
+
+<h2 id="_2">検索</h2>
+<h3 id="_3">線形探索</h3>
+<p>順番に問い合わせする。</p>
+<h3 id="2">2分探索</h3>
+<p>真ん中などから問い合わせし、半分ずつ絞り込んでいく。ソート済みでないと線形探索と同じになる？ソート済みでなければ適用できない。</p>
+<h3 id="_4">深さ優先探索</h3>
+<p>無数に考えられる組み合わせから一箇所ずつ決め打ちで検索する。力任せ。</p>
+<h3 id="_5">幅優先検索</h3>
+<p>周りから徐々に範囲を広げていく。</p>
+<h2 id="_6">ソート</h2>
 <ul>
-<li>DICOM：　CT・MRI・内視鏡・超音波などの医用画像診断装置、医用画像プリンタ、医用画像システム、医療情報システムなどの間でデジタル画像データや関連する診療データを通信したり、保存したりする方法を定めた国際標準規格です。</li>
+<li>
+<p>シュワルツ変換</p>
+</li>
+<li>
+<p>[ ] 等差数列</p>
+</li>
+<li>[ ] 階差数列（Σ）</li>
+<li>[ ] 漸化式</li>
+<li>[ ] 漸近線</li>
+<li>[ ] 極限</li>
+<li>[ ] 対数（log）</li>
+<li>[ ] 指数時間</li>
+<li>[ ] 多項式時間</li>
 </ul>
+<h1 id="_7">探索</h1>
+<ul>
+<li>[ ] 二分探索法</li>
+<li>[ ] 線形探索法</li>
+<li>[ ] 深さ優先</li>
+<li>[ ] 幅優先</li>
+</ul>
+<h1 id="2_1">2進数</h1>
+<ul>
+<li>1: 2^0 =&gt; 0x1</li>
+<li>2: 2^1 =&gt; 0x2</li>
+<li>4: 2^2 =&gt; 0x4</li>
+<li>8: 2^3 =&gt; 0x8</li>
+<li>16: 2^4 =&gt; 0x10</li>
+<li>32: 2^5 =&gt; 0x20</li>
+<li>64: 2^6 =&gt; 0x40</li>
+<li>128: 2^7 =&gt; 0x80</li>
+<li>256: 2^8 =&gt; 0x100 =&gt; 1byte char:  -128 ～ 127(255)</li>
+<li>512: 2^9 =&gt; 0x200</li>
+<li>1024: 2^10 =&gt; 0x400</li>
+<li>2048: 2^11 =&gt; 0x800</li>
+<li>4096: 2^12 =&gt; 0x1000</li>
+<li>8192: 2^13 =&gt; 0x2000</li>
+<li>16384: 2^14 =&gt; 0x4000</li>
+<li>32768: 2^15 =&gt; 0x8000</li>
+<li>65536: 2^16 =&gt; 0x10000 =&gt; 2byte short int: -32768 ～ 32767(65535)</li>
+<li>4294967296: 2^32 =&gt; 0x100000000 =&gt; 4byte int: -2147483648 ～ 2147483647(4294967295)</li>
+</ul>
+<h1 id="2-10-16">2進数 10進数 16進数</h1>
+<table>
+<thead>
+<tr>
+<th>16進</th>
+<th>2進</th>
+<th>10進</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0001</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0010</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0011</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0100</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0101</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0110</td>
+<td>6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>0111</td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1000</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1001</td>
+<td>9</td>
+</tr>
+<tr>
+<td>A</td>
+<td>1010</td>
+<td>10</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1011</td>
+<td>11</td>
+</tr>
+<tr>
+<td>C</td>
+<td>1100</td>
+<td>12</td>
+</tr>
+<tr>
+<td>D</td>
+<td>1101</td>
+<td>13</td>
+</tr>
+<tr>
+<td>E</td>
+<td>1110</td>
+<td>14</td>
+</tr>
+<tr>
+<td>F</td>
+<td>1111</td>
+<td>15</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10000</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_8">ビット演算</h1>
+<table>
+<thead>
+<tr>
+<th>OP</th>
+<th>LEFT</th>
+<th>LIGHT</th>
+<th>RETURN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AND</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>AND</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>AND</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>AND</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>XOR</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>XOR</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>XOR</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>XOR</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>NOT</td>
+<td>0</td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>NOT</td>
+<td>1</td>
+<td></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>OP</th>
+<th>RETURN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 &amp; 0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1 &amp; 0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0 &amp; 1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1 &amp; 1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0 | 0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1 | 0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0 | 1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1 | 1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0 ^ 0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1 ^ 0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0 ^ 1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1 ^ 1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>~0</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>2 | 0</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2 | 1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2 | 2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2 | 3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>2 | 4</td>
+<td>6</td>
+</tr>
+<tr>
+<td>2 | 5</td>
+<td>7</td>
+</tr>
+<tr>
+<td>256 &amp; 256</td>
+<td>256</td>
+</tr>
+<tr>
+<td>256 &amp; 128</td>
+<td>0</td>
+</tr>
+<tr>
+<td>256 &amp; 127</td>
+<td>0</td>
+</tr>
+<tr>
+<td>255 &amp; 255</td>
+<td>255</td>
+</tr>
+<tr>
+<td>255 &amp; 127</td>
+<td>127</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>OP</th>
+<th>2進数</th>
+<th>10進数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0b1 &lt;&lt; 1</td>
+<td>0b00000010</td>
+<td>2</td>
+</tr>
+<tr>
+<td>0b1 &lt;&lt; 2</td>
+<td>0b00000100</td>
+<td>4</td>
+</tr>
+<tr>
+<td>0b1 &lt;&lt; 3</td>
+<td>0b00001000</td>
+<td>8</td>
+</tr>
+<tr>
+<td>0b1 &lt;&lt; 4</td>
+<td>0b00001000</td>
+<td>16</td>
+</tr>
+<tr>
+<td>0b1 &lt;&lt; 5</td>
+<td>0b00010000</td>
+<td>32</td>
+</tr>
+<tr>
+<td>0b1 &lt;&lt; 6</td>
+<td>0b00100000</td>
+<td>64</td>
+</tr>
+<tr>
+<td>0b1 &lt;&lt; 7</td>
+<td>0b01000000</td>
+<td>128</td>
+</tr>
+<tr>
+<td>0b1 &lt;&lt; 8</td>
+<td>0b10000000</td>
+<td>256</td>
+</tr>
+<tr>
+<td>3 &lt;&lt; 1</td>
+<td>0b10000000</td>
+<td>6</td>
+</tr>
+<tr>
+<td>3 &lt;&lt; 2</td>
+<td>0b10000000</td>
+<td>12</td>
+</tr>
+<tr>
+<td>3 &lt;&lt; 3</td>
+<td>0b10000000</td>
+<td>24</td>
+</tr>
+<tr>
+<td>3 &lt;&lt; 4</td>
+<td>0b10000000</td>
+<td>48</td>
+</tr>
+</tbody>
+</table>
+<p>log a b = x
+a（底）をx乗するとbになる</p>
+<table>
+<thead>
+<tr>
+<th>MATH</th>
+<th>Python</th>
+<th>訳</th>
+<th>答</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$$\log_1 1$$</td>
+<td>log(1, 1)</td>
+<td>1を底とする1の対数</td>
+<td>エラー</td>
+</tr>
+<tr>
+<td>$$\log_2 4$$</td>
+<td>log(4, 2)</td>
+<td>2を底とする4の対数</td>
+<td>2</td>
+</tr>
+<tr>
+<td>$$\log_2 8$$</td>
+<td>log(8, 2)</td>
+<td>2を底とする8の対数</td>
+<td>3</td>
+</tr>
+<tr>
+<td>$$\log_3 9$$</td>
+<td>log(9, 3)</td>
+<td>3を底とする9の対数</td>
+<td>2</td>
+</tr>
+<tr>
+<td>$$\log_4 16$$</td>
+<td>log(16, 4)</td>
+<td>4を底とする16の対数</td>
+<td>2</td>
+</tr>
+<tr>
+<td>$$\log_5 25$$</td>
+<td>log(25, 5)</td>
+<td>5を底とする25の対数</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h1 id="_9">等差数列</h1>
+<p>初項$a_1$、公差dの等差数列を$a_n$とすると
+- $a_n = a_1 + (n − 1)d$
+- $a_1 + a_2 + ... + a_n$
+- $\sum_{k=1}^{n} x_k$</p>
+<table>
+<thead>
+<tr>
+<th>MATH</th>
+<th>Python</th>
+<th>訳</th>
+<th>答</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$$\sum_{n=1}^\infty$$</td>
+<td>log(1, 1)</td>
+<td>1を底とする1の対数</td>
+<td>エラー</td>
+</tr>
+</tbody>
+</table>
                 
               
               
@@ -563,41 +1108,6 @@ RFC3164</p>
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="フッター">
-      
-        
-        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="前: はじめに" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                前
-              </span>
-              はじめに
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../security/auth/" class="md-footer__link md-footer__link--next" aria-label="次: 権限" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                次
-              </span>
-              権限
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
