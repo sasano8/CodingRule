@@ -25,12 +25,16 @@ nav:
     - Python: "program/python.md"
     - JavaScript: "program/javascript.md"
     - SQL: "program/sql.md"
+    - 構文解析: "program/parsing.md"
   - 要件定義:
     - マネジメント: "requirements/management.md"
     - 機能要件: "requirements/functional.md"
     - 非機能要件: "requirements/non_functional.md"
     - 設計: "requirements/design.md"
   - awasome api: "awasome_api.md"
+  - 数学: "math.md"
+  - tools:
+    - tmux: "tools/tmux.md"
 
 
 
