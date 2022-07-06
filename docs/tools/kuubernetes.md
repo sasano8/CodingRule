@@ -17,6 +17,10 @@ Kubernetesは環境に応じたディストリビューションを使用しま�
 
 UbuntuのCanonicalが提供するKubernetesパッケージ。
 
+## OpenShift
+
+Kubernetesは開発者を多く抱えており、発展速度が速い。
+OpenShiftは、Red Hat社がエンタープライズ向けにカスタマイズされたもので、CIなどKubernetesには含まれない高度な機能も統合されている。
 
 # 概念
 
