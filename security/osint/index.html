@@ -752,49 +752,58 @@
 <li><a href="https://kurozumi.github.io/tweepy/">twitter</a></li>
 </ul>
 <h1 id="pagefile">pagefileから調査の手がかりを得る</h1>
-<p>```</p>
-<h1 id="pagefilesys">pagefile.sysの解析</h1>
-<h1 id="_1">参考</h1>
-<p>https://soji256.hatenablog.jp/entry/2019/06/25/065200</p>
-<h1 id="_2">ファイルパス</h1>
-<p>strings pagefile.sys | grep -i "^[a-z]:\\" | sort | uniq &gt; list_file.txt</p>
-<h1 id="url">URL</h1>
-<p>strings pagefile.sys | egrep "^https?://" | sort | uniq &gt; list_url.txt</p>
-<h1 id="_3">メールアドレス</h1>
-<p>strings pagefile.sys | egrep '([[:alnum:]<em>.-]{1,64}+@[[:alnum:]</em>.-]{2,255}+?.[[:alpha:].]{2,4})' &gt; list_mail.txt</p>
-<h1 id="_4">環境変数</h1>
-<p>strings pagefile.sys | grep -i "^[a-zA-Z09_]<em>=.</em>" | sort -u | uniq &gt; list_envirnoment.txt
-```</p>
+<pre><code># pagefile.sysの解析
+
+# 参考
+https://soji256.hatenablog.jp/entry/2019/06/25/065200
+
+# ファイルパス
+strings pagefile.sys | grep -i &quot;^[a-z]:\\\\&quot; | sort | uniq &gt; list_file.txt
+
+
+# URL
+strings pagefile.sys | egrep &quot;^https?://&quot; | sort | uniq &gt; list_url.txt
+
+# メールアドレス
+strings pagefile.sys | egrep '([[:alnum:]_.-]{1,64}+@[[:alnum:]_.-]{2,255}+?\.[[:alpha:].]{2,4})' &gt; list_mail.txt
+
+
+# 環境変数
+strings pagefile.sys | grep -i &quot;^[a-zA-Z09_]*=.*&quot; | sort -u | uniq &gt; list_envirnoment.txt
+</code></pre>
 <h1 id="outlookexcel">OutlookのメールをExcelに出力</h1>
-<p>```
-'UTF8だと動かない場合があるため、その場合はSJISで実行してみてください</p>
-<p>' ここをトリプルクリックでスクリプト全体を選択できます。
-Const IMPORT_FOLDER = "C:\Users\UserName\Documents" ' EML ファイルがあるフォルダーを指定</p>
-<p>'実行の前提として、受信フォルダ配下にインポートフォルダを作成してください
-Const TARGET_IMBOX = "インポート"</p>
-<p>Const olFolderInbox = 6
+<pre><code>'UTF8だと動かない場合があるため、その場合はSJISで実行してみてください
+
+' ここをトリプルクリックでスクリプト全体を選択できます。
+Const IMPORT_FOLDER = &quot;C:\Users\UserName\Documents&quot; ' EML ファイルがあるフォルダーを指定
+
+'実行の前提として、受信フォルダ配下にインポートフォルダを作成してください
+Const TARGET_IMBOX = &quot;インポート&quot;
+
+
+Const olFolderInbox = 6
 Dim olkApp
 Dim fldImport
 Dim wshShell
 Dim objFSO
 Dim objFolder
 Dim objFile
-Set olkApp = CreateObject("Outlook.Application")
+Set olkApp = CreateObject(&quot;Outlook.Application&quot;)
 Set fldImport = olkApp.Session.GetDefaultFolder(olFolderInbox)
-Set fldImport = fldImport.Folders("インポート")
+Set fldImport = fldImport.Folders(&quot;インポート&quot;)
 fldImport.Display
-Set wshShell = CreateObject("WScript.Shell")
-Set objFSO = CreateObject("Scripting.FileSystemObject")
+Set wshShell = CreateObject(&quot;WScript.Shell&quot;)
+Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)
 Set objFolder = objFSO.GetFolder(IMPORT_FOLDER)
 ' IMPORT_FOLDER で指定されたフォルダーのファイルを取得
 For Each objFile In objFolder.Files
-    If LCase(Right(objFile.Name,4)) = ".eml" Then
+    If LCase(Right(objFile.Name,4)) = &quot;.eml&quot; Then
         ' 拡張子が .eml ならインポート処理
         OpenEml objFile.Name
     End If
 Next
 olkApp.ActiveExplorer.Close
-MsgBox "インポートは終了しました。", vbOKOnly, "EML ファイル インポート"
+MsgBox &quot;インポートは終了しました。&quot;, vbOKOnly, &quot;EML ファイル インポート&quot;
 ' eml ファイルを開いてインポートするルーチン
 Sub OpenEml( strFileName )
     On Error Resume Next
@@ -805,7 +814,7 @@ Sub OpenEml( strFileName )
         WScript.Sleep 1000
     Wend
     ' eml ファイルを Outlook で開くコマンドを実行
-    wshShell.Run "outlook /eml """ &amp; IMPORT_FOLDER &amp; "\" &amp; strFileName &amp; """"
+    wshShell.Run &quot;outlook /eml &quot;&quot;&quot; &amp; IMPORT_FOLDER &amp; &quot;\&quot; &amp; strFileName &amp; &quot;&quot;&quot;&quot;
     ' 上記のコマンドで Outlook が起動するのを待つ
     While olkApp.ActiveInspector Is Nothing
         WScript.Sleep 1000
@@ -814,7 +823,7 @@ Sub OpenEml( strFileName )
     olkApp.ActiveInspector.CurrentItem.Move fldImport
     olkApp.ActiveInspector.Close
 End Sub
-```</p>
+</code></pre>
                 
               
 

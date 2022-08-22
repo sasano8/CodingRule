@@ -1136,44 +1136,44 @@ GISの規格を検討している団体が存在する。</p>
 <h2 id="geojson">GeoJSON</h2>
 <p>JavaScript Object Notation (JSON) を用いて空間データをエンコードし非空間属性を関連付けるファイルフォーマットである
 GDAL OGR変換ライブラリを経由し扱う。</p>
-<p><code>json
-{
-    "type": "FeatureCollection",
-    "features": [
+<pre><code class="language-json">{
+    &quot;type&quot;: &quot;FeatureCollection&quot;,
+    &quot;features&quot;: [
         {
-            "type": "Feature",
-            "geometry": {"type": "Point", "coordinates": [102.0, 0.5]},
-            "properties": {"prop0": "value0"}
+            &quot;type&quot;: &quot;Feature&quot;,
+            &quot;geometry&quot;: {&quot;type&quot;: &quot;Point&quot;, &quot;coordinates&quot;: [102.0, 0.5]},
+            &quot;properties&quot;: {&quot;prop0&quot;: &quot;value0&quot;}
         },
         {
-            "type": "Feature",
-            "geometry": {
-                "type": "LineString",
-                "coordinates": [
+            &quot;type&quot;: &quot;Feature&quot;,
+            &quot;geometry&quot;: {
+                &quot;type&quot;: &quot;LineString&quot;,
+                &quot;coordinates&quot;: [
                     [102.0, 0.0], [103.0, 1.0], [104.0, 0.0], [105.0, 1.0]
                 ]
             },
-            "properties": {
-                "prop0": "value0",
-                "prop1": 0.0
+            &quot;properties&quot;: {
+                &quot;prop0&quot;: &quot;value0&quot;,
+                &quot;prop1&quot;: 0.0
             }
         },
         {
-            "type": "Feature",
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
+            &quot;type&quot;: &quot;Feature&quot;,
+            &quot;geometry&quot;: {
+                &quot;type&quot;: &quot;Polygon&quot;,
+                &quot;coordinates&quot;: [
                 [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0],
                 [100.0, 1.0], [100.0, 0.0] ]
             ]
             },
-            "properties": {
-                "prop0": "value0",
-                "prop1": {"this": "that"}
+            &quot;properties&quot;: {
+                &quot;prop0&quot;: &quot;value0&quot;,
+                &quot;prop1&quot;: {&quot;this&quot;: &quot;that&quot;}
             }
         }
     ]
-}</code></p>
+}
+</code></pre>
 <h2 id="shapefile">Shapefile</h2>
 <p>地理情報システム（GIS）間でのデータの相互運用におけるオープン標準として用いられるファイル形式である。
 データ変換ツールを用いると、Google Earthなどで用いられているKML形式に変換することもできる。</p>

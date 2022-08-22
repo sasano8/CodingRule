@@ -749,37 +749,39 @@
 - apply,call呼び出しパターン</p>
 <p>また、注意点として、function宣言時にfunction構文とアロー演算子によって、thisのスコープが異なる。
 function構文の場合は、宣言時のオブジェクトのthisを参照するが、アロー演算子による定義はグローバルthisを参照する。</p>
-<p>``` JavaScript
-this.data = "test"</p>
-<p>var f1 = {
+<pre><code class="language-JavaScript">this.data = &quot;test&quot;
+
+var f1 = {
     data: 'this1',
     do: function() {
         console.log(this.data)
     }
-}</p>
-<p>var f2 = {
+}
+
+var f2 = {
     data: 'this2',
     do: () =&gt; {
         console.log(this.data)
     }
 }
-```</p>
+</code></pre>
 <h1 id="_1">コストラクタ</h1>
 <p>JavaScriptにはクラスの概念がない。
 しかし、new演算子でクラスのようなオブジェクトを実現することができる。</p>
-<p>``` JavaScript
-function Dog(name, cry){
+<pre><code class="language-JavaScript">function Dog(name, cry){
   //this = {}
   this.name = name;
   this.bark = function() {
     console.log(cry);
   };
   //return this;
-}</p>
-<p>//newは暗黙的に、thisにオブジェクトを格納し、それをリターンします。
-var dog = new Dog('poti','bow');</p>
-<p>dog.bark();
-```</p>
+}
+
+//newは暗黙的に、thisにオブジェクトを格納し、それをリターンします。
+var dog = new Dog('poti','bow');
+
+dog.bark();
+</code></pre>
                 
               
 

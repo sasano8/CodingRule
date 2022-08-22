@@ -1251,49 +1251,58 @@ RFC3164</p>
 <li><a href="https://kurozumi.github.io/tweepy/">twitter</a></li>
 </ul>
 <h1 id="security-osint-pagefile">pagefileから調査の手がかりを得る</h1>
-<p>```</p>
-<h1 id="security-osint-pagefilesys">pagefile.sysの解析</h1>
-<h1 id="security-osint-_1">参考</h1>
-<p>https://soji256.hatenablog.jp/entry/2019/06/25/065200</p>
-<h1 id="security-osint-_2">ファイルパス</h1>
-<p>strings pagefile.sys | grep -i "^[a-z]:\\" | sort | uniq &gt; list_file.txt</p>
-<h1 id="security-osint-url">URL</h1>
-<p>strings pagefile.sys | egrep "^https?://" | sort | uniq &gt; list_url.txt</p>
-<h1 id="security-osint-_3">メールアドレス</h1>
-<p>strings pagefile.sys | egrep '([[:alnum:]<em>.-]{1,64}+@[[:alnum:]</em>.-]{2,255}+?.[[:alpha:].]{2,4})' &gt; list_mail.txt</p>
-<h1 id="security-osint-_4">環境変数</h1>
-<p>strings pagefile.sys | grep -i "^[a-zA-Z09_]<em>=.</em>" | sort -u | uniq &gt; list_envirnoment.txt
-```</p>
+<pre><code># pagefile.sysの解析
+
+# 参考
+https://soji256.hatenablog.jp/entry/2019/06/25/065200
+
+# ファイルパス
+strings pagefile.sys | grep -i &quot;^[a-z]:\\\\&quot; | sort | uniq &gt; list_file.txt
+
+
+# URL
+strings pagefile.sys | egrep &quot;^https?://&quot; | sort | uniq &gt; list_url.txt
+
+# メールアドレス
+strings pagefile.sys | egrep '([[:alnum:]_.-]{1,64}+@[[:alnum:]_.-]{2,255}+?\.[[:alpha:].]{2,4})' &gt; list_mail.txt
+
+
+# 環境変数
+strings pagefile.sys | grep -i &quot;^[a-zA-Z09_]*=.*&quot; | sort -u | uniq &gt; list_envirnoment.txt
+</code></pre>
 <h1 id="security-osint-outlookexcel">OutlookのメールをExcelに出力</h1>
-<p>```
-'UTF8だと動かない場合があるため、その場合はSJISで実行してみてください</p>
-<p>' ここをトリプルクリックでスクリプト全体を選択できます。
-Const IMPORT_FOLDER = "C:\Users\UserName\Documents" ' EML ファイルがあるフォルダーを指定</p>
-<p>'実行の前提として、受信フォルダ配下にインポートフォルダを作成してください
-Const TARGET_IMBOX = "インポート"</p>
-<p>Const olFolderInbox = 6
+<pre><code>'UTF8だと動かない場合があるため、その場合はSJISで実行してみてください
+
+' ここをトリプルクリックでスクリプト全体を選択できます。
+Const IMPORT_FOLDER = &quot;C:\Users\UserName\Documents&quot; ' EML ファイルがあるフォルダーを指定
+
+'実行の前提として、受信フォルダ配下にインポートフォルダを作成してください
+Const TARGET_IMBOX = &quot;インポート&quot;
+
+
+Const olFolderInbox = 6
 Dim olkApp
 Dim fldImport
 Dim wshShell
 Dim objFSO
 Dim objFolder
 Dim objFile
-Set olkApp = CreateObject("Outlook.Application")
+Set olkApp = CreateObject(&quot;Outlook.Application&quot;)
 Set fldImport = olkApp.Session.GetDefaultFolder(olFolderInbox)
-Set fldImport = fldImport.Folders("インポート")
+Set fldImport = fldImport.Folders(&quot;インポート&quot;)
 fldImport.Display
-Set wshShell = CreateObject("WScript.Shell")
-Set objFSO = CreateObject("Scripting.FileSystemObject")
+Set wshShell = CreateObject(&quot;WScript.Shell&quot;)
+Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)
 Set objFolder = objFSO.GetFolder(IMPORT_FOLDER)
 ' IMPORT_FOLDER で指定されたフォルダーのファイルを取得
 For Each objFile In objFolder.Files
-    If LCase(Right(objFile.Name,4)) = ".eml" Then
+    If LCase(Right(objFile.Name,4)) = &quot;.eml&quot; Then
         ' 拡張子が .eml ならインポート処理
         OpenEml objFile.Name
     End If
 Next
 olkApp.ActiveExplorer.Close
-MsgBox "インポートは終了しました。", vbOKOnly, "EML ファイル インポート"
+MsgBox &quot;インポートは終了しました。&quot;, vbOKOnly, &quot;EML ファイル インポート&quot;
 ' eml ファイルを開いてインポートするルーチン
 Sub OpenEml( strFileName )
     On Error Resume Next
@@ -1304,7 +1313,7 @@ Sub OpenEml( strFileName )
         WScript.Sleep 1000
     Wend
     ' eml ファイルを Outlook で開くコマンドを実行
-    wshShell.Run "outlook /eml """ &amp; IMPORT_FOLDER &amp; "\" &amp; strFileName &amp; """"
+    wshShell.Run &quot;outlook /eml &quot;&quot;&quot; &amp; IMPORT_FOLDER &amp; &quot;\&quot; &amp; strFileName &amp; &quot;&quot;&quot;&quot;
     ' 上記のコマンドで Outlook が起動するのを待つ
     While olkApp.ActiveInspector Is Nothing
         WScript.Sleep 1000
@@ -1313,7 +1322,7 @@ Sub OpenEml( strFileName )
     olkApp.ActiveInspector.CurrentItem.Move fldImport
     olkApp.ActiveInspector.Close
 End Sub
-```</p></section><h1 class='nav-section-title-end'>Ended: セキュリティ</h1><section class="print-page" id="architecture"><h1 id="architecture-integration-suite">Integration Suite</h1>
+</code></pre></section><h1 class='nav-section-title-end'>Ended: セキュリティ</h1><section class="print-page" id="architecture"><h1 id="architecture-integration-suite">Integration Suite</h1>
 <h1 id="architecture-python">Python</h1>
 <p>Pythonを中心に統一したい場合のシステム
 - <a href="https://ja.wikipedia.org/wiki/Python%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E8%A3%BD%E5%93%81%E3%81%82%E3%82%8B%E3%81%84%E3%81%AF%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E4%B8%80%E8%A6%A7">参考</a></p>
@@ -1505,24 +1514,27 @@ tortoise-ormに依存しているのがいい作りではない。</p></section>
                         <section class="print-page" id="program-vba"><h1 id="program-vba-_1">ヘッダ</h1>
 <p>各ソースファイルの先頭とプロシージャ・ファンクションの上部にヘッダを用意すること。</p>
 <h2 id="program-vba-_2">ソースヘッダ</h2>
-<p><code>'ソース名       ：
+<pre><code>'ソース名       ：
 '機能説明       ：
 '備考     ：
 '作成者        ：2016/12/11
-'作成日        ：2016/12/11</code></p>
+'作成日        ：2016/12/11
+</code></pre>
 <h2 id="program-vba-_3">ファンクションヘッダ</h2>
-<p><code>'機能名        ：
+<pre><code>'機能名        ：
 '引数     ：   
 '戻り値        ：Arg1
 '           ：Arg2'
 機能説明        ：
 '備考     ：
 '作成者        ：2016/12/11
-'作成日        ：2016/12/11</code></p>
+'作成日        ：2016/12/11
+</code></pre>
 <h1 id="program-vba-_4">型宣言の強制</h1>
-<p>下記の宣言を行い型の宣言を強制すること。
-<code>Option Explicit</code>
-この宣言は以下の設定で自動挿入を行う。</p>
+<p>下記の宣言を行い型の宣言を強制すること。</p>
+<pre><code>Option Explicit
+</code></pre>
+<p>この宣言は以下の設定で自動挿入を行う。</p>
 <ol>
 <li>【ツール】→【オプション】</li>
 <li>【編集】のタブを選択</li>
@@ -1531,35 +1543,40 @@ tortoise-ormに依存しているのがいい作りではない。</p></section>
 <h2 id="program-vba-_5">理由</h2>
 <p>変数名のミスがあった場合、コンパイル時にミスを検知することができるため。</p>
 <h1 id="program-vba-_6">変数の一括宣言</h1>
-<p>一行で複数の変数宣言を行う場合、それぞれに型を明示すること。
-<code>Dim valA as String, valB as Long</code></p>
+<p>一行で複数の変数宣言を行う場合、それぞれに型を明示すること。</p>
+<pre><code>Dim valA as String, valB as Long
+</code></pre>
 <h2 id="program-vba-_7">理由</h2>
-<p>型宣言を行わないと、暗黙の型（Variant）が適用されるため。
-<code>Dim UserMin, UserMax As Integer   'userMinはVariant型になる。</code></p>
+<p>型宣言を行わないと、暗黙の型（Variant）が適用されるため。</p>
+<pre><code>Dim UserMin, UserMax As Integer   'userMinはVariant型になる。
+</code></pre>
 <h1 id="program-vba-_8">マクロのスコープ</h1>
-<p>以下の宣言を利用し、プロシージャ・ファンクションの不要なアクセスレベルを付与しないこと。
-<code>Option Private Module</code></p>
+<p>以下の宣言を利用し、プロシージャ・ファンクションの不要なアクセスレベルを付与しないこと。</p>
+<pre><code>Option Private Module
+</code></pre>
 <h1 id="program-vba-_9">変数のスコープ</h1>
 <h1 id="program-vba-_10">オブジェクトの初期化</h1>
-<p>以下の正しい例に従い、オブジェクトの初期化を行うこと。
-```
-'正しい例
+<p>以下の正しい例に従い、オブジェクトの初期化を行うこと。</p>
+<pre><code>'正しい例
 Dim obj As MyClass
-Set obj = New MyClass</p>
-<p>'誤った例
+Set obj = New MyClass
+
+'誤った例
 Dim obj As New MyClass 
-```</p>
+</code></pre>
 <h2 id="program-vba-_11">理由</h2>
 <p>オブジェクトの変数宣言と同時に初期化を行うと、コンストラクタの起動タイミングが制御できないため。</p>
 <h1 id="program-vba-_12">オブジェクトの破棄</h1>
 <p>使用が終わったオブジェクトは参照を解放すること。
-クローズメソッドを持っているオブジェクトはクローズを実施すること。
-<code>Call obj.Close
-Set obj = Nothing</code></p>
-<p>また、クラスモジュールを作成時にデストラクタを定義すること。
-<code>Sub Class_Terminate()
+クローズメソッドを持っているオブジェクトはクローズを実施すること。</p>
+<pre><code>Call obj.Close
+Set obj = Nothing
+</code></pre>
+<p>また、クラスモジュールを作成時にデストラクタを定義すること。</p>
+<pre><code>Sub Class_Terminate()
   '処理
-End Sub</code></p>
+End Sub
+</code></pre>
 <h2 id="program-vba-_13">理由</h2>
 <p>オブジェクトは参照カウンタを持っており、参照が0になるとオブジェクトが破棄されるため。
 オブジェクトはスコープを抜けると破棄されるが（確認）、
@@ -1570,15 +1587,18 @@ End Sub</code></p>
 <h1 id="program-vba-_15">命名規則</h1>
 <p>意味を略さずに略さずに命名すること。</p>
 <h2 id="program-vba-_16">クラス名・標準モジュール名</h2>
-<p>Pascal Case(Upper Camel Case)を利用すること。
-<code>MyClass</code></p>
+<p>Pascal Case(Upper Camel Case)を利用すること。</p>
+<pre><code>MyClass
+</code></pre>
 <h2 id="program-vba-_17">定数</h2>
 <p>Upper Case を利用すること。
 定数名に型や利用用途について情報を含めること。</p>
-<p><code>Const RNG_INPUT_USERNAME    'ユーザー名の入力セル</code></p>
+<pre><code>Const RNG_INPUT_USERNAME    'ユーザー名の入力セル
+</code></pre>
 <h2 id="program-vba-_18">変数</h2>
-<p>Snake Case を利用すること。
-<code>Dim ws_test as WorkSheet</code></p>
+<p>Snake Case を利用すること。</p>
+<pre><code>Dim ws_test as WorkSheet
+</code></pre>
 <h2 id="program-vba-_19">理由</h2>
 <p>VBAは構造化が複雑であり、きちんと分類分けすることが難しい。
 様々な観点が入り乱れる為、_で意味を理解できるように努める。</p>
@@ -1597,68 +1617,72 @@ End Sub</code></p>
 <p>VABでコールバックを利用する場合はCallByNameを利用し、
 コールバック対象のオブジェクトは「OnCompleted」を実装すること。
 同一クラス・フォームで２つ以上のコールバック関数が必要な場合は、
-「OnCompleted + 処理名」とすること。
-<code>Sub Procedure(callback as Object)
-  CallByName callback, "OnCompleted", VbMethod, "おはよー", "おはよー"
-End Sub</code></p>
+「OnCompleted + 処理名」とすること。</p>
+<pre><code>Sub Procedure(callback as Object)
+  CallByName callback, &quot;OnCompleted&quot;, VbMethod, &quot;おはよー&quot;, &quot;おはよー&quot;
+End Sub
+</code></pre>
 <h1 id="program-vba-_25">コメント</h1>
 <h1 id="program-vba-_26">配列</h1>
 <h1 id="program-vba-_27">ショートサーキット</h1>
-<p>VBAにおいて、ショートサッキット（短絡評価）は行われないということを認識すること。
-<code>'IsAの判定がfalseでもIsBが実行される。
-if IsA() = "A" And IsB() = "B" then
-end if</code></p>
+<p>VBAにおいて、ショートサッキット（短絡評価）は行われないということを認識すること。</p>
+<pre><code>'IsAの判定がfalseでもIsBが実行される。
+if IsA() = &quot;A&quot; And IsB() = &quot;B&quot; then
+end if
+</code></pre>
 <h1 id="program-vba-3">3項演算子</h1>
 <p>VBAの構文に、三項演算子は存在しないが、IIF関数を利用することができる。
 ただし、true falseどちらの評価も行われるため、
-イミュータブルな値を利用すること。
-```
-'正しい例
-result = IIF(IsTrue(),True,False)</p>
-<p>'誤った例
+イミュータブルな値を利用すること。</p>
+<pre><code>'正しい例
+result = IIF(IsTrue(),True,False)
+
+'誤った例
 Call IIF(IsTrue(),DoIfTrue(),DoIfFalse()) 'どちらも実行されてしまう。
-```</p>
+</code></pre>
 <h1 id="program-vba-_28">日付リテラル</h1>
-<p>地域により動作が異なるため、日付リテラルを利用すること。
-```
-Dim birthday as Data
+<p>地域により動作が異なるため、日付リテラルを利用すること。</p>
+<pre><code>Dim birthday as Data
 '正しい例
 birthday = #12/1/1 12:0:0#
-Debug.Print birthday      '日本　2012/1/1 12:00　米国　2001/1/12 12:00</p>
-<p>'誤った例
-birthday = "12/1/1 12:0:0"
+Debug.Print birthday      '日本　2012/1/1 12:00　米国　2001/1/12 12:00
+
+'誤った例
+birthday = &quot;12/1/1 12:0:0&quot;
 Debug.Print birthday      '
-```</p>
+</code></pre>
 <h2 id="program-vba-_29">理由</h2>
 <p>日付リテラルを利用することで、日付の解釈を固定できるため。</p>
 <h1 id="program-vba-_30">型宣言文字</h1>
 <p>変数や値の末尾にキーワードを付与することで、型を指定することができる。
 基本は、変数で型を定義すること。</p>
-<p>```
-Dim a$ '文字列型
+<pre><code>Dim a$ '文字列型
 Dim b&amp; '長整数型
 Dim c% '整数型
 Dim d@ '通貨型
 Dim e# '倍精度浮動小数点数型
-Dim f! '単精度浮動小数点数型</p>
-<p>'または以下のように利用する。
+Dim f! '単精度浮動小数点数型
+
+'または以下のように利用する。
 a = 0
 a = a$
 b = 0&amp;
 c = 0%
 d = 0@
 e = 0#
-f = 0!</p>
-<p>```</p>
+f = 0!
+
+</code></pre>
 <h1 id="program-vba-_31">引数のキーワードの明示化</h1>
 <p>参照渡しか値渡しか明示すること。</p>
 <h2 id="program-vba-_32">理由</h2>
-<p>関数の呼び出し方により、値渡し、参照渡しが決定されるため。
-<code>Dim lVal as long
+<p>関数の呼び出し方により、値渡し、参照渡しが決定されるため。</p>
+<pre><code>Dim lVal as long
 SubA lVal           '参照渡しになる
 SubA(lVal)          '値渡しになる
 Call SubA(lVal)     '参照渡しになる
-Call SubA((lVal))   '値渡しになる</code></p>
+Call SubA((lVal))   '値渡しになる
+</code></pre>
 <h1 id="program-vba-_33">設計</h1>
 <p>モジュール・クラスにまとめる関数の設計は以下を参考とすること。</p>
 <h1 id="program-vba-_34">エラーハンドリング</h1>
@@ -1666,112 +1690,123 @@ Call SubA((lVal))   '値渡しになる</code></p>
 処理によって、適切なエラーハンドリングを行うこと。</p>
 <h2 id="program-vba-_35">ループ中のエラーハンドリング例</h2>
 <p>サブルーチンからメインルーチンへ戻るには、Resumeステートメントを利用する。</p>
-<p>```
-'正しい例（本当か？）
+<pre><code>'正しい例（本当か？）
 On Error Goto err_handler
 for i = 0 to 100 
   '処理
 next_loop:
-next</p>
-<p>resume next_loop</p>
-<p>'誤った例（例外発生後は例外を検知できない。）
+next
+
+resume next_loop
+
+'誤った例（例外発生後は例外を検知できない。）
 On Error Goto err_handler
 for i = 0 to 100 
   '処理
 err_handler:
-next</p>
-<p>```</p>
+next
+
+</code></pre>
 <h2 id="program-vba-_36">長いメインルーチンでのエラーハンドリング例</h2>
-<p>```
-処理</p>
-<p>OnSccess
+<pre><code>処理
+
+OnSccess
     '成功処理
-    goto OnComplete</p>
-<p>OnError
+    goto OnComplete
+
+OnError
     '失敗処理
-    goto OnComplete</p>
-<p>OnComplete
+    goto OnComplete
+
+OnComplete
     'クローズ処理
 exit function
-```</p>
+</code></pre>
 <h2 id="program-vba-_37">繰り返し中のエラーハンドリング例</h2>
-<p>```
-Function ErrHandlingSample()</p>
-<div class="highlight"><pre><span></span><code><span class="nv">On</span><span class="w"> </span><span class="nv">Error</span><span class="w"> </span><span class="k">Goto</span><span class="w"> </span><span class="nl">err_handler</span><span class="w"></span>
+<pre><code>Function ErrHandlingSample()
 
-<span class="k">for</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">Selection</span><span class="w"></span>
+    On Error Goto err_handler
 
-<span class="w">    </span><span class="k">Call</span><span class="w"> </span><span class="nl">Function01</span><span class="ss">()</span><span class="w"></span>
-<span class="w">    </span><span class="k">Call</span><span class="w"> </span><span class="nl">Function02</span><span class="ss">()</span><span class="w"></span>
-<span class="w">    </span><span class="k">Call</span><span class="w"> </span><span class="nl">Function03</span><span class="ss">()</span><span class="w"></span>
-</code></pre></div>
+    for each r in Selection
 
-<p>next_loop:
-    next</p>
-<div class="highlight"><pre><span></span><code><span class="nv">On</span><span class="w"> </span><span class="nv">Error</span><span class="w"> </span><span class="k">Goto</span><span class="w"> </span><span class="nl">0</span><span class="w"></span>
+        Call Function01()
+        Call Function02()
+        Call Function03()
+next_loop:
+    next
 
-<span class="err">&#39;無限ループ回避(resumeが無限に走ってしまう。)</span>
-<span class="err">Exit Function</span><span class="w"></span>
-</code></pre></div>
+    On Error Goto 0
 
-<p>'エラーが発生したら、next_loopへ復帰する
+    '無限ループ回避(resumeが無限に走ってしまう。)
+    Exit Function
+
+'エラーが発生したら、next_loopへ復帰する
 err_handler:
-    resume next_loop</p>
-<p>End Function
-```</p>
+    resume next_loop
+
+End Function
+</code></pre>
 <h1 id="program-vba-empty">Empty値について</h1>
 <p>Emptyとは何も値が設定されていない状態であり、
 Variant型でのみ有効？である。</p>
 <p>Emptyを厳密に区別するためには以下のようなコードで理解を深めるとよい</p>
-<p>```
-Dim a as Variant
-Dim b as Variant</p>
-<p>b = 0</p>
-<p>'何も値を設定していない状態はIsEmptyでTrueが返る
-if a = 0 then debug.print "Not Empty"
-if a = Empty then debug.print "Not Empty"
-if IsEmpty(a) then debug.print "Empty"</p>
-<p>'何か値を設定していればIsEmptyでFalseが返る
-if b = 0 then debug.print "Not Empty"
-if b = Empty then debug.print "Not Empty"
-if IsEmpty(b) then debug.print "Empty"</p>
-<p>```</p>
+<pre><code>Dim a as Variant
+Dim b as Variant
+
+b = 0
+
+'何も値を設定していない状態はIsEmptyでTrueが返る
+if a = 0 then debug.print &quot;Not Empty&quot;
+if a = Empty then debug.print &quot;Not Empty&quot;
+if IsEmpty(a) then debug.print &quot;Empty&quot;
+
+'何か値を設定していればIsEmptyでFalseが返る
+if b = 0 then debug.print &quot;Not Empty&quot;
+if b = Empty then debug.print &quot;Not Empty&quot;
+if IsEmpty(b) then debug.print &quot;Empty&quot;
+
+</code></pre>
 <h1 id="program-vba-_38">行番号</h1>
 <p>VBA（正式にはVisual Basic?）では、行に番号を付与することができる。
 以下のコードは、その機能を利用したテストの例である。</p>
-<p>```
-Sub Test()</p>
-<p>On Error Goto TestFailed</p>
-<p>1 If Sheet1.Range("A1").Value &lt;&gt; "" then Err.Raise -1
-2 If Sheet1.Range("B1").Value &lt;&gt; "" then Err.Raise -1</p>
-<p>On Error Goto 0</p>
-<p>Exit Sub</p>
-<p>TestFailed:
-    Debug.Print "ERR NO : " &amp; VBA.Erl
-    Resume Next</p>
-<p>End Sub
-```</p>
+<pre><code>Sub Test()
+
+On Error Goto TestFailed
+
+1 If Sheet1.Range(&quot;A1&quot;).Value &lt;&gt; &quot;&quot; then Err.Raise -1
+2 If Sheet1.Range(&quot;B1&quot;).Value &lt;&gt; &quot;&quot; then Err.Raise -1
+
+On Error Goto 0
+
+Exit Sub
+
+TestFailed:
+    Debug.Print &quot;ERR NO : &quot; &amp; VBA.Erl
+    Resume Next
+
+End Sub
+</code></pre>
 <h1 id="program-vba-_39">文字列データの比較モードの指定</h1>
 <p>比較モードにより、文字列の比較結果が変わる。
 既定はBinaryとなる。</p>
-<p>```
-Option Compare Binary</p>
-<p>Sub Sample()
-    Debug.Print "A" &lt; "a"   'Trueが返ります。
-    Debug.Print "A" &lt; "a"   'Falseが返ります。
+<pre><code>Option Compare Binary
+
+Sub Sample()
+    Debug.Print &quot;A&quot; &lt; &quot;a&quot;   'Trueが返ります。
+    Debug.Print &quot;A&quot; &lt; &quot;a&quot;   'Falseが返ります。
 End Sub
-```</p>
-<p>```
-Option Compare Text</p>
-<p>Sub Sample()
-    Debug.Print "A" &lt; "a"   'Falseが返ります。
-    Debug.Print "A" &lt; "a"   'Trueが返ります。
+</code></pre>
+<pre><code>Option Compare Text
+
+Sub Sample()
+    Debug.Print &quot;A&quot; &lt; &quot;a&quot;   'Falseが返ります。
+    Debug.Print &quot;A&quot; &lt; &quot;a&quot;   'Trueが返ります。
 End Sub
-```</p>
-<p>```
-'Accessのみで利用可能
-Option Compare Database</p>
-<p>```</p>
+</code></pre>
+<pre><code>'Accessのみで利用可能
+Option Compare Database
+
+</code></pre>
 <h1 id="program-vba-activex">ActiveXとフォーム</h1>
 <p>ワークシート上に配置するボタンなどのコントロールは、ActiveXとフォームの２種類が存在している。
 おすすめはフォーム。
@@ -1781,58 +1816,69 @@ ActiveXは経験上壊れやすかった。
 <h1 id="program-vba-_40">エラーメッセージ管理（考察中）</h1>
 <p>ユーザ独自のエラー番号を定義する場合、
 エラー番号0～512はシステムで予約されている為、それ以降を利用すること。</p>
-<p>```
-Public Const MSG_SUCCESS = 0
+<pre><code>Public Const MSG_SUCCESS = 0
 Public Const MSG_FATAL = 513
-Public Const MSG_NOTFOUND = 514</p>
-<p>```</p></section><section class="print-page" id="program-python"><h1 id="program-python-_1">辞書の合成</h1>
+Public Const MSG_NOTFOUND = 514
+
+</code></pre></section><section class="print-page" id="program-python"><h1 id="program-python-_1">辞書の合成</h1>
 <p>２つの辞書を合成した場合、重複したキーはどうなるか検証した。
 dict(*<em>dic1, *</em>dic2)、func(*<em>dic1, *</em>dic2)は重複したキーが投入された時、エラーとなるので積極的に使ってよい。
 {*<em>dic1, *</em>dic2}は、後勝ちで上書きされるので危険。</p>
-<p>```
-dic1 = {"name": "bob", "age": 20}
-dic2 = {"name": "mary"}</p>
-<h1 id="program-python-_2">辞書作成時</h1>
-<p>{<strong>dic1, </strong>dic2}  # =&gt; {"name": "mary", "age": 20}  右辺の値で上書き
-dict(<strong>dic1, </strong>dic2)  # =&gt; TypeError: func() got multiple values for keyword argument 'name'</p>
-<h1 id="program-python-update">update / 代入演算子</h1>
-<p>update_dic = {"name": "bob", "age": 20}
-update_dic.update(dic2)</p>
-<h1 id="program-python-_3">または</h1>
-<p>update_dic |= dic2</p>
-<h1 id="program-python-name-mary-age-20">=&gt; {"name": "mary", "age": 20}  右辺の値で上書きされる。また、元データを変更するので、できればあまり使わないほうがよい。</h1>
-<p>dict(update_dic, **dic2)</p>
-<h1 id="program-python-_4">元のソース自体は更新されない</h1>
-<h1 20="20" _age_:="&quot;age&quot;:" _mary_="&quot;mary&quot;," _name_:="&quot;name&quot;:" id="program-python-_5">=&gt;</h1>
-<h1 id="program-python-_6">マージ演算子</h1>
-<p>new_dic = dict_1 | dict_2</p>
-<h1 id="program-python-name-mary-age-20_1">=&gt; {"name": "mary", "age": 20}  右辺の値で上書きされる</h1>
-<h1 id="program-python-_7">キーワード引数として渡す際に合成</h1>
-<p>def func(**kwargs):
-    print(kwargs)</p>
-<p>func(<strong>dic1, </strong>dic2)</p>
-<h1 id="program-python-typeerror-func-got-multiple-values-for-keyword-argument-name">=&gt; TypeError: func() got multiple values for keyword argument 'name'</h1>
-<p>```</p>
-<h1 id="program-python-_8">クラス</h1>
+<pre><code>dic1 = {&quot;name&quot;: &quot;bob&quot;, &quot;age&quot;: 20}
+dic2 = {&quot;name&quot;: &quot;mary&quot;}
+
+# 辞書作成時
+{**dic1, **dic2}  # =&gt; {&quot;name&quot;: &quot;mary&quot;, &quot;age&quot;: 20}  右辺の値で上書き
+dict(**dic1, **dic2)  # =&gt; TypeError: func() got multiple values for keyword argument 'name'
+
+# update / 代入演算子
+update_dic = {&quot;name&quot;: &quot;bob&quot;, &quot;age&quot;: 20}
+update_dic.update(dic2)
+# または
+update_dic |= dic2
+# =&gt; {&quot;name&quot;: &quot;mary&quot;, &quot;age&quot;: 20}  右辺の値で上書きされる。また、元データを変更するので、できればあまり使わないほうがよい。
+
+dict(update_dic, **dic2)
+# 元のソース自体は更新されない
+# =&gt; {&quot;name&quot;: &quot;mary&quot;, &quot;age&quot;: 20}
+
+# マージ演算子
+new_dic = dict_1 | dict_2
+# =&gt; {&quot;name&quot;: &quot;mary&quot;, &quot;age&quot;: 20}  右辺の値で上書きされる
+
+
+# キーワード引数として渡す際に合成
+def func(**kwargs):
+    print(kwargs)
+
+func(**dic1, **dic2)
+# =&gt; TypeError: func() got multiple values for keyword argument 'name'
+</code></pre>
+<h1 id="program-python-_2">クラス</h1>
 <p>python3.7未満は、クラスコンストラクタの定義が冗長的。
 python3.7以降は、dataclassデコレータでメンバ変数およびに__init__や__str__を自動生成してくれる。
 pydanticはdataclassのような機能に加え、様々なオプションを設定でき高機能。
 ライブラリ作成時は、依存関係を減らすためdataclassを使いたい。</p>
-<p>```
+<pre><code>class MyClass:
+  def __init__(self, name):
+    self.name = name
+
+
+# python3.7以降
+from dataclasses import dataclass
+
+@dataclass
 class MyClass:
-  def <strong>init</strong>(self, name):
-    self.name = name</p>
-<h1 id="program-python-python37">python3.7以降</h1>
-<p>from dataclasses import dataclass</p>
-<p>@dataclass
-class MyClass:
-  name: str</p>
-<h1 id="program-python-_9">外部ライブラリ</h1>
-<p>from pydantic import BaseModel</p>
-<p>class MyClass(BaseModel):
   name: str
-```</p>
-<h1 id="program-python-_10">日付の扱い方</h1>
+
+
+# 外部ライブラリ
+from pydantic import BaseModel
+
+class MyClass(BaseModel):
+  name: str
+</code></pre>
+<h1 id="program-python-_3">日付の扱い方</h1>
 <p>日付関連の機能はdatetimeモジュールから利用することができる。
 タイムゾーンを操作するには、標準ライブラリだけでは大変で、python-dateutil,pytzなどの外部ライブラリを用いるのがスタンダード。
 python3.9からは、zoneinfoが標準ライブラリに加わり、タイムゾーンを扱いやすくなった。</p>
@@ -1842,227 +1888,264 @@ nativeな日付は、timezoneを持たないため、暗黙的に同一の地域
 常に、awareな日付を作成することで、nativeを考慮しない方が明瞭に課題を解決できる。</p>
 <p>とにかく、datetimeオブジェクトを作成時は,utcを指定しておくのがよい。
 現地時間を重視する場合は、timezoneを指定しておき、表示の際にどの地域を軸に表示するか指定する。</p>
-<h2 id="program-python-_11">日付関連型</h2>
-<p>```
-import datetime
-import time</p>
-<p>dt = datetime.datetime.now() # datetime型　日付＋時間
+<h2 id="program-python-_4">日付関連型</h2>
+<pre><code>import datetime
+import time
+
+dt = datetime.datetime.now() # datetime型　日付＋時間
 da = datetime.date.today()  # date型　日付のみ date型はdatetime型と互換性がある
-td = datetime.timedelta(days=1)  # timedelta型　日数、秒数、マイクロ秒数情報を持ち、差分表現に用いられる</p>
-<p>ut = time.time()  # float型 UNIX時間（エポック秒）</p>
-<h1 id="program-python-aware">単純に日付を作成しただけではawareな日付にならない</h1>
-<p>dt = datetime.datetime.now()
-dt.tzinfo</p>
-<h1 id="program-python-none">=&gt;&gt; None</h1>
-<p>dt = datetime.datetime.utcnow()
-dt.tzinfo</p>
-<h1 id="program-python-none_1">=&gt;&gt; None</h1>
-<h1 id="program-python-_12">面倒だが常にタイムゾーンを意識する</h1>
-<p>dt = datetime.datetime.now(tz=datetime.timezone.utc)
-dt.tzinfo</p>
-<h1 id="program-python-datetimetimezoneutc">=&gt;&gt; datetime.timezone.utc</h1>
-<h1 id="program-python-os2020111723">OSの現在日時が2020年11月17日23時の場合の結果は以下のようになる</h1>
-<p>dt.isoformat()</p>
-<h1 id="program-python-2020-11-17t1401545671540000">=&gt;&gt; '2020-11-17T14:01:54.567154+00:00'</h1>
-<h1 id="program-python-python39">python3.9からはこう書けるようになる？？</h1>
-<p>dt = datetime.datetime.now(tz="utc")</p>
-<h1 id="program-python-asiatokyo19">いけないコード。Asia/Tokyoで19分ずれる</h1>
-<p>datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=pytz.timezone('Asia/Tokyo'))</p>
-<h1 id="program-python-datetimedatetime1970-1-1-0-0-0-0-tzinfo">=&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=<DstTzInfo 'Asia/Tokyo' LMT+9:19:00 STD>)</h1>
-<h1 id="program-python-_13">好ましいコード。</h1>
-<p>tz = pytz.timezone('Asia/Tokyo')
-tz.localize(datetime(1970, 1, 1, 0, 0, 0, 0))</p>
-<h1 id="program-python-datetimedatetime1970-1-1-0-0-0-0-tzinfo_1">=&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=<DstTzInfo 'Asia/Tokyo' LMT+9:00:00 STD>)</h1>
-<p>```</p>
-<h1 id="program-python-_14">型チェック</h1>
-<p>``` python</p>
-<h1 id="program-python-type">typeは、完全一致での型チェックを行う場合に利用する。</h1>
-<h1 id="program-python-isinstance">isinstanceは、親オブジェクトを含んだ型チェックを行う場合に利用する。</h1>
-<h1 id="program-python-_15">クラスはタイプのインスタンス</h1>
-<p>class SampleBase():
-  pass</p>
-<p>class Sample(SampleBase):
-  def <strong>call</strong>(self):
-    pass</p>
-<p>def func():
-  pass</p>
-<p>obj = Sample()</p>
-<p>type(obj) is Sample # True
+td = datetime.timedelta(days=1)  # timedelta型　日数、秒数、マイクロ秒数情報を持ち、差分表現に用いられる
+
+ut = time.time()  # float型 UNIX時間（エポック秒）
+
+
+# 単純に日付を作成しただけではawareな日付にならない
+dt = datetime.datetime.now()
+dt.tzinfo
+# =&gt;&gt; None
+
+dt = datetime.datetime.utcnow()
+dt.tzinfo
+# =&gt;&gt; None
+
+# 面倒だが常にタイムゾーンを意識する
+dt = datetime.datetime.now(tz=datetime.timezone.utc)
+dt.tzinfo
+# =&gt;&gt; datetime.timezone.utc
+
+# OSの現在日時が2020年11月17日23時の場合の結果は以下のようになる
+dt.isoformat()
+# =&gt;&gt; '2020-11-17T14:01:54.567154+00:00'
+
+# python3.9からはこう書けるようになる？？
+dt = datetime.datetime.now(tz=&quot;utc&quot;)
+
+
+# いけないコード。Asia/Tokyoで19分ずれる
+datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=pytz.timezone('Asia/Tokyo'))
+# =&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=&lt;DstTzInfo 'Asia/Tokyo' LMT+9:19:00 STD&gt;)
+
+# 好ましいコード。
+tz = pytz.timezone('Asia/Tokyo')
+tz.localize(datetime(1970, 1, 1, 0, 0, 0, 0))
+# =&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=&lt;DstTzInfo 'Asia/Tokyo' LMT+9:00:00 STD&gt;)
+
+</code></pre>
+<h1 id="program-python-_5">型チェック</h1>
+<pre><code class="language-python">
+# typeは、完全一致での型チェックを行う場合に利用する。
+# isinstanceは、親オブジェクトを含んだ型チェックを行う場合に利用する。
+# クラスはタイプのインスタンス
+
+class SampleBase():
+  pass
+
+class Sample(SampleBase):
+  def __call__(self):
+    pass
+
+def func():
+  pass
+
+obj = Sample()
+
+type(obj) is Sample # True
 type(obj) is SampleBase # False
 isinstance(obj, Sample) # True
 isinstance(obj, SampleBase) # True
 isinstance(Sample, type) # True
 issublass(Sample, SampleBase) # True
-issublass(Sample, type) # False</p>
-<h1 id="program-python-type_1">クラスはtypeのインスタンスである</h1>
-<p>isinstance(SampleBase, type) # True
-isinstance(Sample, type) # True</p>
-<h1 id="program-python-object">インスタンスはobjectである</h1>
-<p>isinstance(obj, object) # True
+issublass(Sample, type) # False
+
+
+# クラスはtypeのインスタンスである
+isinstance(SampleBase, type) # True
+isinstance(Sample, type) # True
+
+# インスタンスはobjectである
+isinstance(obj, object) # True
 isinstance(Sample, object) # True
-isinstance(obj, type) # False</p>
-<h1 id="program-python-callable">callableチェック</h1>
-<p>objbase = SampleBase()
+isinstance(obj, type) # False
+
+# callableチェック
+objbase = SampleBase()
 callable(objbase) # False
 callable(obj) # True
-callable(func) # True</p>
-<h1 id="program-python-async">asyncチェック</h1>
-<p>def func_async():
-  pass</p>
-<p>asyncio.iscoroutinefunction(func) # False
+callable(func) # True
+
+# asyncチェック
+def func_async():
+  pass
+
+asyncio.iscoroutinefunction(func) # False
 asyncio.iscoroutinefunction(func_async) # True
-```</p>
-<h1 id="program-python-_16">デコレータ</h1>
+</code></pre>
+<h1 id="program-python-_6">デコレータ</h1>
 <p>関数やcallableなオブジェクトはデコレータとして呼び出すことができる。</p>
-<h2 id="program-python-_17">デコレータの種類</h2>
+<h2 id="program-python-_7">デコレータの種類</h2>
 <p>デコレータが呼び出されるシチュエーションはいくつか考えられ、完全なデコレータを実装するにはそれぞれシチュエーションに応じた実装が必要。</p>
-<p>``` python</p>
-<hprogram-python-1 id="program-python-1">1. 引数なしデコレータ</h1>
-<p>@deco
+<pre><code class="language-python">
+# 1. 引数なしデコレータ
+@deco
 def myfunc():
-  pass</p>
-<h1 id="program-python-2">2. 引数なしラッパー関数経由デコレータ</h1>
-<p>@deco()
+  pass
+
+# 2. 引数なしラッパー関数経由デコレータ
+@deco()
 def myfunc():
-  pass</p>
-<h1 id="program-python-3">3. 引数ありラッパー関数経由デコレータ</h1>
-<p>@deco(name="test")
+  pass
+
+# 3. 引数ありラッパー関数経由デコレータ
+@deco(name=&quot;test&quot;)
 def myfunc():
-  pass</p>
-<h1 id="program-python-4-13">4. 1〜3全対応</h1>
-<p>全対応に対応すると、引数に意図しない対象がセットされてしまう恐れがあり、また、その意図の判定は困難なため、
-引数あり、引数なしを限定させた方がよい。</p>
-<p>```</p>
-<h2 id="program-python-_18">実装例</h2>
-<p>``` python</p>
-<h1 id="program-python-_19">デコレータをクラスで実装</h1>
-<p>class function_decorator():
-  def <strong>call</strong>(self, <em>args, </em>*kwargs):
-    is_func_only = (len(args) == 1) and callable(args[0])</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 引数付きデコレータ処理</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">is_func_only</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="w"></span>
-<span class="w">  </span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kwargs</span><span class="w"></span>
+  pass
 
-<span class="w">  </span><span class="n">def</span><span class="w"> </span><span class="n">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="w"></span>
+# 4. 1〜3全対応
+全対応に対応すると、引数に意図しない対象がセットされてしまう恐れがあり、また、その意図の判定は困難なため、
+引数あり、引数なしを限定させた方がよい。
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">wrapped</span><span class="w"></span>
+</code></pre>
+<h2 id="program-python-_8">実装例</h2>
+<pre><code class="language-python">
+# デコレータをクラスで実装
+class function_decorator():
+  def __call__(self, *args, **kwargs):
+    is_func_only = (len(args) == 1) and callable(args[0])
 
-<span class="c1"># 括弧省略時 or 引数付きデコレータ処理後（最終処理）</span><span class="w"></span>
-<span class="k">else</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;args&quot;</span><span class="p">):</span><span class="w"></span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"></span>
+    # 引数付きデコレータ処理
+    if not is_func_only:
+      self.args = args
+      self.kwargs = kwargs
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;kwargs&quot;</span><span class="p">):</span><span class="w"></span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+      def wrapped(*args, **kwargs):
+        return self.__call__(*args, **kwargs)
 
-<span class="w">  </span><span class="k">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="bp">self</span><span class="o">.</span><span class="n">valid_args</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="bp">self</span><span class="o">.</span><span class="n">on_wrapped</span><span class="p">(</span><span class="k">func</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">return_object</span><span class="p">(</span><span class="k">func</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="w"></span>
-</code></pre></div>
+      return wrapped
 
-<p>def valid_args(self, <em>args, </em>*kwargs):
-    pass</p>
-<p>def on_wrapped(self, func):
-    print("initializing...")
+    # 括弧省略時 or 引数付きデコレータ処理後（最終処理）
+    else:
+      if not hasattr(self, &quot;args&quot;):
+        self.args = ()
+
+      if not hasattr(self, &quot;kwargs&quot;):
+        self.kwargs = {}
+
+      func = args[0]
+      self.valid_args(*self.args, **self.kwargs)
+      self.on_wrapped(func)
+      result = self.return_object(func)
+      return result
+
+  def valid_args(self, *args, **kwargs):
+    pass
+
+  def on_wrapped(self, func):
+    print(&quot;initializing...&quot;)
     print(self.args)
     print(self.kwargs)
-    print("initialized.")</p>
-<p>def return_object(self, func):
-    return wraps(func)(partial(self.wrapper, func))</p>
-<p>def wrapper(self, func, <em>args, </em><em>kwargs):
+    print(&quot;initialized.&quot;)
+
+  def return_object(self, func):
+    return wraps(func)(partial(self.wrapper, func))
+
+  def wrapper(self, func, *args, **kwargs):
     print(args)
     print(kwargs)
-    return func(</em>args, **kwargs)</p>
-<p>deco = function_decorator()</p>
-<p>@deco(tag="test")
+    return func(*args, **kwargs)
+
+
+deco = function_decorator()
+
+@deco(tag=&quot;test&quot;)
 def message(msg):
-  print(msg)</p>
-<p>message("hello")
-```</p>
+  print(msg)
+
+message(&quot;hello&quot;)
+</code></pre>
 <h1 id="program-python-linq">Linq</h1>
 <p><a href="https://github.com/rogerwcpt/python-linq-samples">python-linq-samples</a></p>
-<h1 id="program-python-_20">データ構造</h1>
-<h2 id="program-python-_21">リスト、タプル、ディクショナリ、セット</h2>
-<p><code>python
-arr = [1, 2, 3] # インデックスによるアクセスが可能
+<h1 id="program-python-_9">データ構造</h1>
+<h2 id="program-python-_10">リスト、タプル、ディクショナリ、セット</h2>
+<pre><code class="language-python">arr = [1, 2, 3] # インデックスによるアクセスが可能
 tup = (1, 2, 3) # インデックスによるアクセスが可能　インスタンス作成後の値変更は許可されない
 set = {1, 1, 2, 3} # インデックスによるアクセスが可能　重複は排除される
-dic = {"name": "test", "age": 20} # キーによるアクセスが可能</code></p>
-<h1 id="program-python-_22">その他</h1>
+dic = {&quot;name&quot;: &quot;test&quot;, &quot;age&quot;: 20} # キーによるアクセスが可能
+</code></pre>
+<h1 id="program-python-_11">その他</h1>
 <p>あまり知られていないpythonの仕様を紹介する。
 紹介する仕様は、バージョンによっては利用できない。（主に、Python3.4以降の仕様を紹介）</p>
-<h2 id="program-python-_23">複素数</h2>
-<p><code>python
-c1 = 1 + 1j
+<h2 id="program-python-_12">複素数</h2>
+<pre><code class="language-python">c1 = 1 + 1j
 c2 = 1 - 2j
-c1 + c2 # -&gt; 2 - j</code></p>
-<h2 id="program-python-_24">ステップフィルター</h2>
-<p><code>python
-arr = list(range(20))
-arr[::2] # -&gt; [0, 2, 4, ...]</code></p>
+c1 + c2 # -&gt; 2 - j
+</code></pre>
+<h2 id="program-python-_13">ステップフィルター</h2>
+<pre><code class="language-python">arr = list(range(20))
+arr[::2] # -&gt; [0, 2, 4, ...]
+</code></pre>
 <h2 id="program-python-ellipsis">Ellipsis</h2>
-<p>dummy用のオブジェクトを作成する
-<code>python
-... # -&gt; Ellipsis
-bool(...)</code></p>
+<p>dummy用のオブジェクトを作成する</p>
+<pre><code class="language-python">... # -&gt; Ellipsis
+bool(...)
+</code></pre>
 <h2 id="program-python-unpack-argument">unpack argument</h2>
 <p>関数に引数を渡すとき、リストや辞書を引数に当てはめて呼び出したいときがある。
 そのようなケースで、配列や辞書を位置限定引数として（*）、または、キーワード引数として（**）展開することができる。</p>
-<p>``` python
-def print_profile(name, age):
-  print(f"{name} {age}")</p>
-<p>arr = ["test", 20]</p>
-<p>dic = {
-  "name": "test",
-  "age": 20
-}</p>
-<p>print_profile(<em>arr)
-print_profile(</em>*data)</p>
-<p>```</p>
-<h2 id="program-python-_25">位置限定引数 / キーワード限定引数</h2>
+<pre><code class="language-python">def print_profile(name, age):
+  print(f&quot;{name} {age}&quot;)
+
+arr = [&quot;test&quot;, 20]
+
+dic = {
+  &quot;name&quot;: &quot;test&quot;,
+  &quot;age&quot;: 20
+}
+
+print_profile(*arr)
+print_profile(**data)
+
+</code></pre>
+<h2 id="program-python-_14">位置限定引数 / キーワード限定引数</h2>
 <p>引数は、位置引数とキーワード引数に都合よく解釈されるが、位置限定引数(/の前)、キーワード限定引数(*の後)として解釈を限定することができる。
 位置限定引数は、python3.8から利用可能。</p>
-<p>位置限定引数はあまり使い道がないが、キーワード限定引数はコーディングを明示的にするため積極的に活用すべき。
-<code>def example(pos_only, /, standard, *, kwd_only):
-  print(pos_only, standard, kwd_only)</code></p>
+<p>位置限定引数はあまり使い道がないが、キーワード限定引数はコーディングを明示的にするため積極的に活用すべき。</p>
+<pre><code>def example(pos_only, /, standard, *, kwd_only):
+  print(pos_only, standard, kwd_only)
+</code></pre>
 <h2 id="program-python-global">global</h2>
-<p>どのスコープからでもグローバル変数を定義、参照することができる
-<code>python
-def func():
+<p>どのスコープからでもグローバル変数を定義、参照することができる</p>
+<pre><code class="language-python">def func():
   global a
-  a = 1</code></p>
+  a = 1
+</code></pre>
 <h2 id="program-python-nonlocal">nonlocal</h2>
-<p>ひとつ外側のスコープに属する変数へアクセスができる
-``` python
-def func():
-  count = 0</p>
-<p>def func_inner():
+<p>ひとつ外側のスコープに属する変数へアクセスができる</p>
+<pre><code class="language-python">def func():
+  count = 0
+
+  def func_inner():
     nonlocal count
-```</p>
+</code></pre>
 <h2 id="program-python-yield-from">yield from</h2>
-<p>他のイテレータから値を返すジェネレータを作成する
-``` python
+<p>他のイテレータから値を返すジェネレータを作成する</p>
+<pre><code class="language-python">def func():
+  yield from range(5)
+
 def func():
-  yield from range(5)</p>
-<p>def func():
   yield from () # 空のイテレータ
-```</p>
+</code></pre>
 <h2 id="program-python-raise-from">raise from</h2>
-<p>例外を連鎖させる際に、送出元の例外を保持する
-``` python
-try:
-  raise Exception("e1") from Exception("e2")</p>
-<p>except Exception as e:
-  print(e.<strong>cause</strong>) # e2
-```</p>
+<p>例外を連鎖させる際に、送出元の例外を保持する</p>
+<pre><code class="language-python">try:
+  raise Exception(&quot;e1&quot;) from Exception(&quot;e2&quot;)
+
+except Exception as e:
+  print(e.__cause__) # e2
+</code></pre>
 <h2 id="program-python-async-await">async await</h2>
-<p>```
-import asyncio</p>
-<p>```</p></section><section class="print-page" id="program-javascript"><h1 id="program-javascript-this">thisのスコープ</h1>
+<pre><code>import asyncio
+
+</code></pre></section><section class="print-page" id="program-javascript"><h1 id="program-javascript-this">thisのスコープ</h1>
 <p>thisのスコープは以下の種類がある。
 - メソッド呼び出しパターン
 - 関数呼び出しパターン
@@ -2070,57 +2153,67 @@ import asyncio</p>
 - apply,call呼び出しパターン</p>
 <p>また、注意点として、function宣言時にfunction構文とアロー演算子によって、thisのスコープが異なる。
 function構文の場合は、宣言時のオブジェクトのthisを参照するが、アロー演算子による定義はグローバルthisを参照する。</p>
-<p>``` JavaScript
-this.data = "test"</p>
-<p>var f1 = {
+<pre><code class="language-JavaScript">this.data = &quot;test&quot;
+
+var f1 = {
     data: 'this1',
     do: function() {
         console.log(this.data)
     }
-}</p>
-<p>var f2 = {
+}
+
+var f2 = {
     data: 'this2',
     do: () =&gt; {
         console.log(this.data)
     }
 }
-```</p>
+</code></pre>
 <h1 id="program-javascript-_1">コストラクタ</h1>
 <p>JavaScriptにはクラスの概念がない。
 しかし、new演算子でクラスのようなオブジェクトを実現することができる。</p>
-<p>``` JavaScript
-function Dog(name, cry){
+<pre><code class="language-JavaScript">function Dog(name, cry){
   //this = {}
   this.name = name;
   this.bark = function() {
     console.log(cry);
   };
   //return this;
-}</p>
-<p>//newは暗黙的に、thisにオブジェクトを格納し、それをリターンします。
-var dog = new Dog('poti','bow');</p>
-<p>dog.bark();
-```</p></section><section class="print-page" id="program-sql"><h1 id="program-sql-sql">SQL</h1>
-<p>``` sql
-/<em>
+}
+
+//newは暗黙的に、thisにオブジェクトを格納し、それをリターンします。
+var dog = new Dog('poti','bow');
+
+dog.bark();
+</code></pre></section><section class="print-page" id="program-sql"><h1 id="program-sql-sql">SQL</h1>
+<pre><code class="language-sql">/*
 SQL TRANING.
-</em>/</p>
-<h2 id="program-sql-_1">/*</h2>
-<h2 id="program-sql-with">WITH句 について</h2>
-<p>SQLSERVERなどで利用可能な構文。
+*/
+
+
+/*
+----------------------------
+WITH句 について
+----------------------------
+SQLSERVERなどで利用可能な構文。
 CTE(Common Table Expression:共通テーブル SQL99規格）と呼ばれ、再帰などに利用する。
 ノードを辿るのに用いられる
-*/</p>
-<p>-- DECLARE @NODES TABLE(Id int, Location VARCHAR(10), Parent VARCHAR(10));</p>
-<p>-- prefixを#とすると、一時テーブルとなる。##でグローバル一時テーブルになる
--- テーブルはセッション終了時に削除される。</p>
-<p>DROP TABLE IF EXISTS #NODES;
+*/
+
+
+-- DECLARE @NODES TABLE(Id int, Location VARCHAR(10), Parent VARCHAR(10));
+
+-- prefixを#とすると、一時テーブルとなる。##でグローバル一時テーブルになる
+-- テーブルはセッション終了時に削除される。
+
+DROP TABLE IF EXISTS #NODES;
 CREATE TABLE #NODES(
      Id int,
      Location VARCHAR(10),
      Parent VARCHAR(10)
-);</p>
-<p>INSERT INTO #NODES
+);
+
+INSERT INTO #NODES
         select 1 as Id, 'Universe' as Location, '' as Parent
 union all   select 2 as Id, 'Mars' as Location, 'Universe' as Parent
 union all   select 3 as Id, 'Earth' as Location, 'Universe' as Parent
@@ -2128,38 +2221,54 @@ union all   select 4 as Id, 'America' as Location, 'Earth' as Parent
 union all   select 5 as Id, 'Japan' as Location, 'Earth' as Parent
 union all   select 6 as Id, 'Tokyo' as Location, 'Japan' as Parent
 union all   select 7 as Id, 'Osaka' as Location, 'Japan' as Parent
-;</p>
-<p>SELECT * FROM #NODES;</p>
-<p>DECLARE @Tagert Varchar(10);
-SET @Tagert = 'Japan';</p>
-<p>WITH LOOP_TABLE AS (</p>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">#NODES</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">#NODES</span><span class="p">.</span><span class="n">Location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">@Tagert</span><span class="w"></span>
-<span class="ow">UNION</span><span class="w"> </span><span class="ow">ALL</span><span class="w"></span>
-<span class="k">SELECT</span><span class="w"> </span><span class="n">#NODES</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">LOOP_TABLE</span><span class="p">,</span><span class="w"> </span><span class="n">#NODES</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="n">LOOP_TABLE</span><span class="p">.</span><span class="n">Parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">#NODES</span><span class="p">.</span><span class="n">Location</span><span class="w"> </span><span class="c1">-- 親の定義を階層定義から取得　取得分が次のループとなる</span>
-</code></pre></div>
+;
 
-<p>)</p>
-<p>SELECT * FROM LOOP_TABLE;</p>
-<h2 id="program-sql-_2">/*</h2>
-<h2 id="program-sql-union">UNION について</h2>
-<p>union は足し算と考えればよい
-*/</p>
-<p>-- 重複を許す
+SELECT * FROM #NODES;
+
+DECLARE @Tagert Varchar(10);
+SET @Tagert = 'Japan';
+
+WITH LOOP_TABLE AS (
+
+    SELECT * FROM #NODES WHERE #NODES.Location = @Tagert
+    UNION ALL
+    SELECT #NODES.* FROM LOOP_TABLE, #NODES
+    WHERE LOOP_TABLE.Parent = #NODES.Location -- 親の定義を階層定義から取得　取得分が次のループとなる
+
+)
+
+SELECT * FROM LOOP_TABLE;
+
+
+
+/*
+----------------------------
+UNION について
+----------------------------
+union は足し算と考えればよい
+*/
+
+-- 重複を許す
 select 1,'test1' union all
 select 1,'test1' union all
-select 3,'test3'</p>
-<p>-- 重複を許さない　重複チェックがある分、速度が遅い
+select 3,'test3'
+
+-- 重複を許さない　重複チェックがある分、速度が遅い
 select 1,'test1' union
 select 1,'test1' union
-select 3,'test3'</p>
-<h2 id="program-sql-_3">/*</h2>
-<h2 id="program-sql-over">OVER句 について</h2>
-<p>集約関数をOVER句とともに利用することで、
+select 3,'test3'
+
+
+/*
+----------------------------
+OVER句 について
+----------------------------
+集約関数をOVER句とともに利用することで、
 移動平均、累積集計、集計途中経過などを算出することができる。
 */
-DECLARE @T1 TABLE(Center VARCHAR(10), Period VARCHAR(2),Val int);</p>
-<p>INSERT INTO @T1
+DECLARE @T1 TABLE(Center VARCHAR(10), Period VARCHAR(2),Val int);
+
+INSERT INTO @T1
             select 'C01' as Center, '01' as Period, 1 as Val
 union all   select 'C01' as Center, '02' as Period, 1 as Val
 union all   select 'C01' as Center, '03' as Period, 1 as Val
@@ -2183,111 +2292,157 @@ union all   select 'C02' as Center, '08' as Period, 1 as Val
 union all   select 'C02' as Center, '09' as Period, 1 as Val
 union all   select 'C02' as Center, '10' as Period, 1 as Val
 union all   select 'C02' as Center, '11' as Period, 1 as Val
-union all   select 'C02' as Center, '12' as Period, 1 as Val;</p>
-<p>-- Center毎の毎月の計上値を累計表示にする
+union all   select 'C02' as Center, '12' as Period, 1 as Val;
+
+-- Center毎の毎月の計上値を累計表示にする
 INSERT INTO @T2
-select Center, SUM(Val) OVER(Partition by Center order by Period) FROM @T1;</p>
-<p>select * FROM @T2;</p>
-<h2 id="program-sql-_4">/*</h2>
-<h2 id="program-sql-_5">累積値を単月値に戻す</h2>
-<p>LAG（対象列、何行前を取得するか、Nullの場合の値）を利用して、累積値を単月値に戻す。
+select Center, SUM(Val) OVER(Partition by Center order by Period) FROM @T1;
+
+select * FROM @T2;
+
+/*
+----------------------------
+累積値を単月値に戻す
+----------------------------
+LAG（対象列、何行前を取得するか、Nullの場合の値）を利用して、累積値を単月値に戻す。
 */
-Select Center, Period, Val - LAG(Val,1,0) OVER(Partition by Center order by Period ASC) FROM @T2;</p>
-<h2 id="program-sql-_6">/*</h2>
-<h2 id="program-sql-pivot">Pivotについて</h2>
-<p>行を列に変換する。
-*/</p>
-<p>DECLARE @T4 TABLE(ID int, Country VARCHAR(10), Product VARCHAR(10),AMOUNT int);</p>
-<p>INSERT INTO @T4
+Select Center, Period, Val - LAG(Val,1,0) OVER(Partition by Center order by Period ASC) FROM @T2;
+
+
+/*
+----------------------------
+Pivotについて
+----------------------------
+行を列に変換する。
+*/
+
+DECLARE @T4 TABLE(ID int, Country VARCHAR(10), Product VARCHAR(10),AMOUNT int);
+
+INSERT INTO @T4
           select 1 as ID, 'Japan'   as Country, 'TV'    as Product, 100 as AMOUNT
 union all select 2 as ID, 'Japan'   as Country, 'Phone' as Product, 200 as AMOUNT
 union all select 3 as ID, 'America' as Country, 'TV'    as Product, 300 as AMOUNT
 union all select 4 as ID, 'America' as Country, 'Phone' as Product, 400 as AMOUNT
 union all select 5 as ID, 'Jamaica' as Country, 'TV'    as Product, 500 as AMOUNT
-;</p>
-<p>SELECT * FROM @T4;</p>
-<p>select * FROM @T4
+;
+
+SELECT * FROM @T4;
+
+select * FROM @T4
 PIVOT(
 SUM(AMOUNT) FOR Product IN(TV,Phone)
-) AS PV;</p>
-<h2 id="program-sql-_7">/*</h2>
-<h2 id="program-sql-unpivot">UnPivotについて</h2>
-<p>列を行に変換する。
+) AS PV;
+
+
+/*
+----------------------------
+UnPivotについて
+----------------------------
+列を行に変換する。
 */
-DECLARE @T5 TABLE(TV VARCHAR(10), Phone VARCHAR(10));</p>
-<p>INSERT INTO @T5
+DECLARE @T5 TABLE(TV VARCHAR(10), Phone VARCHAR(10));
+
+
+INSERT INTO @T5
           select 100, 200 as Amount
 union all select 200, 300 as Amount
 union all select 400, 500 as Amount
 union all select null, 300 as Amount
 union all select 200, null as Amount
 union all select null, null as Amount
-;</p>
-<p>SELECT * FROM @T5;</p>
-<p>SELECT Product,Amount FROM @T5
+;
+
+SELECT * FROM @T5;
+
+SELECT Product,Amount FROM @T5
 UNPIVOT(
 Amount FOR Product IN (TV,Phone)
-) AS UP;</p>
-<p>-- カタログビューとは？
+) AS UP;
+
+
+-- カタログビューとは？
 -- Pivot,Unpivotは値が変わると動的に取得することができない。
--- そのため、工夫が必要。https://www.casleyconsulting.co.jp/blog/engineer/162/</p>
-<h2 id="program-sql-_8">/*</h2>
-<h2 id="program-sql-sql_1">動的SQL</h2>
-<p>*/
-exec sp_executesql "select 1";
--- exec sp_executesql 'select 1'; -- 実行不可</p>
-<h2 id="program-sql-_9">/*</h2>
-<h2 id="program-sql-_10">カーソル操作</h2>
-<p>*/</p>
-<p>-- カーソル定義
+-- そのため、工夫が必要。https://www.casleyconsulting.co.jp/blog/engineer/162/
+
+
+
+/*
+----------------------------
+動的SQL
+----------------------------
+*/
+exec sp_executesql &quot;select 1&quot;;
+-- exec sp_executesql 'select 1'; -- 実行不可
+
+
+
+/*
+----------------------------
+カーソル操作
+----------------------------
+*/
+
+
+-- カーソル定義
 DECLARE CUR_TABLES CURSOR FOR
   SELECT sys.tables.object_id,sys.tables.name
   FROM sys.tables
   INNER JOIN sys.objects
   ON sys.tables.object_id = sys.objects.object_id
-;</p>
-<p>DECLARE @CUR_T TABLE(object_id VARCHAR(100),table_name VARCHAR(100),ODD VARCHAR(100));</p>
-<p>DECLARE @object_id VARCHAR(100);
-DECLARE @table_name VARCHAR(100);</p>
-<p>-- カーソルオープン
-OPEN  CUR_TABLES;</p>
-<p>-- データを格納
+;
+
+
+DECLARE @CUR_T TABLE(object_id VARCHAR(100),table_name VARCHAR(100),ODD VARCHAR(100));
+
+DECLARE @object_id VARCHAR(100);
+DECLARE @table_name VARCHAR(100);
+
+
+-- カーソルオープン
+OPEN  CUR_TABLES;
+
+
+-- データを格納
 FETCH NEXT FROM CUR_TABLES
 INTO @object_id,@table_name
-;</p>
-<p>-- カーソルのデータが終わるまで繰り返す（この実装はややださい。WHILE 1 = 1 で無限ループさせ、FETCH_STATUSを中で確認し、FETCH文を一か所にしか登場させない実装もある。）
+;
+
+ -- カーソルのデータが終わるまで繰り返す（この実装はややださい。WHILE 1 = 1 で無限ループさせ、FETCH_STATUSを中で確認し、FETCH文を一か所にしか登場させない実装もある。）
 WHILE @@FETCH_STATUS = 0
-BEGIN</p>
-<div class="highlight"><pre><span></span><code><span class="o">--</span><span class="w"> </span><span class="n">IFの構文はBEGIN</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ENDを定義するが</span><span class="err">、</span><span class="n">省略可能</span><span class="w"></span>
-<span class="k">IF</span><span class="w"> </span><span class="p">(</span><span class="nv">@object_id</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="k">BEGIN</span><span class="w"></span>
-<span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">@CUR_T</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="nv">@object_id</span><span class="p">,</span><span class="nv">@table_name</span><span class="p">,</span><span class="s1">&#39;fizzbuzz&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="k">END</span><span class="w"></span>
-<span class="k">ELSE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="p">(</span><span class="nv">@object_id</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="k">BEGIN</span><span class="w"></span>
-<span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">@CUR_T</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="nv">@object_id</span><span class="p">,</span><span class="nv">@table_name</span><span class="p">,</span><span class="s1">&#39;fizz&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="k">END</span><span class="w"></span>
-<span class="k">ELSE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="p">(</span><span class="nv">@object_id</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="k">BEGIN</span><span class="w"></span>
-<span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">@CUR_T</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="nv">@object_id</span><span class="p">,</span><span class="nv">@table_name</span><span class="p">,</span><span class="s1">&#39;buzz&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="k">END</span><span class="w"></span>
-<span class="k">ELSE</span><span class="w"></span>
-<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="k">BEGIN</span><span class="w"></span>
-<span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="nv">@CUR_T</span><span class="w"> </span><span class="k">VALUES</span><span class="p">(</span><span class="nv">@object_id</span><span class="p">,</span><span class="nv">@table_name</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="o">--</span><span class="w"> </span><span class="k">END</span><span class="w"></span>
+BEGIN
 
-<span class="k">FETCH</span><span class="w"> </span><span class="k">NEXT</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CUR_TABLES</span><span class="w"></span>
-<span class="k">INTO</span><span class="w"> </span><span class="nv">@object_id</span><span class="p">,</span><span class="nv">@table_name</span><span class="w"></span>
-</code></pre></div>
+    -- IFの構文はBEGIN - ENDを定義するが、省略可能
+    IF (@object_id % 15) = 0
+        -- BEGIN
+            INSERT INTO @CUR_T VALUES(@object_id,@table_name,'fizzbuzz')
+        -- END
+    ELSE IF (@object_id % 3) = 0
+        -- BEGIN
+            INSERT INTO @CUR_T VALUES(@object_id,@table_name,'fizz')
+        -- END
+    ELSE IF (@object_id % 5) = 0
+        -- BEGIN
+            INSERT INTO @CUR_T VALUES(@object_id,@table_name,'buzz')
+        -- END
+    ELSE
+        -- BEGIN
+            INSERT INTO @CUR_T VALUES(@object_id,@table_name,'')
+        -- END
 
-<p>END</p>
-<p>-- カーソルクローズ
-CLOSE CUR_TABLES;</p>
-<p>-- メモリを解放する
-DEALLOCATE CUR_TABLES;</p>
-<p>-- 結果の確認
+    FETCH NEXT FROM CUR_TABLES
+    INTO @object_id,@table_name
+
+END
+
+-- カーソルクローズ
+CLOSE CUR_TABLES;
+
+-- メモリを解放する
+DEALLOCATE CUR_TABLES;
+
+-- 結果の確認
 SELECT * FROM @CUR_T;
-```</p></section><section class="print-page" id="program-parsing"><h1 id="program-parsing-parsing">Parsing</h1>
+</code></pre></section><section class="print-page" id="program-parsing"><h1 id="program-parsing-parsing">Parsing</h1>
 <h1 id="program-parsing-_1">構文解析</h1>
 <p>構文解析とは、マークアップなどの注記の入っていないベタの文字列を、自然言語であれば形態素に切分け、
 さらにその間の関連（修飾-被修飾など）といったような、統語論的（構文論的）な関係を図式化するなどして明確にする（解析する）手続きである。</p>
@@ -4284,8 +4439,8 @@ $P(A)$と$P(B)$​は、与えられた条件なしにAとBがそれぞれ観測
                         </h1>
                         <section class="print-page" id="tools-tmux"><h1 id="tools-tmux-tmux">tmux 使い方</h1>
 <p>起動</p>
-<p><code>shell
-tmux</code></p>
+<pre><code class="language-shell">tmux
+</code></pre>
 <h1 id="tools-tmux-window">windowの追加</h1>
 <p>CTRL + B -&gt; C</p>
 <h1 id="tools-tmux-window_1">windowの移動</h1>

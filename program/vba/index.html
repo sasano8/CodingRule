@@ -803,24 +803,27 @@
                 <h1 id="_1">ヘッダ</h1>
 <p>各ソースファイルの先頭とプロシージャ・ファンクションの上部にヘッダを用意すること。</p>
 <h2 id="_2">ソースヘッダ</h2>
-<p><code>'ソース名       ：
+<pre><code>'ソース名       ：
 '機能説明       ：
 '備考     ：
 '作成者        ：2016/12/11
-'作成日        ：2016/12/11</code></p>
+'作成日        ：2016/12/11
+</code></pre>
 <h2 id="_3">ファンクションヘッダ</h2>
-<p><code>'機能名        ：
+<pre><code>'機能名        ：
 '引数     ：   
 '戻り値        ：Arg1
 '           ：Arg2'
 機能説明        ：
 '備考     ：
 '作成者        ：2016/12/11
-'作成日        ：2016/12/11</code></p>
+'作成日        ：2016/12/11
+</code></pre>
 <h1 id="_4">型宣言の強制</h1>
-<p>下記の宣言を行い型の宣言を強制すること。
-<code>Option Explicit</code>
-この宣言は以下の設定で自動挿入を行う。</p>
+<p>下記の宣言を行い型の宣言を強制すること。</p>
+<pre><code>Option Explicit
+</code></pre>
+<p>この宣言は以下の設定で自動挿入を行う。</p>
 <ol>
 <li>【ツール】→【オプション】</li>
 <li>【編集】のタブを選択</li>
@@ -829,35 +832,40 @@
 <h2 id="_5">理由</h2>
 <p>変数名のミスがあった場合、コンパイル時にミスを検知することができるため。</p>
 <h1 id="_6">変数の一括宣言</h1>
-<p>一行で複数の変数宣言を行う場合、それぞれに型を明示すること。
-<code>Dim valA as String, valB as Long</code></p>
+<p>一行で複数の変数宣言を行う場合、それぞれに型を明示すること。</p>
+<pre><code>Dim valA as String, valB as Long
+</code></pre>
 <h2 id="_7">理由</h2>
-<p>型宣言を行わないと、暗黙の型（Variant）が適用されるため。
-<code>Dim UserMin, UserMax As Integer   'userMinはVariant型になる。</code></p>
+<p>型宣言を行わないと、暗黙の型（Variant）が適用されるため。</p>
+<pre><code>Dim UserMin, UserMax As Integer   'userMinはVariant型になる。
+</code></pre>
 <h1 id="_8">マクロのスコープ</h1>
-<p>以下の宣言を利用し、プロシージャ・ファンクションの不要なアクセスレベルを付与しないこと。
-<code>Option Private Module</code></p>
+<p>以下の宣言を利用し、プロシージャ・ファンクションの不要なアクセスレベルを付与しないこと。</p>
+<pre><code>Option Private Module
+</code></pre>
 <h1 id="_9">変数のスコープ</h1>
 <h1 id="_10">オブジェクトの初期化</h1>
-<p>以下の正しい例に従い、オブジェクトの初期化を行うこと。
-```
-'正しい例
+<p>以下の正しい例に従い、オブジェクトの初期化を行うこと。</p>
+<pre><code>'正しい例
 Dim obj As MyClass
-Set obj = New MyClass</p>
-<p>'誤った例
+Set obj = New MyClass
+
+'誤った例
 Dim obj As New MyClass 
-```</p>
+</code></pre>
 <h2 id="_11">理由</h2>
 <p>オブジェクトの変数宣言と同時に初期化を行うと、コンストラクタの起動タイミングが制御できないため。</p>
 <h1 id="_12">オブジェクトの破棄</h1>
 <p>使用が終わったオブジェクトは参照を解放すること。
-クローズメソッドを持っているオブジェクトはクローズを実施すること。
-<code>Call obj.Close
-Set obj = Nothing</code></p>
-<p>また、クラスモジュールを作成時にデストラクタを定義すること。
-<code>Sub Class_Terminate()
+クローズメソッドを持っているオブジェクトはクローズを実施すること。</p>
+<pre><code>Call obj.Close
+Set obj = Nothing
+</code></pre>
+<p>また、クラスモジュールを作成時にデストラクタを定義すること。</p>
+<pre><code>Sub Class_Terminate()
   '処理
-End Sub</code></p>
+End Sub
+</code></pre>
 <h2 id="_13">理由</h2>
 <p>オブジェクトは参照カウンタを持っており、参照が0になるとオブジェクトが破棄されるため。
 オブジェクトはスコープを抜けると破棄されるが（確認）、
@@ -868,15 +876,18 @@ End Sub</code></p>
 <h1 id="_15">命名規則</h1>
 <p>意味を略さずに略さずに命名すること。</p>
 <h2 id="_16">クラス名・標準モジュール名</h2>
-<p>Pascal Case(Upper Camel Case)を利用すること。
-<code>MyClass</code></p>
+<p>Pascal Case(Upper Camel Case)を利用すること。</p>
+<pre><code>MyClass
+</code></pre>
 <h2 id="_17">定数</h2>
 <p>Upper Case を利用すること。
 定数名に型や利用用途について情報を含めること。</p>
-<p><code>Const RNG_INPUT_USERNAME    'ユーザー名の入力セル</code></p>
+<pre><code>Const RNG_INPUT_USERNAME    'ユーザー名の入力セル
+</code></pre>
 <h2 id="_18">変数</h2>
-<p>Snake Case を利用すること。
-<code>Dim ws_test as WorkSheet</code></p>
+<p>Snake Case を利用すること。</p>
+<pre><code>Dim ws_test as WorkSheet
+</code></pre>
 <h2 id="_19">理由</h2>
 <p>VBAは構造化が複雑であり、きちんと分類分けすることが難しい。
 様々な観点が入り乱れる為、_で意味を理解できるように努める。</p>
@@ -895,68 +906,72 @@ End Sub</code></p>
 <p>VABでコールバックを利用する場合はCallByNameを利用し、
 コールバック対象のオブジェクトは「OnCompleted」を実装すること。
 同一クラス・フォームで２つ以上のコールバック関数が必要な場合は、
-「OnCompleted + 処理名」とすること。
-<code>Sub Procedure(callback as Object)
-  CallByName callback, "OnCompleted", VbMethod, "おはよー", "おはよー"
-End Sub</code></p>
+「OnCompleted + 処理名」とすること。</p>
+<pre><code>Sub Procedure(callback as Object)
+  CallByName callback, &quot;OnCompleted&quot;, VbMethod, &quot;おはよー&quot;, &quot;おはよー&quot;
+End Sub
+</code></pre>
 <h1 id="_25">コメント</h1>
 <h1 id="_26">配列</h1>
 <h1 id="_27">ショートサーキット</h1>
-<p>VBAにおいて、ショートサッキット（短絡評価）は行われないということを認識すること。
-<code>'IsAの判定がfalseでもIsBが実行される。
-if IsA() = "A" And IsB() = "B" then
-end if</code></p>
+<p>VBAにおいて、ショートサッキット（短絡評価）は行われないということを認識すること。</p>
+<pre><code>'IsAの判定がfalseでもIsBが実行される。
+if IsA() = &quot;A&quot; And IsB() = &quot;B&quot; then
+end if
+</code></pre>
 <h1 id="3">3項演算子</h1>
 <p>VBAの構文に、三項演算子は存在しないが、IIF関数を利用することができる。
 ただし、true falseどちらの評価も行われるため、
-イミュータブルな値を利用すること。
-```
-'正しい例
-result = IIF(IsTrue(),True,False)</p>
-<p>'誤った例
+イミュータブルな値を利用すること。</p>
+<pre><code>'正しい例
+result = IIF(IsTrue(),True,False)
+
+'誤った例
 Call IIF(IsTrue(),DoIfTrue(),DoIfFalse()) 'どちらも実行されてしまう。
-```</p>
+</code></pre>
 <h1 id="_28">日付リテラル</h1>
-<p>地域により動作が異なるため、日付リテラルを利用すること。
-```
-Dim birthday as Data
+<p>地域により動作が異なるため、日付リテラルを利用すること。</p>
+<pre><code>Dim birthday as Data
 '正しい例
 birthday = #12/1/1 12:0:0#
-Debug.Print birthday      '日本　2012/1/1 12:00　米国　2001/1/12 12:00</p>
-<p>'誤った例
-birthday = "12/1/1 12:0:0"
+Debug.Print birthday      '日本　2012/1/1 12:00　米国　2001/1/12 12:00
+
+'誤った例
+birthday = &quot;12/1/1 12:0:0&quot;
 Debug.Print birthday      '
-```</p>
+</code></pre>
 <h2 id="_29">理由</h2>
 <p>日付リテラルを利用することで、日付の解釈を固定できるため。</p>
 <h1 id="_30">型宣言文字</h1>
 <p>変数や値の末尾にキーワードを付与することで、型を指定することができる。
 基本は、変数で型を定義すること。</p>
-<p>```
-Dim a$ '文字列型
+<pre><code>Dim a$ '文字列型
 Dim b&amp; '長整数型
 Dim c% '整数型
 Dim d@ '通貨型
 Dim e# '倍精度浮動小数点数型
-Dim f! '単精度浮動小数点数型</p>
-<p>'または以下のように利用する。
+Dim f! '単精度浮動小数点数型
+
+'または以下のように利用する。
 a = 0
 a = a$
 b = 0&amp;
 c = 0%
 d = 0@
 e = 0#
-f = 0!</p>
-<p>```</p>
+f = 0!
+
+</code></pre>
 <h1 id="_31">引数のキーワードの明示化</h1>
 <p>参照渡しか値渡しか明示すること。</p>
 <h2 id="_32">理由</h2>
-<p>関数の呼び出し方により、値渡し、参照渡しが決定されるため。
-<code>Dim lVal as long
+<p>関数の呼び出し方により、値渡し、参照渡しが決定されるため。</p>
+<pre><code>Dim lVal as long
 SubA lVal           '参照渡しになる
 SubA(lVal)          '値渡しになる
 Call SubA(lVal)     '参照渡しになる
-Call SubA((lVal))   '値渡しになる</code></p>
+Call SubA((lVal))   '値渡しになる
+</code></pre>
 <h1 id="_33">設計</h1>
 <p>モジュール・クラスにまとめる関数の設計は以下を参考とすること。</p>
 <h1 id="_34">エラーハンドリング</h1>
@@ -964,112 +979,123 @@ Call SubA((lVal))   '値渡しになる</code></p>
 処理によって、適切なエラーハンドリングを行うこと。</p>
 <h2 id="_35">ループ中のエラーハンドリング例</h2>
 <p>サブルーチンからメインルーチンへ戻るには、Resumeステートメントを利用する。</p>
-<p>```
-'正しい例（本当か？）
+<pre><code>'正しい例（本当か？）
 On Error Goto err_handler
 for i = 0 to 100 
   '処理
 next_loop:
-next</p>
-<p>resume next_loop</p>
-<p>'誤った例（例外発生後は例外を検知できない。）
+next
+
+resume next_loop
+
+'誤った例（例外発生後は例外を検知できない。）
 On Error Goto err_handler
 for i = 0 to 100 
   '処理
 err_handler:
-next</p>
-<p>```</p>
+next
+
+</code></pre>
 <h2 id="_36">長いメインルーチンでのエラーハンドリング例</h2>
-<p>```
-処理</p>
-<p>OnSccess
+<pre><code>処理
+
+OnSccess
     '成功処理
-    goto OnComplete</p>
-<p>OnError
+    goto OnComplete
+
+OnError
     '失敗処理
-    goto OnComplete</p>
-<p>OnComplete
+    goto OnComplete
+
+OnComplete
     'クローズ処理
 exit function
-```</p>
+</code></pre>
 <h2 id="_37">繰り返し中のエラーハンドリング例</h2>
-<p>```
-Function ErrHandlingSample()</p>
-<div class="highlight"><pre><span></span><code><span class="nv">On</span><span class="w"> </span><span class="nv">Error</span><span class="w"> </span><span class="k">Goto</span><span class="w"> </span><span class="nl">err_handler</span><span class="w"></span>
+<pre><code>Function ErrHandlingSample()
 
-<span class="k">for</span><span class="w"> </span><span class="nv">each</span><span class="w"> </span><span class="nv">r</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="nv">Selection</span><span class="w"></span>
+    On Error Goto err_handler
 
-<span class="w">    </span><span class="k">Call</span><span class="w"> </span><span class="nl">Function01</span><span class="ss">()</span><span class="w"></span>
-<span class="w">    </span><span class="k">Call</span><span class="w"> </span><span class="nl">Function02</span><span class="ss">()</span><span class="w"></span>
-<span class="w">    </span><span class="k">Call</span><span class="w"> </span><span class="nl">Function03</span><span class="ss">()</span><span class="w"></span>
-</code></pre></div>
+    for each r in Selection
 
-<p>next_loop:
-    next</p>
-<div class="highlight"><pre><span></span><code><span class="nv">On</span><span class="w"> </span><span class="nv">Error</span><span class="w"> </span><span class="k">Goto</span><span class="w"> </span><span class="nl">0</span><span class="w"></span>
+        Call Function01()
+        Call Function02()
+        Call Function03()
+next_loop:
+    next
 
-<span class="err">&#39;無限ループ回避(resumeが無限に走ってしまう。)</span>
-<span class="err">Exit Function</span><span class="w"></span>
-</code></pre></div>
+    On Error Goto 0
 
-<p>'エラーが発生したら、next_loopへ復帰する
+    '無限ループ回避(resumeが無限に走ってしまう。)
+    Exit Function
+
+'エラーが発生したら、next_loopへ復帰する
 err_handler:
-    resume next_loop</p>
-<p>End Function
-```</p>
+    resume next_loop
+
+End Function
+</code></pre>
 <h1 id="empty">Empty値について</h1>
 <p>Emptyとは何も値が設定されていない状態であり、
 Variant型でのみ有効？である。</p>
 <p>Emptyを厳密に区別するためには以下のようなコードで理解を深めるとよい</p>
-<p>```
-Dim a as Variant
-Dim b as Variant</p>
-<p>b = 0</p>
-<p>'何も値を設定していない状態はIsEmptyでTrueが返る
-if a = 0 then debug.print "Not Empty"
-if a = Empty then debug.print "Not Empty"
-if IsEmpty(a) then debug.print "Empty"</p>
-<p>'何か値を設定していればIsEmptyでFalseが返る
-if b = 0 then debug.print "Not Empty"
-if b = Empty then debug.print "Not Empty"
-if IsEmpty(b) then debug.print "Empty"</p>
-<p>```</p>
+<pre><code>Dim a as Variant
+Dim b as Variant
+
+b = 0
+
+'何も値を設定していない状態はIsEmptyでTrueが返る
+if a = 0 then debug.print &quot;Not Empty&quot;
+if a = Empty then debug.print &quot;Not Empty&quot;
+if IsEmpty(a) then debug.print &quot;Empty&quot;
+
+'何か値を設定していればIsEmptyでFalseが返る
+if b = 0 then debug.print &quot;Not Empty&quot;
+if b = Empty then debug.print &quot;Not Empty&quot;
+if IsEmpty(b) then debug.print &quot;Empty&quot;
+
+</code></pre>
 <h1 id="_38">行番号</h1>
 <p>VBA（正式にはVisual Basic?）では、行に番号を付与することができる。
 以下のコードは、その機能を利用したテストの例である。</p>
-<p>```
-Sub Test()</p>
-<p>On Error Goto TestFailed</p>
-<p>1 If Sheet1.Range("A1").Value &lt;&gt; "" then Err.Raise -1
-2 If Sheet1.Range("B1").Value &lt;&gt; "" then Err.Raise -1</p>
-<p>On Error Goto 0</p>
-<p>Exit Sub</p>
-<p>TestFailed:
-    Debug.Print "ERR NO : " &amp; VBA.Erl
-    Resume Next</p>
-<p>End Sub
-```</p>
+<pre><code>Sub Test()
+
+On Error Goto TestFailed
+
+1 If Sheet1.Range(&quot;A1&quot;).Value &lt;&gt; &quot;&quot; then Err.Raise -1
+2 If Sheet1.Range(&quot;B1&quot;).Value &lt;&gt; &quot;&quot; then Err.Raise -1
+
+On Error Goto 0
+
+Exit Sub
+
+TestFailed:
+    Debug.Print &quot;ERR NO : &quot; &amp; VBA.Erl
+    Resume Next
+
+End Sub
+</code></pre>
 <h1 id="_39">文字列データの比較モードの指定</h1>
 <p>比較モードにより、文字列の比較結果が変わる。
 既定はBinaryとなる。</p>
-<p>```
-Option Compare Binary</p>
-<p>Sub Sample()
-    Debug.Print "A" &lt; "a"   'Trueが返ります。
-    Debug.Print "A" &lt; "a"   'Falseが返ります。
+<pre><code>Option Compare Binary
+
+Sub Sample()
+    Debug.Print &quot;A&quot; &lt; &quot;a&quot;   'Trueが返ります。
+    Debug.Print &quot;A&quot; &lt; &quot;a&quot;   'Falseが返ります。
 End Sub
-```</p>
-<p>```
-Option Compare Text</p>
-<p>Sub Sample()
-    Debug.Print "A" &lt; "a"   'Falseが返ります。
-    Debug.Print "A" &lt; "a"   'Trueが返ります。
+</code></pre>
+<pre><code>Option Compare Text
+
+Sub Sample()
+    Debug.Print &quot;A&quot; &lt; &quot;a&quot;   'Falseが返ります。
+    Debug.Print &quot;A&quot; &lt; &quot;a&quot;   'Trueが返ります。
 End Sub
-```</p>
-<p>```
-'Accessのみで利用可能
-Option Compare Database</p>
-<p>```</p>
+</code></pre>
+<pre><code>'Accessのみで利用可能
+Option Compare Database
+
+</code></pre>
 <h1 id="activex">ActiveXとフォーム</h1>
 <p>ワークシート上に配置するボタンなどのコントロールは、ActiveXとフォームの２種類が存在している。
 おすすめはフォーム。
@@ -1079,11 +1105,11 @@ ActiveXは経験上壊れやすかった。
 <h1 id="_40">エラーメッセージ管理（考察中）</h1>
 <p>ユーザ独自のエラー番号を定義する場合、
 エラー番号0～512はシステムで予約されている為、それ以降を利用すること。</p>
-<p>```
-Public Const MSG_SUCCESS = 0
+<pre><code>Public Const MSG_SUCCESS = 0
 Public Const MSG_FATAL = 513
-Public Const MSG_NOTFOUND = 514</p>
-<p>```</p>
+Public Const MSG_NOTFOUND = 514
+
+</code></pre>
                 
               
 

@@ -745,50 +745,61 @@
 <p>２つの辞書を合成した場合、重複したキーはどうなるか検証した。
 dict(*<em>dic1, *</em>dic2)、func(*<em>dic1, *</em>dic2)は重複したキーが投入された時、エラーとなるので積極的に使ってよい。
 {*<em>dic1, *</em>dic2}は、後勝ちで上書きされるので危険。</p>
-<p>```
-dic1 = {"name": "bob", "age": 20}
-dic2 = {"name": "mary"}</p>
-<h1 id="_2">辞書作成時</h1>
-<p>{<strong>dic1, </strong>dic2}  # =&gt; {"name": "mary", "age": 20}  右辺の値で上書き
-dict(<strong>dic1, </strong>dic2)  # =&gt; TypeError: func() got multiple values for keyword argument 'name'</p>
-<h1 id="update">update / 代入演算子</h1>
-<p>update_dic = {"name": "bob", "age": 20}
-update_dic.update(dic2)</p>
-<h1 id="_3">または</h1>
-<p>update_dic |= dic2</p>
-<h1 id="name-mary-age-20">=&gt; {"name": "mary", "age": 20}  右辺の値で上書きされる。また、元データを変更するので、できればあまり使わないほうがよい。</h1>
-<p>dict(update_dic, **dic2)</p>
-<h1 id="_4">元のソース自体は更新されない</h1>
-<h1 20="20" _age_:="&quot;age&quot;:" _mary_="&quot;mary&quot;," _name_:="&quot;name&quot;:" id="_5">=&gt;</h1>
-<h1 id="_6">マージ演算子</h1>
-<p>new_dic = dict_1 | dict_2</p>
-<h1 id="name-mary-age-20_1">=&gt; {"name": "mary", "age": 20}  右辺の値で上書きされる</h1>
-<h1 id="_7">キーワード引数として渡す際に合成</h1>
-<p>def func(**kwargs):
-    print(kwargs)</p>
-<p>func(<strong>dic1, </strong>dic2)</p>
-<h1 id="typeerror-func-got-multiple-values-for-keyword-argument-name">=&gt; TypeError: func() got multiple values for keyword argument 'name'</h1>
-<p>```</p>
-<h1 id="_8">クラス</h1>
+<pre><code>dic1 = {&quot;name&quot;: &quot;bob&quot;, &quot;age&quot;: 20}
+dic2 = {&quot;name&quot;: &quot;mary&quot;}
+
+# 辞書作成時
+{**dic1, **dic2}  # =&gt; {&quot;name&quot;: &quot;mary&quot;, &quot;age&quot;: 20}  右辺の値で上書き
+dict(**dic1, **dic2)  # =&gt; TypeError: func() got multiple values for keyword argument 'name'
+
+# update / 代入演算子
+update_dic = {&quot;name&quot;: &quot;bob&quot;, &quot;age&quot;: 20}
+update_dic.update(dic2)
+# または
+update_dic |= dic2
+# =&gt; {&quot;name&quot;: &quot;mary&quot;, &quot;age&quot;: 20}  右辺の値で上書きされる。また、元データを変更するので、できればあまり使わないほうがよい。
+
+dict(update_dic, **dic2)
+# 元のソース自体は更新されない
+# =&gt; {&quot;name&quot;: &quot;mary&quot;, &quot;age&quot;: 20}
+
+# マージ演算子
+new_dic = dict_1 | dict_2
+# =&gt; {&quot;name&quot;: &quot;mary&quot;, &quot;age&quot;: 20}  右辺の値で上書きされる
+
+
+# キーワード引数として渡す際に合成
+def func(**kwargs):
+    print(kwargs)
+
+func(**dic1, **dic2)
+# =&gt; TypeError: func() got multiple values for keyword argument 'name'
+</code></pre>
+<h1 id="_2">クラス</h1>
 <p>python3.7未満は、クラスコンストラクタの定義が冗長的。
 python3.7以降は、dataclassデコレータでメンバ変数およびに__init__や__str__を自動生成してくれる。
 pydanticはdataclassのような機能に加え、様々なオプションを設定でき高機能。
 ライブラリ作成時は、依存関係を減らすためdataclassを使いたい。</p>
-<p>```
+<pre><code>class MyClass:
+  def __init__(self, name):
+    self.name = name
+
+
+# python3.7以降
+from dataclasses import dataclass
+
+@dataclass
 class MyClass:
-  def <strong>init</strong>(self, name):
-    self.name = name</p>
-<h1 id="python37">python3.7以降</h1>
-<p>from dataclasses import dataclass</p>
-<p>@dataclass
-class MyClass:
-  name: str</p>
-<h1 id="_9">外部ライブラリ</h1>
-<p>from pydantic import BaseModel</p>
-<p>class MyClass(BaseModel):
   name: str
-```</p>
-<h1 id="_10">日付の扱い方</h1>
+
+
+# 外部ライブラリ
+from pydantic import BaseModel
+
+class MyClass(BaseModel):
+  name: str
+</code></pre>
+<h1 id="_3">日付の扱い方</h1>
 <p>日付関連の機能はdatetimeモジュールから利用することができる。
 タイムゾーンを操作するには、標準ライブラリだけでは大変で、python-dateutil,pytzなどの外部ライブラリを用いるのがスタンダード。
 python3.9からは、zoneinfoが標準ライブラリに加わり、タイムゾーンを扱いやすくなった。</p>
@@ -798,227 +809,264 @@ nativeな日付は、timezoneを持たないため、暗黙的に同一の地域
 常に、awareな日付を作成することで、nativeを考慮しない方が明瞭に課題を解決できる。</p>
 <p>とにかく、datetimeオブジェクトを作成時は,utcを指定しておくのがよい。
 現地時間を重視する場合は、timezoneを指定しておき、表示の際にどの地域を軸に表示するか指定する。</p>
-<h2 id="_11">日付関連型</h2>
-<p>```
-import datetime
-import time</p>
-<p>dt = datetime.datetime.now() # datetime型　日付＋時間
+<h2 id="_4">日付関連型</h2>
+<pre><code>import datetime
+import time
+
+dt = datetime.datetime.now() # datetime型　日付＋時間
 da = datetime.date.today()  # date型　日付のみ date型はdatetime型と互換性がある
-td = datetime.timedelta(days=1)  # timedelta型　日数、秒数、マイクロ秒数情報を持ち、差分表現に用いられる</p>
-<p>ut = time.time()  # float型 UNIX時間（エポック秒）</p>
-<h1 id="aware">単純に日付を作成しただけではawareな日付にならない</h1>
-<p>dt = datetime.datetime.now()
-dt.tzinfo</p>
-<h1 id="none">=&gt;&gt; None</h1>
-<p>dt = datetime.datetime.utcnow()
-dt.tzinfo</p>
-<h1 id="none_1">=&gt;&gt; None</h1>
-<h1 id="_12">面倒だが常にタイムゾーンを意識する</h1>
-<p>dt = datetime.datetime.now(tz=datetime.timezone.utc)
-dt.tzinfo</p>
-<h1 id="datetimetimezoneutc">=&gt;&gt; datetime.timezone.utc</h1>
-<h1 id="os2020111723">OSの現在日時が2020年11月17日23時の場合の結果は以下のようになる</h1>
-<p>dt.isoformat()</p>
-<h1 id="2020-11-17t1401545671540000">=&gt;&gt; '2020-11-17T14:01:54.567154+00:00'</h1>
-<h1 id="python39">python3.9からはこう書けるようになる？？</h1>
-<p>dt = datetime.datetime.now(tz="utc")</p>
-<h1 id="asiatokyo19">いけないコード。Asia/Tokyoで19分ずれる</h1>
-<p>datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=pytz.timezone('Asia/Tokyo'))</p>
-<h1 id="datetimedatetime1970-1-1-0-0-0-0-tzinfo">=&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=<DstTzInfo 'Asia/Tokyo' LMT+9:19:00 STD>)</h1>
-<h1 id="_13">好ましいコード。</h1>
-<p>tz = pytz.timezone('Asia/Tokyo')
-tz.localize(datetime(1970, 1, 1, 0, 0, 0, 0))</p>
-<h1 id="datetimedatetime1970-1-1-0-0-0-0-tzinfo_1">=&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=<DstTzInfo 'Asia/Tokyo' LMT+9:00:00 STD>)</h1>
-<p>```</p>
-<h1 id="_14">型チェック</h1>
-<p>``` python</p>
-<h1 id="type">typeは、完全一致での型チェックを行う場合に利用する。</h1>
-<h1 id="isinstance">isinstanceは、親オブジェクトを含んだ型チェックを行う場合に利用する。</h1>
-<h1 id="_15">クラスはタイプのインスタンス</h1>
-<p>class SampleBase():
-  pass</p>
-<p>class Sample(SampleBase):
-  def <strong>call</strong>(self):
-    pass</p>
-<p>def func():
-  pass</p>
-<p>obj = Sample()</p>
-<p>type(obj) is Sample # True
+td = datetime.timedelta(days=1)  # timedelta型　日数、秒数、マイクロ秒数情報を持ち、差分表現に用いられる
+
+ut = time.time()  # float型 UNIX時間（エポック秒）
+
+
+# 単純に日付を作成しただけではawareな日付にならない
+dt = datetime.datetime.now()
+dt.tzinfo
+# =&gt;&gt; None
+
+dt = datetime.datetime.utcnow()
+dt.tzinfo
+# =&gt;&gt; None
+
+# 面倒だが常にタイムゾーンを意識する
+dt = datetime.datetime.now(tz=datetime.timezone.utc)
+dt.tzinfo
+# =&gt;&gt; datetime.timezone.utc
+
+# OSの現在日時が2020年11月17日23時の場合の結果は以下のようになる
+dt.isoformat()
+# =&gt;&gt; '2020-11-17T14:01:54.567154+00:00'
+
+# python3.9からはこう書けるようになる？？
+dt = datetime.datetime.now(tz=&quot;utc&quot;)
+
+
+# いけないコード。Asia/Tokyoで19分ずれる
+datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=pytz.timezone('Asia/Tokyo'))
+# =&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=&lt;DstTzInfo 'Asia/Tokyo' LMT+9:19:00 STD&gt;)
+
+# 好ましいコード。
+tz = pytz.timezone('Asia/Tokyo')
+tz.localize(datetime(1970, 1, 1, 0, 0, 0, 0))
+# =&gt; datetime.datetime(1970, 1, 1, 0, 0, 0, 0, tzinfo=&lt;DstTzInfo 'Asia/Tokyo' LMT+9:00:00 STD&gt;)
+
+</code></pre>
+<h1 id="_5">型チェック</h1>
+<pre><code class="language-python">
+# typeは、完全一致での型チェックを行う場合に利用する。
+# isinstanceは、親オブジェクトを含んだ型チェックを行う場合に利用する。
+# クラスはタイプのインスタンス
+
+class SampleBase():
+  pass
+
+class Sample(SampleBase):
+  def __call__(self):
+    pass
+
+def func():
+  pass
+
+obj = Sample()
+
+type(obj) is Sample # True
 type(obj) is SampleBase # False
 isinstance(obj, Sample) # True
 isinstance(obj, SampleBase) # True
 isinstance(Sample, type) # True
 issublass(Sample, SampleBase) # True
-issublass(Sample, type) # False</p>
-<h1 id="type_1">クラスはtypeのインスタンスである</h1>
-<p>isinstance(SampleBase, type) # True
-isinstance(Sample, type) # True</p>
-<h1 id="object">インスタンスはobjectである</h1>
-<p>isinstance(obj, object) # True
+issublass(Sample, type) # False
+
+
+# クラスはtypeのインスタンスである
+isinstance(SampleBase, type) # True
+isinstance(Sample, type) # True
+
+# インスタンスはobjectである
+isinstance(obj, object) # True
 isinstance(Sample, object) # True
-isinstance(obj, type) # False</p>
-<h1 id="callable">callableチェック</h1>
-<p>objbase = SampleBase()
+isinstance(obj, type) # False
+
+# callableチェック
+objbase = SampleBase()
 callable(objbase) # False
 callable(obj) # True
-callable(func) # True</p>
-<h1 id="async">asyncチェック</h1>
-<p>def func_async():
-  pass</p>
-<p>asyncio.iscoroutinefunction(func) # False
+callable(func) # True
+
+# asyncチェック
+def func_async():
+  pass
+
+asyncio.iscoroutinefunction(func) # False
 asyncio.iscoroutinefunction(func_async) # True
-```</p>
-<h1 id="_16">デコレータ</h1>
+</code></pre>
+<h1 id="_6">デコレータ</h1>
 <p>関数やcallableなオブジェクトはデコレータとして呼び出すことができる。</p>
-<h2 id="_17">デコレータの種類</h2>
+<h2 id="_7">デコレータの種類</h2>
 <p>デコレータが呼び出されるシチュエーションはいくつか考えられ、完全なデコレータを実装するにはそれぞれシチュエーションに応じた実装が必要。</p>
-<p>``` python</p>
-<h1 id="1">1. 引数なしデコレータ</h1>
-<p>@deco
+<pre><code class="language-python">
+# 1. 引数なしデコレータ
+@deco
 def myfunc():
-  pass</p>
-<h1 id="2">2. 引数なしラッパー関数経由デコレータ</h1>
-<p>@deco()
+  pass
+
+# 2. 引数なしラッパー関数経由デコレータ
+@deco()
 def myfunc():
-  pass</p>
-<h1 id="3">3. 引数ありラッパー関数経由デコレータ</h1>
-<p>@deco(name="test")
+  pass
+
+# 3. 引数ありラッパー関数経由デコレータ
+@deco(name=&quot;test&quot;)
 def myfunc():
-  pass</p>
-<h1 id="4-13">4. 1〜3全対応</h1>
-<p>全対応に対応すると、引数に意図しない対象がセットされてしまう恐れがあり、また、その意図の判定は困難なため、
-引数あり、引数なしを限定させた方がよい。</p>
-<p>```</p>
-<h2 id="_18">実装例</h2>
-<p>``` python</p>
-<h1 id="_19">デコレータをクラスで実装</h1>
-<p>class function_decorator():
-  def <strong>call</strong>(self, <em>args, </em>*kwargs):
-    is_func_only = (len(args) == 1) and callable(args[0])</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 引数付きデコレータ処理</span><span class="w"></span>
-<span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">is_func_only</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="w"></span>
-<span class="w">  </span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kwargs</span><span class="w"></span>
+  pass
 
-<span class="w">  </span><span class="n">def</span><span class="w"> </span><span class="n">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="w"></span>
+# 4. 1〜3全対応
+全対応に対応すると、引数に意図しない対象がセットされてしまう恐れがあり、また、その意図の判定は困難なため、
+引数あり、引数なしを限定させた方がよい。
 
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">wrapped</span><span class="w"></span>
+</code></pre>
+<h2 id="_8">実装例</h2>
+<pre><code class="language-python">
+# デコレータをクラスで実装
+class function_decorator():
+  def __call__(self, *args, **kwargs):
+    is_func_only = (len(args) == 1) and callable(args[0])
 
-<span class="c1"># 括弧省略時 or 引数付きデコレータ処理後（最終処理）</span><span class="w"></span>
-<span class="k">else</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;args&quot;</span><span class="p">):</span><span class="w"></span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"></span>
+    # 引数付きデコレータ処理
+    if not is_func_only:
+      self.args = args
+      self.kwargs = kwargs
 
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;kwargs&quot;</span><span class="p">):</span><span class="w"></span>
-<span class="w">    </span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+      def wrapped(*args, **kwargs):
+        return self.__call__(*args, **kwargs)
 
-<span class="w">  </span><span class="k">func</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="bp">self</span><span class="o">.</span><span class="n">valid_args</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="bp">self</span><span class="o">.</span><span class="n">on_wrapped</span><span class="p">(</span><span class="k">func</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">return_object</span><span class="p">(</span><span class="k">func</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="w"></span>
-</code></pre></div>
+      return wrapped
 
-<p>def valid_args(self, <em>args, </em>*kwargs):
-    pass</p>
-<p>def on_wrapped(self, func):
-    print("initializing...")
+    # 括弧省略時 or 引数付きデコレータ処理後（最終処理）
+    else:
+      if not hasattr(self, &quot;args&quot;):
+        self.args = ()
+
+      if not hasattr(self, &quot;kwargs&quot;):
+        self.kwargs = {}
+
+      func = args[0]
+      self.valid_args(*self.args, **self.kwargs)
+      self.on_wrapped(func)
+      result = self.return_object(func)
+      return result
+
+  def valid_args(self, *args, **kwargs):
+    pass
+
+  def on_wrapped(self, func):
+    print(&quot;initializing...&quot;)
     print(self.args)
     print(self.kwargs)
-    print("initialized.")</p>
-<p>def return_object(self, func):
-    return wraps(func)(partial(self.wrapper, func))</p>
-<p>def wrapper(self, func, <em>args, </em><em>kwargs):
+    print(&quot;initialized.&quot;)
+
+  def return_object(self, func):
+    return wraps(func)(partial(self.wrapper, func))
+
+  def wrapper(self, func, *args, **kwargs):
     print(args)
     print(kwargs)
-    return func(</em>args, **kwargs)</p>
-<p>deco = function_decorator()</p>
-<p>@deco(tag="test")
+    return func(*args, **kwargs)
+
+
+deco = function_decorator()
+
+@deco(tag=&quot;test&quot;)
 def message(msg):
-  print(msg)</p>
-<p>message("hello")
-```</p>
+  print(msg)
+
+message(&quot;hello&quot;)
+</code></pre>
 <h1 id="linq">Linq</h1>
 <p><a href="https://github.com/rogerwcpt/python-linq-samples">python-linq-samples</a></p>
-<h1 id="_20">データ構造</h1>
-<h2 id="_21">リスト、タプル、ディクショナリ、セット</h2>
-<p><code>python
-arr = [1, 2, 3] # インデックスによるアクセスが可能
+<h1 id="_9">データ構造</h1>
+<h2 id="_10">リスト、タプル、ディクショナリ、セット</h2>
+<pre><code class="language-python">arr = [1, 2, 3] # インデックスによるアクセスが可能
 tup = (1, 2, 3) # インデックスによるアクセスが可能　インスタンス作成後の値変更は許可されない
 set = {1, 1, 2, 3} # インデックスによるアクセスが可能　重複は排除される
-dic = {"name": "test", "age": 20} # キーによるアクセスが可能</code></p>
-<h1 id="_22">その他</h1>
+dic = {&quot;name&quot;: &quot;test&quot;, &quot;age&quot;: 20} # キーによるアクセスが可能
+</code></pre>
+<h1 id="_11">その他</h1>
 <p>あまり知られていないpythonの仕様を紹介する。
 紹介する仕様は、バージョンによっては利用できない。（主に、Python3.4以降の仕様を紹介）</p>
-<h2 id="_23">複素数</h2>
-<p><code>python
-c1 = 1 + 1j
+<h2 id="_12">複素数</h2>
+<pre><code class="language-python">c1 = 1 + 1j
 c2 = 1 - 2j
-c1 + c2 # -&gt; 2 - j</code></p>
-<h2 id="_24">ステップフィルター</h2>
-<p><code>python
-arr = list(range(20))
-arr[::2] # -&gt; [0, 2, 4, ...]</code></p>
+c1 + c2 # -&gt; 2 - j
+</code></pre>
+<h2 id="_13">ステップフィルター</h2>
+<pre><code class="language-python">arr = list(range(20))
+arr[::2] # -&gt; [0, 2, 4, ...]
+</code></pre>
 <h2 id="ellipsis">Ellipsis</h2>
-<p>dummy用のオブジェクトを作成する
-<code>python
-... # -&gt; Ellipsis
-bool(...)</code></p>
+<p>dummy用のオブジェクトを作成する</p>
+<pre><code class="language-python">... # -&gt; Ellipsis
+bool(...)
+</code></pre>
 <h2 id="unpack-argument">unpack argument</h2>
 <p>関数に引数を渡すとき、リストや辞書を引数に当てはめて呼び出したいときがある。
 そのようなケースで、配列や辞書を位置限定引数として（*）、または、キーワード引数として（**）展開することができる。</p>
-<p>``` python
-def print_profile(name, age):
-  print(f"{name} {age}")</p>
-<p>arr = ["test", 20]</p>
-<p>dic = {
-  "name": "test",
-  "age": 20
-}</p>
-<p>print_profile(<em>arr)
-print_profile(</em>*data)</p>
-<p>```</p>
-<h2 id="_25">位置限定引数 / キーワード限定引数</h2>
+<pre><code class="language-python">def print_profile(name, age):
+  print(f&quot;{name} {age}&quot;)
+
+arr = [&quot;test&quot;, 20]
+
+dic = {
+  &quot;name&quot;: &quot;test&quot;,
+  &quot;age&quot;: 20
+}
+
+print_profile(*arr)
+print_profile(**data)
+
+</code></pre>
+<h2 id="_14">位置限定引数 / キーワード限定引数</h2>
 <p>引数は、位置引数とキーワード引数に都合よく解釈されるが、位置限定引数(/の前)、キーワード限定引数(*の後)として解釈を限定することができる。
 位置限定引数は、python3.8から利用可能。</p>
-<p>位置限定引数はあまり使い道がないが、キーワード限定引数はコーディングを明示的にするため積極的に活用すべき。
-<code>def example(pos_only, /, standard, *, kwd_only):
-  print(pos_only, standard, kwd_only)</code></p>
+<p>位置限定引数はあまり使い道がないが、キーワード限定引数はコーディングを明示的にするため積極的に活用すべき。</p>
+<pre><code>def example(pos_only, /, standard, *, kwd_only):
+  print(pos_only, standard, kwd_only)
+</code></pre>
 <h2 id="global">global</h2>
-<p>どのスコープからでもグローバル変数を定義、参照することができる
-<code>python
-def func():
+<p>どのスコープからでもグローバル変数を定義、参照することができる</p>
+<pre><code class="language-python">def func():
   global a
-  a = 1</code></p>
+  a = 1
+</code></pre>
 <h2 id="nonlocal">nonlocal</h2>
-<p>ひとつ外側のスコープに属する変数へアクセスができる
-``` python
-def func():
-  count = 0</p>
-<p>def func_inner():
+<p>ひとつ外側のスコープに属する変数へアクセスができる</p>
+<pre><code class="language-python">def func():
+  count = 0
+
+  def func_inner():
     nonlocal count
-```</p>
+</code></pre>
 <h2 id="yield-from">yield from</h2>
-<p>他のイテレータから値を返すジェネレータを作成する
-``` python
+<p>他のイテレータから値を返すジェネレータを作成する</p>
+<pre><code class="language-python">def func():
+  yield from range(5)
+
 def func():
-  yield from range(5)</p>
-<p>def func():
   yield from () # 空のイテレータ
-```</p>
+</code></pre>
 <h2 id="raise-from">raise from</h2>
-<p>例外を連鎖させる際に、送出元の例外を保持する
-``` python
-try:
-  raise Exception("e1") from Exception("e2")</p>
-<p>except Exception as e:
-  print(e.<strong>cause</strong>) # e2
-```</p>
+<p>例外を連鎖させる際に、送出元の例外を保持する</p>
+<pre><code class="language-python">try:
+  raise Exception(&quot;e1&quot;) from Exception(&quot;e2&quot;)
+
+except Exception as e:
+  print(e.__cause__) # e2
+</code></pre>
 <h2 id="async-await">async await</h2>
-<p>```
-import asyncio</p>
-<p>```</p>
+<pre><code>import asyncio
+
+</code></pre>
                 
               
 
