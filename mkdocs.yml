@@ -2,16 +2,11 @@ INHERIT: ./common/mkdocs_base.yml
 
 site_name: sasano8
 site_description: sasano8's portfolio
-# site_url: https://www.python-httpx.org/
 
-# repo_name: encode/httpx
-# repo_url: https://github.com/encode/httpx/
+# repo_name: CodingRule
+repo_url: https://github.com/sasano8/CodingRule
 # edit_uri: ""
-
-
-# theme:
-#   name: "material"
-#   language: "ja"
+site_url: https://sasano8.github.io/CodingRule/
 
 nav:
   - はじめに: "index.md"
@@ -38,23 +33,3 @@ nav:
   - 数学: "math.md"
   - tools:
     - tmux: "tools/tmux.md"
-
-
-
-# markdown_extensions:
-#   - admonition
-#   - codehilite:
-#       css_class: highlight
-#   - mkautodoc
-#   - pymdownx.emoji:
-#       emoji_index: !!python/name:materialx.emoji.twemoji
-#       emoji_generator: !!python/name:materialx.emoji.to_svg
-#   - attr_list
-
-# extra_css:
-#   - css/custom.css
-
-# extra_javascript:
-  # - "js/chat.js"
-  # - "js/sidecar-1.5.0.js"
-
