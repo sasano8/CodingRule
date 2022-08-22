@@ -45,6 +45,9 @@ Pythonを中心に統一したい場合のシステム
 - Talend
 - DataSpider(有償）
 
+## profiler
+
+- [Memray](https://github.com/bloomberg/memray) : python向けメモリプロファイラ
 
 ## Infrastracture as a code
 - Ansible
