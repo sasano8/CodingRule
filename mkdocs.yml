@@ -1,14 +1,17 @@
+INHERIT: ./common/mkdocs_base.yml
+
 site_name: sasano8
 site_description: sasano8's portfolio
 # site_url: https://www.python-httpx.org/
 
-theme:
-  name: "material"
-  language: "ja"
-
 # repo_name: encode/httpx
 # repo_url: https://github.com/encode/httpx/
 # edit_uri: ""
+
+
+# theme:
+#   name: "material"
+#   language: "ja"
 
 nav:
   - はじめに: "index.md"
@@ -38,18 +41,18 @@ nav:
 
 
 
-markdown_extensions:
-  - admonition
-  - codehilite:
-      css_class: highlight
-  - mkautodoc
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - attr_list
+# markdown_extensions:
+#   - admonition
+#   - codehilite:
+#       css_class: highlight
+#   - mkautodoc
+#   - pymdownx.emoji:
+#       emoji_index: !!python/name:materialx.emoji.twemoji
+#       emoji_generator: !!python/name:materialx.emoji.to_svg
+#   - attr_list
 
-extra_css:
-  - css/custom.css
+# extra_css:
+#   - css/custom.css
 
 # extra_javascript:
   # - "js/chat.js"
