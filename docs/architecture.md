@@ -14,6 +14,10 @@ Pythonを中心に統一したい場合のシステム
 - Airflow
 - Luigi
 
+## AI
+
+- Stable Diffusion: 画伯
+
 ## Business Process Management
 - Viewflow
 - SpiffWorkflow
