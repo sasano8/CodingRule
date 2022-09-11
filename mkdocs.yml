@@ -33,6 +33,7 @@ nav:
   - 数学: "math.md"
   - tools:
     - tmux: "tools/tmux.md"
+  - 生活: "life/agriculture.md"
 
 markdown_extensions:
   - markdown_katex:
