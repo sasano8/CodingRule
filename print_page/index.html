@@ -637,22 +637,37 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../machine_learning/" class="md-nav__link">
+        機械学習
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_13" type="checkbox" id="__nav_13" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_12">
+        <label class="md-nav__link" for="__nav_13">
           tools
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="tools" data-md-level="1">
-        <label class="md-nav__title" for="__nav_12">
+        <label class="md-nav__title" for="__nav_13">
           <span class="md-nav__icon md-icon"></span>
           tools
         </label>
@@ -900,6 +915,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#machine_learning" class="md-nav__link">
+    20. 機械学習
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#section-tools" class="md-nav__link">
     IV. tools
   </a>
@@ -909,7 +931,7 @@
         
           <li class="md-nav__item">
   <a href="#tools-tmux" class="md-nav__link">
-    20. tmux
+    21. tmux
   </a>
   
 </li>
@@ -921,7 +943,7 @@
       
         <li class="md-nav__item">
   <a href="#life-agriculture" class="md-nav__link">
-    21. 生活
+    22. 生活
   </a>
   
 </li>
@@ -1130,6 +1152,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#machine_learning" class="md-nav__link">
+    20. 機械学習
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#section-tools" class="md-nav__link">
     IV. tools
   </a>
@@ -1139,7 +1168,7 @@
         
           <li class="md-nav__item">
   <a href="#tools-tmux" class="md-nav__link">
-    20. tmux
+    21. tmux
   </a>
   
 </li>
@@ -1151,7 +1180,7 @@
       
         <li class="md-nav__item">
   <a href="#life-agriculture" class="md-nav__link">
-    21. 生活
+    22. 生活
   </a>
   
 </li>
@@ -4482,7 +4511,58 @@ $$e^{i\theta} = \cos\theta + i\sin\theta</script>
 <p>数学は、前提や公理から矛盾しない答えを導く。
 物理は、観測した現象から数式で説明できる過程を探す。</p>
 <h1 id="math-_99">計算サイト</h1>
-<h2 id="math--httpswwwsymbolabcomsolverstep-by-step-55e7b27dorinput">- https://www.symbolab.com/solver/step-by-step/-5%5E%7B2%7D?or=input</h2></section>
+<h2 id="math--httpswwwsymbolabcomsolverstep-by-step-55e7b27dorinput">- https://www.symbolab.com/solver/step-by-step/-5%5E%7B2%7D?or=input</h2></section><section class="print-page" id="machine_learning"><h1 id="machine_learning-machine-learning">Machine Learning</h1>
+<h1 id="machine_learning-_1">機械学習・ニューラルネットワーク</h1>
+<p>xxx</p>
+<h1 id="machine_learning-_2">ニューラルネットワークの構造</h1>
+<ul>
+<li>回帰（連続値）</li>
+<li>分類（離散値）</li>
+<li>重み（パラメータ）</li>
+<li>バイアス</li>
+<li>入力層</li>
+<li>中間層（隠れ層）</li>
+<li>出力層</li>
+<li>全結合層</li>
+<li>ハイパーパラメータ: モデルを学習する前にあらかじめ人の手で決められるパラメータのこと</li>
+<li>目的変数</li>
+<li>活性化関数: 非線形変換を行う関数<ul>
+<li>中間層:<ul>
+<li>シグモイド関数: 勾配（微分）が消失する恐れがあり、今はあまり使われない。</li>
+<li>正規化線形関数（ReLU）: 0または0以上のパラメータを採用する。<code>h = f(u) = max(0, u)</code></li>
+</ul>
+</li>
+<li>出力層<ul>
+<li>ソフトマックス間奏: 分類で使われる。分類ごとの確率を出力し、分類ごとの確率を全て足すと1になる。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>目的関数（損失関数）: 目標値と予測値の誤差を求める。回帰と分類で使う関数が異なることが多い。<ul>
+<li>回帰<ul>
+<li>平均二乗誤差</li>
+</ul>
+</li>
+<li>分類<ul>
+<li>交差エントロピー</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>逆伝播: パラメータを更新する<ul>
+<li>最急降下法（SGD・確率的勾配降下法）: 初期値を檀ダム</li>
+<li>誤差逆伝播法・連鎖律</li>
+</ul>
+</li>
+<li>accuracy: 正解率</li>
+</ul>
+<h1 id="machine_learning-_3">ニューラルネットワークの計算</h1>
+<p><code>1.</code> <code>2.</code> を繰り返し、最終的に<code>3.</code>を求める</p>
+<ol>
+<li>線形変換: 数式の中心となるもの</li>
+<li>非線形変換: 線形変換を柔軟に対応させるもの</li>
+<li>目的関数（損失関数）の計算</li>
+</ol></section>
                         <h1 class='nav-section-title' id='section-tools'>
                             tools <a class='headerlink' href='#section-tools' title='Permanent link'>↵</a>
                         </h1>
