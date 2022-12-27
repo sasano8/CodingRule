@@ -31,6 +31,7 @@ nav:
     - 設計: "requirements/design.md"
   - awasome api: "awasome_api.md"
   - 数学: "math.md"
+  - 機械学習: "machine_learning.md"
   - tools:
     - tmux: "tools/tmux.md"
   - 生活: "life/agriculture.md"
